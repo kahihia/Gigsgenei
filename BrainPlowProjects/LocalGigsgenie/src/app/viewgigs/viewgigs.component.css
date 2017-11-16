@@ -1,0 +1,21 @@
+.container-fluid{
+  background-color: #ffffff;
+  width: 200px;
+  height: 280px;
+  margin: 0 20px 20px 0;
+  padding: 0;
+  float: left;
+  position: relative;
+  border: 1px #e5e5e5 solid;
+  box-shadow: 10px 10px 5px #888888;
+  box-sizing: border-box;
+}
+.category-list img{
+  border: 2px solid #6b837a;
+  padding: 2px 2px;
+  background: #dddddd;
+  /*width: 300px;*/
+  border-radius: 3px;
+  cursor: pointer;
+  /*margin: 10px;*/
+}

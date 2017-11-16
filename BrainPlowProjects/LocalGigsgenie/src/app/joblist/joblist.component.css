@@ -1,0 +1,194 @@
+.btn-green{
+  font-size: 16px;
+  line-height: 18px;
+  padding: 9px 30px;
+  text-transform: capitalize;
+  background-image: none;
+  background-color: #00B22D;
+  background: -webkit-linear-gradient(#35c350,#03b525);
+  background: linear-gradient(#35c350,#03b525);
+  font-weight: 700;
+  text-transform: none;
+  color: #fff !important;
+  border: 1px solid #00B22D;
+  border-top-color: rgb(0, 178, 45);
+  border-right-color: rgb(0, 178, 45);
+  border-bottom-color: rgb(0, 178, 45);
+  border-left-color: rgb(0, 178, 45);
+  padding-left: 23px;
+  padding-right: 23px;
+  text-shadow: 0 -1px 1px rgba(0,0,0,0.2);
+  box-shadow: none;
+  border-radius: 2px;
+}
+.btn-green:hover{
+  color: #fff;
+  border-color: #10297e;
+  text-decoration: none;
+}
+
+.btn-blue{
+  font-size: 16px;
+  line-height: 18px;
+  padding: 9px 30px;
+  text-transform: capitalize;
+  background-image: none;
+  background-color: #0d79bf;;
+  background: -webkit-linear-gradient(#0d79bf,#0d79bf);
+  background: linear-gradient(#0d79bf,#0d79bf);
+  font-weight: 700;
+  text-transform: none;
+  color: #fff !important;
+  border: 1px solid #0d79bf;
+  border-top-color: #0d79bf;
+  border-right-color: #0d79bf;
+  border-bottom-color: #0d79bf;
+  border-left-color: #0d79bf;
+  padding-left: 23px;
+  padding-right: 23px;
+  text-shadow: 0 -1px 1px rgba(0,0,0,0.2);
+  box-shadow: none;
+  border-radius: 2px;
+}
+.btn-blue:hover{
+  color: #fff;
+  border-color: #10297e;
+  text-decoration: none;
+}
+
+#ul_id{
+  background-color: #ffffff;
+  width: 832px;
+  height: 300px;
+  margin: 0 20px 20px 0;
+  padding: 0;
+  float: left;
+  position: relative;
+  border: 1px #e5e5e5 solid;
+  box-shadow: 10px 10px 5px #888888;
+  box-sizing: border-box;
+}
+/*.category-list img{*/
+  /*border: 2px solid #6b837a;*/
+  /*padding: 2px 2px;*/
+  /*background: #dddddd;*/
+  /*!*width: 300px;*!*/
+  /*border-radius: 3px;*/
+  /*cursor: pointer;*/
+  /*!*margin: 10px;*!*/
+/*}*/
+.btn-grey{
+  font-size: 16px;
+  line-height: 18px;
+  padding: 9px 30px;
+  text-transform: capitalize;
+  background-image: none;
+  /*background-color: #00B22D;*/
+  background: -webkit-linear-gradient(#35c350,#03b525);
+  background: linear-gradient(#35c350,#03b525);
+  font-weight: 700;
+  text-transform: none;
+  color: #fff !important;
+  border: 1px solid #00B22D;
+ /* border-top-color: rgb(0, 178, 45);
+  border-right-color: rgb(0, 178, 45);
+  border-bottom-color: rgb(0, 178, 45);
+  border-left-color: rgb(0, 178, 45);*/
+  padding-left: 23px;
+  padding-right: 23px;
+  text-shadow: 0 -1px 1px rgba(0,0,0,0.2);
+  box-shadow: none;
+  border-radius: 2px;
+}
+.btn-grey:hover{
+  color: #fff;
+  border-color: #10297e;
+  text-decoration: none;
+}
+#show_bids{
+margin-left: 4.6%;
+margin-top: 5%;
+background-color: grey;
+font-weight: bold;
+border: 1px solid darkgrey;
+color: white;
+font-size: 16px;
+padding: 11px;
+}
+#apply_job{
+padding: 11px;
+margin-left: 2%;
+background-color: #00B22D;
+font-size: 16px;
+color: white;
+border: 1px solid #00B22D;
+font-weight: bold;
+
+}
+
+#Bookmark{
+padding: 11px;
+margin-left: 2%;
+font-size: 16px;
+background-color: red;
+color: white;
+font-weight:bold;
+border: 1px solid red;
+}
+#details{
+  padding: 11px;
+  margin-left: 2%;
+  background-color: #0d79bf;
+  color: white;
+  font-weight: bold;
+  border: 1px solid #0d79bf;
+ font-size: 16px;
+}
+.namelogo{
+margin-left: 2%;
+margin-top: 2%;}
+
+.nameheading{ margin-left: 10%; margin-top: -3%; }
+
+
+.timereq{ margin-left: 2%; margin-top: 2%; }
+
+.timeheading { margin-left: 10%; margin-top: -6%; }
+
+.skillsneed{ margin-top: 2%; margin-left: 2%; }
+
+.skillsheading { margin-left: 10%; margin-top: -6%; }
+
+@media only screen and (max-width: 1300px) {
+
+.col-sm-4{margin-left: -15%;width: 36%;}
+#accordion .panel-body{ padding-left: 2%;}
+.section {width: 142%; margin-left: -6%;}
+#ul_id{margin-left: -4%;width: 73%;height: 325px;}
+#show_bids{ margin-top: 4%; margin-left: 7.5%;width: 46%}
+#details{ margin-top: 2%; margin-left: 7.5%; width: 46%;}
+.namelogo{margin-top: 3%;}
+.nameheading{ margin-left: 15%; margin-top:-5%;}
+.skillsneed{ margin-top: 2%; }
+.timereq{margin-top: 4%;}
+.timeheading{ margin-left: 14%; margin-top: -9%; }
+.skillsheading{  margin-top: -9%;  margin-left: 15%;}
+
+}
+
+@media only screen and  (max-width : 480px) {
+.col-sm-4{width: 155%; margin-left: -34%}
+.section {margin-left: -45%; margin-top: 10%; width: 176%; }
+#ul_id{margin-left: -15%; width: 130%; height: auto;}
+.nameheading{ margin-left: 22%; margin-top: -7% }
+.skillsheading{margin-left: 20%; margin-top: -14%;}
+.timeheading{ margin-left: 19%; margin-top: -15%;}
+#show_bids{ margin-left: 11%; width: 78%}
+#details{width: 78%; margin-left: 11%; margin-top: 3%;}
+#apply_job{width: 78%; margin-left: 11%; margin-top: 3%;}
+#Bookmark{width: 78%; margin-left: 11%; margin-top: 3%;}
+}
+
+
+
+

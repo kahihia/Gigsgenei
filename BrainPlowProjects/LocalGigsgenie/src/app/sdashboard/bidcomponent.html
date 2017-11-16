@@ -1,0 +1,51 @@
+<h1 md-dialog-title>Hi {{data.name}}</h1>
+<div md-dialog-content>
+  <p>Please Enter Values For bids</p>
+  <md-form-field>
+    <input mdInput tabindex="1" [(ngModel)]="data.obj.Title" placeholder="Title" required="">
+    <input mdInput tabindex="1" [(ngModel)]="data.obj.BidPrize" placeholder="Bid Prize" required="">
+    <input mdInput tabindex="1" [(ngModel)]="data.obj.Days" placeholder="Days" required="">
+  </md-form-field>
+
+
+  <!--<form-->
+    <!--name="form" role="form" #f1 (ngSubmit)="f.form.valid &&-->
+                 <!--SubmitBid(f1)" #f="ngForm" novalidate>-->
+    <!--<h3 style="margin-left:2%; color:black"> Title:</h3>-->
+    <!--<div style="position: relative">-->
+      <!--<input onkeydown="if (event.keyCode == 13) return false;" type="text" name="title" class="form-control" placeholder="Title" style="border:1px solid #f80000; height: 67px; font-size:20px;"-->
+             <!--[(ngModel)]="model.title" #title="ngModel" #title1 required >-->
+      <!--<div *ngIf="f.submitted && !title.valid"  style="position: absolute;top: 10px;right: 10px;">-->
+        <!--<span style="color: red;margin-right: 10px;">Title Required</span><img src="../../assets/icons/cancel_16.png" height="16" width="16">-->
+      <!--</div>-->
+    <!--</div>-->
+    <!--<br> <br>-->
+
+    <!--<h3 style="margin-left:2%; color:black">Your Budget:</h3>-->
+    <!--<div style="position: relative">-->
+      <!--<input onkeydown="if (event.keyCode == 13) return false;" type="text" name="budget" class="form-control" placeholder="Budget" style="border:1px solid #f80000; height: 67px; font-size:20px;"-->
+             <!--[(ngModel)]="model.budget" #budget="ngModel" #budget1 required >-->
+      <!--<div *ngIf="f.submitted && !budget.valid"  style="position: absolute;top: 10px;right: 10px;">-->
+        <!--<span style="color: red;margin-right: 10px;">Budget Required</span><img src="../../assets/icons/cancel_16.png" height="16" width="16">-->
+      <!--</div>-->
+    <!--</div>-->
+    <!--<br> <br>-->
+
+    <!--<h3 style="margin-left:2%; color:black">Estimated Time:</h3>-->
+    <!--<div style="position: relative">-->
+      <!--<input onkeydown="if (event.keyCode == 13) return false;" type="text" name="time" class="form-control" placeholder="Time" style="border:1px solid #f80000; height: 67px; font-size:20px;"-->
+             <!--[(ngModel)]="model.time" #time="ngModel" #time1 required >-->
+      <!--<div *ngIf="f.submitted && !time.valid"  style="position: absolute;top: 10px;right: 10px;">-->
+        <!--<span style="color: red;margin-right: 10px;">Time Required</span><img src="../../assets/icons/cancel_16.png" height="16" width="16">-->
+      <!--</div>-->
+    <!--</div>-->
+
+    <!--<hr>-->
+    <!--<button type="submit" class="one">Submit Your Quotation</button>-->
+  <!--</form>-->
+
+</div>
+<div md-dialog-actions>
+  <button md-button [md-dialog-close]="data.obj" tabindex="2">Ok</button>
+  <button md-button (click)="onNoClick()" tabindex="-1">No Thanks</button>
+</div>

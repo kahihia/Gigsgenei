@@ -1,0 +1,262 @@
+<app-loader></app-loader>
+
+<section class=" job-bg ad-details-page">
+  <div class="container">
+
+    <!--<div class="breadcrumb-section">-->
+    <!--&lt;!&ndash; breadcrumb &ndash;&gt;-->
+    <!--<ol class="breadcrumb">-->
+    <!--<li *ngFor="let i of ListTrack"><a routerLink="{{i.Url}}">{{i.Name}}</a></li>-->
+    <!--</ol>-->
+    <!--<h2 class="title">Post My Resume</h2>-->
+    <!--</div>&lt;!&ndash; banner &ndash;&gt;-->
+
+    <div class="job-postdetails post-resume" style="margin-top: 75px;">
+      <div class="row">
+        <div class="col-md-8 clearfix">
+          <fieldset>
+
+            <div class="alert alert-success alert-dismissable" *ngIf="ShowHideAlert"><!--*ngIf="ShowHideAlert"-->
+              <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+              <strong> '{{UserName}}' &nbsp; You Successfully Added Your Work History!&nbsp;</strong>
+            </div>
+
+            <form  name="form" role="form" (ngSubmit)="f.form.valid && PushWorkExprience(company_name1.value,designation1.value,startdate1.value,enddate1.value,description1.value,f)" #f="ngForm" novalidate>
+              <div class="panel panel-default">
+                <div class="panel-heading" style="font-size: 50px;
+                font-family: -webkit-body;">
+                  Work Exprience
+                </div>
+                <div class="panel-body">
+
+                  <div class="section">
+                    <!--<h4 style="font-size: 50px;font-family: -webkit-body;">Work History</h4>-->
+
+
+
+                    <md-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle="true" style="margin-bottom: 30px;">
+                      <md-expansion-panel-header>
+                        <md-panel-title>
+                          <i class="fa fa-plus-circle fa-3x" aria-hidden="true"></i>
+                        </md-panel-title>
+                        <md-panel-description style="font-size: x-large;color: black;">
+                          Click to Add Work Exprience
+                        </md-panel-description>
+                      </md-expansion-panel-header>
+                      <md-form-field>
+
+
+
+                        <!--<div class="form-group" [ngClass]="{ 'has-error': f.submitted }">-->
+
+                        <div class="row form-group">
+                          <label class="col-sm-3 label-title">Compnay Name</label>
+                          <div class="col-sm-9">
+                            <!--<input type="text" name="name" class="form-control" placeholder="Name" name="company_name" [(ngModel)]="model.company_name" #company_name="ngModel" #company_name1-->
+                            <!--required >-->
+                            <div style="position: relative;">
+                              <input type="text" (keyup)="companynameChange(company_name1.value)" class="form-control" placeholder="Programing, Managerial etc" name="company_name" [(ngModel)]="model.company_name" #company_name="ngModel" #company_name1
+                                     required list="languageList"/><!--your input textbox-->
+                              <datalist id="languageList" style="overflow-y: auto;max-height: 300px;">
+                                <option *ngFor="let i of Autocompanyname" value="{{i.Name}}" ></option>
+
+                              </datalist>
+                              <div *ngIf="f.submitted && formSubmitted && !company_name.valid" style="position: absolute;top: 10px;right: 10px;">
+                                <span style="color: red;margin-right: 10px;">Company Name is required</span><img src="../../assets/icons/cancel_16.png" height="16" width="16">
+                              </div>
+                              <div *ngIf="f.submitted && formSubmitted &&   company_name.valid"  style="position: absolute;top: 10px;right: 10px;">
+                                <img src="../../assets/icons/tick_48.png" height="16" width="16"/>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <!--<div style="color: red" *ngIf="f.submitted && !company_name.valid" class="help-block">*Name is required</div>-->
+                        <!--<div class="help-block" style="color: red" *ngIf="company_name.errors && company_name.errors.pattern">-->
+                        <!--*Name is invalid-->
+                        <!--</div>-->
+
+                        <!--</div>-->
+
+
+
+
+                        <!--<div class="form-group" [ngClass]="{ 'has-error': f.submitted }">-->
+                        <div class="row form-group">
+                          <label class="col-sm-3 label-title">Designation</label>
+                          <div class="col-sm-9">
+                            <!--<input type="text" name="name" class="form-control" placeholder="Human Resource Manager"  name="designation" [(ngModel)]="model.designation" #designation="ngModel" #designation1-->
+                            <!--required >-->
+                            <div style="position: relative;">
+                              <input type="text" (keyup)="designationChange(designation1.value)" class="form-control" placeholder="Programing, Managerial etc" name="designation" [(ngModel)]="model.designation" #designation="ngModel" #designation1
+                                     required list="languageList1"/><!--your input textbox-->
+                              <datalist id="languageList1" style="overflow-y: auto;max-height: 300px;">
+                                <option *ngFor="let i of Autodesignation" value="{{i.Name}}" ></option>
+
+                              </datalist>
+                              <div *ngIf="f.submitted && formSubmitted &&  !designation.valid" style="position: absolute;top: 10px;right: 10px;">
+                                <span style="color: red;margin-right: 10px;">Designation is required</span><img src="../../assets/icons/cancel_16.png" height="16" width="16">
+                              </div>
+                              <div *ngIf="f.submitted && formSubmitted &&   designation.valid"  style="position: absolute;top: 10px;right: 10px;">
+                                <img src="../../assets/icons/tick_48.png" height="16" width="16"/>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <!--<div style="color: red" *ngIf="f.submitted && !designation.valid" class="help-block">*Designation is required</div>-->
+                        <!--<div class="help-block" style="color: red" *ngIf="designation.errors && designation.errors.pattern">-->
+                        <!--*Name is invalid-->
+                        <!--</div>-->
+                        <!--</div>-->
+
+                        <div class="row form-group time-period">
+                          <label class="col-sm-3 label-title">Time Period</label>
+                          <div class="col-sm-9">
+                            <!--<my-date-picker name="mydate1" [options]="myDatePickerOptions"-->
+                            <div style="position: relative;">                 <!--[ngModel]="model" #mydp1="mydatepicker"  required></my-date-picker>-->
+                              <!--<input type="date" name="startdate" class="form-control" placeholder="dd/mm/yy" [(ngModel)]="model.startdate" #startdate="ngModel" #startdate1-->
+                              <!--required ><span>-</span>-->
+                              <!--<input type="date" name="enddate" class="form-control pull-right" placeholder="dd/mm/yy"  [(ngModel)]="model.enddate" #enddate="ngModel" #enddate1-->
+                              <!--required >-->
+                              <!--<div *ngIf="f.submitted && !startdate.valid" style="position: absolute;top: 10px;right: 324px;">-->
+                              <!--<span style="color: red;margin-right: 10px;"></span><img src="../../assets/icons/cancel_16.png" height="16" width="16">-->
+                              <!--</div>-->
+                              <!--<div *ngIf="f.submitted &&  startdate.valid"  style="position: absolute;top: 10px;right: 324px;">-->
+                              <!--<img src="../../assets/icons/tick_48.png" height="16" width="16"/>-->
+                              <!--</div>-->
+                              <!--<div *ngIf="f.submitted && !enddate.valid" style="position: absolute;top: 10px;right: 52px;">-->
+                              <!--<span style="color: red;margin-right: 10px;"></span><img src="../../assets/icons/cancel_16.png" height="16" width="16">-->
+                              <!--</div>-->
+                              <!--<div *ngIf="f.submitted &&  enddate.valid"  style="position: absolute;top: 10px;right: 52px;">-->
+                              <!--<img src="../../assets/icons/tick_48.png" height="16" width="16"/>-->
+                              <!--</div>-->
+
+                              <input mdInput  (dateChange)="onChangeStartdate($event)"  [min]="minDateStart" [max]="maxDateStart" [mdDatepicker]="pickerstart" placeholder="Choose a start date" name="startdate" class="form-control" [(ngModel)]="model.startdate" #startdate="ngModel" #startdate1
+                                     required ><span>-</span>
+                              <div style="position: absolute;top: 0px;right: 278px;">
+                                <md-datepicker-toggle mdSuffix [for]="pickerstart"></md-datepicker-toggle>
+                                <md-datepicker #pickerstart></md-datepicker>
+                              </div>
+                              <input mdInput  (dateChange)="onChangeEnddate($event)" [min]="minDateEnd" [max]="maxDateEnd" [mdDatepicker]="picker" name="enddate" class="form-control pull-right" placeholder="Choose a end date"  [(ngModel)]="model.enddate" #enddate="ngModel" #enddate1
+                                     required >
+                              <div style="position: absolute;top: 0px;right: 3px;">
+                                <md-datepicker-toggle mdSuffix [for]="picker"></md-datepicker-toggle>
+                                <md-datepicker #picker></md-datepicker>
+                              </div>
+                              <div *ngIf="f.submitted && formSubmitted &&  !startdate.valid" style="position: absolute;top: 10px;right: 324px;">
+                                <span style="color: red;margin-right: 10px;"></span><img src="../../assets/icons/cancel_16.png" height="16" width="16">
+                              </div>
+                              <div *ngIf="f.submitted && formSubmitted &&   startdate.valid"  style="position: absolute;top: 10px;right: 324px;">
+                                <img src="../../assets/icons/tick_48.png" height="16" width="16"/>
+                              </div>
+                              <div *ngIf="f.submitted && formSubmitted &&  !enddate.valid" style="position: absolute;top: 10px;right: 52px;">
+                                <span style="color: red;margin-right: 10px;"></span><img src="../../assets/icons/cancel_16.png" height="16" width="16">
+                              </div>
+                              <div *ngIf="f.submitted &&  formSubmitted &&  enddate.valid"  style="position: absolute;top: 10px;right: 52px;">
+                                <img src="../../assets/icons/tick_48.png" height="16" width="16"/>
+                              </div>
+
+                            </div>
+
+                          </div>
+                        </div>
+                        <!--<div style="color: red" *ngIf="f.submitted && !startdate.valid" class="help-block">*Start Date is required</div>-->
+                        <!--<div class="help-block" style="color: red" *ngIf="startdate.errors && startdate.errors.pattern">-->
+                        <!--*Start Date is invalid-->
+                        <!--</div>-->
+                        <!--<div style="color: red" *ngIf="f.submitted && !enddate.valid" class="help-block">*End Date is required</div>-->
+                        <!--<div class="help-block" style="color: red" *ngIf="enddate.errors && enddate.errors.pattern">-->
+                        <!--*End Date is invalid-->
+                        <!--</div>-->
+
+
+                        <!--<div class="form-group" [ngClass]="{ 'has-error': f.submitted }">-->
+
+                        <div class="row form-group job-description">
+                          <label class="col-sm-3 label-title">Job Description</label>
+                          <div class="col-sm-9">
+                            <div style="position: relative;">
+      <textarea [froalaEditor] class="form-control" placeholder="" rows="8" name="description" [(ngModel)]="model.description" #description="ngModel" #description1
+                required ></textarea>
+                              <div *ngIf="f.submitted && formSubmitted &&  !description.valid" style="position: absolute;top: 10px;right: 10px;">
+                                <span style="color: red;margin-right: 10px;">Description is required</span><img src="../../assets/icons/cancel_16.png" height="16" width="16">
+                              </div>
+                              <div *ngIf="f.submitted &&  formSubmitted &&  description.valid"  style="position: absolute;top: 10px;right: 10px;">
+                                <img src="../../assets/icons/tick_48.png" height="16" width="16"/>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <!--<div style="color: red" *ngIf="f.submitted && !description.valid" class="help-block">*Description is required</div>-->
+                        <!--<div class="help-block" style="color: red" *ngIf="description.errors && description.errors.pattern">-->
+                        <!--*Description is invalid-->
+                        <!--</div>-->
+                        <!--</div>-->
+
+                      </md-form-field>
+
+                      <md-action-row>
+                        <a><button (click)="FormSubmitted()" type="submit"  name="submit" class="btn-green">{{AddUpdateButtonText}}</button></a>
+                        &nbsp;&nbsp;<a><button (click)="cancelClickAddWorkExperience(f)" class="btn-blue" name="next">Cancel</button></a>
+                      </md-action-row>
+                    </md-expansion-panel>
+
+
+                    <div class="row form-group" *ngFor="let workexprienceobj of workexprienceObjList;let ind=index;">
+                      <md-expansion-panel  [expanded]="step === (ind+1)" (opened)="setStep(ind+1)" >
+                        <md-expansion-panel-header>
+                          <md-panel-title>
+                            {{ind+1}}){{workexprienceobj.CompanyName}}
+                          </md-panel-title>
+                          <md-panel-description>
+                            {{workexprienceobj.Designation}}
+                            <!--<md-icon>map</md-icon>-->
+                          </md-panel-description>
+                        </md-expansion-panel-header>
+
+                        <md-form-field>
+                          <label>Company Name : {{workexprienceobj.CompanyName}}</label><br>
+                          <label>Designation : {{workexprienceobj.Designation}}</label><br>
+                          <label>Start Date : {{workexprienceobj.StartYear}}</label><br>
+                          <label>Completion Date : {{workexprienceobj.EndYear}}</label><br>
+                          <label>Description : {{workexprienceobj.Description}}</label><br>
+                        </md-form-field>
+
+                        <md-action-row>
+                          <button md-button color="warn" (click)="DeleteWorkExprienceObj(ind)">Delete</button>
+                          <button md-button color="primary" (click)="EditWorkExprienceObj(ind)">Edit</button>
+                        </md-action-row>
+                      </md-expansion-panel>
+                    </div>
+                    <div class="row form-group">
+                      <div *ngIf="workexprienceObjList.length > 0" class="buttons pull-right">
+                        <a><button (click)="UpdateWorkExprienceInfo()" type="submit"  name="submit" class="btn-green">Save</button></a>
+                        &nbsp;&nbsp;<a style="cursor: pointer;" (click)="DeleteallWorkExprienceInfo()">Cancel</a>
+                      </div>
+                    </div>
+                    <div class="row form-group">
+                      <div class="buttons pull-right">
+                        <a><button routerLink="/skills" class="btn-green">Next</button></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </form>
+          </fieldset>
+        </div>
+        <!-- quick-rules -->
+        <div class="col-md-4">
+          <div class="section quick-rules">
+            <h4>Quick rules about Work Experience</h4>
+            <!-- <p class="lead">Posting an ad on <a href="#">jobs.com</a> is free! However, all ads must follow our rules:</p> -->
+
+            <ul>
+              <li>Company name is your company name where you have worked or you are currently working</li>
+              <li>Designation means on which designation you are working in company</li>
+              <li>Time Period means the time that you spent in particular company</li>
+              <li>In job description tell us something about your job. What was your responsibilites etc</li>
+
+            </ul>
+          </div>
+        </div></div></div></div></section>

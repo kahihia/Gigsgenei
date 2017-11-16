@@ -1,0 +1,313 @@
+<app-loader></app-loader>
+<div *ngIf="loaded">
+<div class= "aside">
+
+
+  <img class="img-circle" src="{{GlobalImageAdress.mediaUrl}}{{GigData.userinfo.image[0].Resume}}" alt="{{GigData.UserName}} Profile Pic">
+
+  <div class="username">
+      {{GigData.userinfo.image[0].FullName}}
+    <a href="https://www.google.com">{{GigData.UserName}}</a>
+
+  </div>
+
+  <fieldset class="ratings">
+    <input type="radio" id="star5" name="ratings" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
+    <input type="radio" id="star4half" name="ratings" value="4 and a half" /><label class="half" for="star4half" title="Amazing - 4.5 stars"></label>
+    <input type="radio" id="star4" name="ratings" value="4" /><label class = "full" for="star4" title="Excellent - 4 stars"></label>
+    <input type="radio" id="star3half" name="ratings" value="3 and a half" /><label class="half" for="star3half" title="V Good - 3.5 stars"></label>
+    <input type="radio" id="star3" name="ratings" value="3" /><label class = "full" for="star3" title="Good - 3 stars"></label>
+    <input type="radio" id="star2half" name="ratings" value="2 and a half" /><label class="half" for="star2half" title="Normal - 2.5 stars"></label>
+    <input type="radio" id="star2" name="ratings" value="2" /><label class = "full" for="star2" title="Bad - 2 stars"></label>
+    <input type="radio" id="star1half" name="ratings" value="1 and a half" /><label class="half" for="star1half" title="V Bad - 1.5 stars"></label>
+    <input type="radio" id="star1" name="ratings" value="1" /><label class = "full" for="star1" title="Poor - 1 star"></label>
+    <input type="radio" id="starhalf" name="ratings" value="half" /><label class="half" for="starhalf" title="V Poor - 0.5 stars"></label>
+  </fieldset>
+
+  <button routerLink="/message" type="submit"  class="sendrequest"> <img src="../../assets/icons/Asset 4.png" style="margin-left: -15px;
+    width: 25px;
+    height: 25px;
+    margin-right: 11px;"/>Add Friend </button>
+
+  <button (click)="NavigetoMessages()" type="submit" class="contactme"><span class="glyphicon glyphicon glyphicon-envelope" aria-hidden="true"
+    style="margin-left: -6px;
+    margin-right: 16px;
+    padding-top: 2px;"></span>Contact Me </button>
+  <!--<a routerLink="/chat" class="contactme">Contact Me </a>-->
+
+
+
+  <div class="intro">
+    <h2>Introduction</h2>
+    <p>{{GigData.userinfo.image[0].Description}}</p>
+  </div>
+
+  <div class="socialicons">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Add font awesome icons -->
+    <a href="www.facebook.com" class="fa fa-facebook"></a>
+    <a href="www.twitter.com" class="fa fa-twitter"></a>
+    <a href="www.gmail.com" class="fa fa-google"></a>
+    <a href="www.linkedin.com" class="fa fa-linkedin"></a>
+    <a href="www.instagram.com" class="fa fa-instagram"></a>
+
+  </div>
+
+
+</div>
+
+<div class="container1">
+
+  <i (click)="rigthArrow()" style="float:right;font-size: 40px;margin-top:180px;" class="fa fa-chevron-circle-right" aria-hidden="true"></i>
+  <i (click)="leftArrow()" style="float:left;font-size: 40px;margin-top:180px;"class="fa fa-chevron-circle-left" aria-hidden="true"></i>
+
+  <h3 style="margin-left: 33%;"> {{GigData.Title}} </h3>
+  <hr>
+
+  <div class="image">
+    <img src="{{ImageSrc}}" alt="Mountain View" style="width:100%;height:250px;">
+    </div>
+
+</div>
+
+
+
+
+<!--<div class="packeges">-->
+  <!--<table>-->
+    <!--<thead>-->
+    <!--<th colspan="5" style="background-color: #f80000; color: white; height: 75px; font-size: 35px; text-align: center;">Choose My Offers</th>-->
+
+
+
+
+    <!--</thead>-->
+
+    <!--<tr>-->
+
+      <!--<th></th>-->
+      <!--<th style="color: #f80000; font-size: 20px; font-weight: bolder;"> Basic Packege $5</th>-->
+      <!--<th style="color: #f80000; font-size: 20px; font-weight: bolder;"> Complete Packege $15</th>-->
+
+
+    <!--</tr>-->
+    <!--<tr>-->
+      <!--<td style="color: #f80000; font-size: 15px; font-weight: bolder;">Description</td>-->
+      <!--<td>1HQ Custom Logo + JPEG + Revisions WITHIN 24 HOURS</td>-->
+      <!--<td>2ULTRA HQ logo + Vector files + JPEG/PNG/AI Files + Unlimited revisions</td>-->
+
+    <!--</tr>-->
+    <!--<tr>-->
+      <!--<td style="color: #f80000; font-size: 15px; font-weight: bolder;">3D Mockups</td>-->
+      <!--<td>No</td>-->
+      <!--<td>No</td>-->
+
+    <!--</tr>-->
+    <!--<tr>-->
+      <!--<td style="color: #f80000; font-size: 15px; font-weight: bolder;">High Resolution</td>-->
+      <!--<td>Yes</td>-->
+      <!--<td>No</td>-->
+
+    <!--</tr>-->
+    <!--<tr>-->
+      <!--<td style="color: #f80000; font-size: 15px; font-weight: bolder;">Logo Transperency</td>-->
+      <!--<td>No</td>-->
+      <!--<td>Yes</td>-->
+
+    <!--</tr>-->
+    <!--<tr>-->
+      <!--<td style="color: #f80000; font-size: 15px; font-weight: bolder;">Source File</td>-->
+      <!--<td>No</td>-->
+      <!--<td>No</td>-->
+
+    <!--</tr>-->
+    <!--<tr>-->
+      <!--<td style="color: #f80000; font-size: 15px; font-weight: bolder;"> Social Media Kit</td>-->
+      <!--<td>No</td>-->
+      <!--<td>Yes</td>-->
+
+    <!--</tr>-->
+    <!--<tr>-->
+      <!--<td style="color: #f80000; font-size: 15px; font-weight: bolder;">Stationary Designs</td>-->
+      <!--<td>No</td>-->
+      <!--<td>Yes</td>-->
+
+    <!--</tr>-->
+    <!--<tr>-->
+      <!--<td style="color: #f80000; font-size: 15px; font-weight: bolder;">No of logo included</td>-->
+      <!--<td>1</td>-->
+      <!--<td>1</td>-->
+
+    <!--</tr>-->
+    <!--<tr>-->
+      <!--<td style="color: #f80000; font-size: 15px; font-weight: bolder;">Revisions</td>-->
+      <!--<td>3</td>-->
+      <!--<td>Unlimited</td>-->
+
+    <!--</tr>-->
+
+    <!--<tr>-->
+      <!--<td style="color: #f80000; font-size: 15px; font-weight: bolder;">Delivery Time</td>-->
+      <!--<td>1 Day</td>-->
+      <!--<td>1 Day</td>-->
+
+    <!--</tr>-->
+
+  <!--</table>-->
+
+  <!--<div class="dropdown">-->
+    <!--<button class="dropbtn">Choose Basic Packege </button>-->
+    <!--<button class="dropbtn">Choose Complete Packege</button>-->
+
+
+  <!--</div>-->
+
+<!--</div>-->
+
+
+<div class="about">
+
+  <h3 style="margin-left: 2%;">About My Offer</h3>
+  <hr>
+  <!--
+  <div class="verticalLine">
+    some other content
+  </div> -->
+
+
+  <p [innerHTML]="GigData.Description|emoji">
+
+    Welcome to my GIG.
+  </p>
+
+</div>
+
+
+<div class="about">
+
+  <h3 style="margin-left: 2%;">FAQ</h3>
+  <hr>
+  <!--
+  <div class="verticalLine">
+    some other content
+  </div> -->
+
+
+  <p *ngFor="let faq of GigData.faq">
+    Question : {{faq.Question}}<br>
+    Answer : {{faq.Answer}}
+  </p>
+
+</div>
+
+<div class="reviews">
+
+  <h3 style="margin-left: 2%;">50 Reviews</h3>
+
+
+  <br>
+  <hr>
+
+
+  <div class="comments">
+
+    <!--<div class="form-group">-->
+      <!--<div style="position: relative">-->
+        <!--<input type="text" name="comment" (keyup)="review($event)" class="form-control" placeholder="Review"-->
+               <!--[(ngModel)]="model.comment" #comment="ngModel" #comment1 required >-->
+        <!--<div *ngIf="!comment.valid" style="position: absolute;top: 10px;right: 10px;">-->
+          <!--<span style="color: red;margin-right: 10px;">Review Required</span><img src="../../assets/icons/cancel_16.png" height="16" width="16">-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+
+
+  </div>
+
+</div>
+
+
+
+
+  <!--<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>-->
+  <!--<script src="js/respond.min.js"></script>-->
+
+
+
+
+
+
+
+  <div id="wrapper" class="container-fluid">
+    <section class="header_text">
+
+    </section>
+    <section *ngIf="loaded===true" class="main-content">
+      <div class="row">
+        <div class="span12">
+          <div class="row">
+            <div class="span12">
+              <h4 class="title">
+                <span class="pull-left"><span class="text"><span class="line"><strong>Related </strong></span></span></span>
+              </h4>
+              <div id="myCarousel" class="myCarousel carousel slide">
+                <div class="carousel-inner">
+                  <div class="active item">
+                    <ul class="thumbnails">
+                      <li class="span3" *ngFor="let objListViewGigs of ListViewGigs; let ind=index;">
+                        <div class="product-box">
+                          <span class="sale_tag"></span>
+                          <!--routerLink="/choosegig" [queryParams]="{id: data.id, UserName: data.UserName}"-->
+                          <p><a><img height="270px" width="270px" src="{{objListViewGigs.ImageSrc}}" alt="" /></a></p>
+                          <a (click)="ChooseGigNavigate(objListViewGigs.GigId,objListViewGigs.username)" class="title">{{objListViewGigs.Title}}</a><br/>
+
+                          <p class="price">{{objListViewGigs.Prize}}</p>
+                          <hr style="border-bottom:1px solid black; padding-bottom: 4px;">
+                          <img class="img-circlegig" src="{{objListViewGigs.Resume}}">
+                          <a class="category">{{objListViewGigs.username}}</a>
+
+                          <fieldset class="ratingsgig">
+                            <input type="radio" id="star5" name="ratings" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
+                            <input type="radio" id="star4half" name="ratings" value="4 and a half" /><label class="half" for="star4half" title="Amazing - 4.5 stars"></label>
+                            <input type="radio" id="star4" name="ratings" value="4" /><label class = "full" for="star4" title="Excellent - 4 stars"></label>
+                            <input type="radio" id="star3half" name="ratings" value="3 and a half" /><label class="half" for="star3half" title="V Good - 3.5 stars"></label>
+                            <input type="radio" id="star3" name="ratings" value="3" /><label class = "full" for="star3" title="Good - 3 stars"></label>
+                            <input type="radio" id="star2half" name="ratings" value="2 and a half" /><label class="half" for="star2half" title="Normal - 2.5 stars"></label>
+                            <input type="radio" id="star2" name="ratings" value="2" /><label class = "full" for="star2" title="Bad - 2 stars"></label>
+                            <input type="radio" id="star1half" name="ratings" value="1 and a half" /><label class="half" for="star1half" title="V Bad - 1.5 stars"></label>
+                            <input type="radio" id="star1" name="ratings" value="1" /><label class = "full" for="star1" title="Poor - 1 star"></label>
+                            <input type="radio" id="starhalf" name="ratings" value="half" /><label class="half" for="starhalf" title="V Poor - 0.5 stars"></label>
+                          </fieldset>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <br/>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script type="text/javascript">
+    $(function() {
+      $(document).ready(function() {
+        $('.flexslider').flexslider({
+          animation: "fade",
+          slideshowSpeed: 4000,
+          animationSpeed: 600,
+          controlNav: false,
+          directionNav: true,
+          controlsContainer: ".flex-container" // the container that holds the flexslider
+        });
+      });
+    });
+  </script>
+
+
+
+</div>

@@ -1,0 +1,53 @@
+<!-- <p>
+  instructions works!
+</p>
+ -->
+
+ <!-- signin-page -->
+<app-loader></app-loader>
+<section class="clearfix job-bg user-page">
+  <div class="container">
+    <div class="row text-center">
+      <!-- user-login -->
+      <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+        <div class="user-account">
+          <h2 style="color:#f80000">Read the Instructions Carefully</h2>
+
+
+
+
+
+            <ol>
+                <li> All tests and quizzes are timed. You have just 1 hour to complete your test </li> <br>
+                <li> This test must be completed in one sitting. You can open it once </li> <br>
+
+                <li> Your test time will be start if you click <strong> start test </strong> Button </li> <br>
+
+               <li> Make sure you have good internet connection </li> <br>
+
+                <li>Click the <strong>Back Button</strong> will take you previous question and click the <strong> Next Button </strong> will take you next page</li> <br> 
+
+               <li> Each correct answer have some fixed marks that increase your percentage</li> <br>
+
+
+
+               <li> When you have finished answering all of your questions, submit the test to be graded. </li>
+
+               <li style="color:#f80000"> Please Don't try to cheat or help some other source otherwise you will be blocked</li>
+
+               <li> Tick mark in pagination shows that you have attempted these questions</li>
+
+            </ol>
+
+
+          <select (change)="scltCatagoryChange(catagory1.value)" class="form-control" name="a5" style="overflow-y: auto;max-height: 50px;" #catagory1>
+            <option value="0">{{drpChooseTestCatagory}}</option>
+            <option *ngFor="let i of TestCatagoryList"><a href="#">{{i.Catagory}}</a></option>
+
+          </select>
+              <a *ngIf="drpChooseTestCatagory!=='Choose Test Catagory'" routerLink="/quiz" [queryParams]="{Catagory: drpChooseTestCatagory}" class="btn-primary">Start Test </a>
+      </div>
+    </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,73 @@
+<!--<preloader-full></preloader-full>-->
+<app-loader></app-loader>
+<section class="clearfix job-bg user-page">
+  <div class="container">
+    <div class="row text-center">
+      <!-- user-login -->
+      <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+        <div class="user-account">
+          <h2 style="color: #f80000"> Login To</h2>
+
+
+          <img src="../../assets/images/logo2.png" style="margin-top:-6px; height: 120px;"/>
+
+          <br>
+          <br>
+          <br>
+
+
+          <form >
+
+
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Username" #username1 style="border:1px solid #f80000; height: 67px; font-size:20px;">
+            </div>
+            <div class="form-group">
+              <input type="password" class="form-control" placeholder="Password" #password1 style="border:1px solid #f80000; height: 67px; font-size:20px;" >
+            </div>
+            <div style="color: #f80000" *ngIf="boolchkLogin" class="help-block">*Invalid Login</div>
+            <button type="submit" class="btn" (click)="btnLoginClick(username1.value,password1.value)" #btn1 style="width: 100%; height: 67px; border:1px solid #f80000; font-size:25px; color: white; background-color: #f80000;">Login</button>
+          </form><!-- form -->
+          <br>
+
+          <hr>
+          <h3 style="text-align:center; color: black;">OR</h3>
+
+          <div class="social-login">
+            <a href="#">
+              <i class="fa fa-facebook fa-lg"></i>
+              Login with
+              <br>
+            </a>
+            <br>
+            <br>
+            <a href="#">
+              <i class="fa fa-google-plus fa-lg"></i>
+              Login with
+            </a>
+          </div>
+
+
+
+
+
+          <!-- forgot-password -->
+          <div class="user-option">
+            <!-- <div class="checkbox pull-left">
+              <label for="logged"><input type="checkbox" name="logged" id="logged"> Keep me logged in </label>
+            </div> -->
+            <div class="pull-right forgot-password">
+              <a style="
+              font-size: 20px;
+              color: #f80000;
+              text-decoration: underline;">Forget password? </a>
+
+
+            </div>
+          </div><!-- forgot-password -->
+        </div>
+        <a routerLink="/signup" class="btn-primary" style="background-color:#f80000; height: 67px; font-size: 24px; color: white; ">Sign Up</a>
+      </div><!-- user-login -->
+    </div><!-- row -->
+  </div><!-- container -->
+</section><!-- signin-page -->

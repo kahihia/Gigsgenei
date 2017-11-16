@@ -1,0 +1,119 @@
+<app-loader></app-loader>
+
+<section class=" job-bg ad-details-page">
+  <div class="container">
+
+    <!--<div class="breadcrumb-section">-->
+    <!--&lt;!&ndash; breadcrumb &ndash;&gt;-->
+    <!--<ol class="breadcrumb">-->
+    <!--<li *ngFor="let i of ListTrack"><a routerLink="{{i.Url}}">{{i.Name}}</a></li>-->
+    <!--</ol>-->
+    <!--<h2 class="title">Post My Resume</h2>-->
+    <!--</div>&lt;!&ndash; banner &ndash;&gt;-->
+
+    <div class="job-postdetails post-resume" style="margin-top: 75px;">
+      <div class="row">
+        <div class="col-md-8 clearfix">
+          <fieldset>
+
+            <div class="alert alert-success alert-dismissable" *ngIf="ShowHideAlert"><!--*ngIf="ShowHideAlert"-->
+              <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+              <strong> '{{UserName}}' &nbsp; You Successfully Added Your Skills Information!&nbsp;</strong>
+            </div>
+
+            <form
+              name="form" role="form" (ngSubmit)="f.form.valid && PushSkill(skillname1.value,skilllevel1.value,f)" #f="ngForm" novalidate>
+              <div class="panel panel-default">
+                <div class="panel-heading" style="font-size: 50px;
+                font-family: -webkit-body;">
+                  Skills
+                </div>
+                <!--<div class="panel-body">-->
+                <div class="section education-background">
+
+
+                  <div class="row form-group">
+                    <div class="col-sm-12">
+                      <div style="position: relative;">
+                        <div class="col-sm-7">
+                          <input auto-complete [source]="Autoskillname" autocomplete="off" type="text" (keyup)="skillnameChange(skillname1.value)" name="name2" class="form-control" placeholder="Programing, Managerial etc"  [(ngModel)]="model.skillname" #skillname="ngModel" #skillname1
+                                 required/><!-- list="languageList1" your input textbox-->
+                          <!--<datalist id="languageList1" style="overflow-y: auto;max-height: 300px;" >-->
+                          <!--<option *ngFor="let i of Autoskillname" value="{{i.Name}}" ></option>-->
+                          <!--</datalist>-->
+                        </div>
+                        <div class="col-sm-3">
+                          <select class="form-control" name="a5" id="skilllevel" style="overflow-y: auto;max-height: 300px;" #skilllevel1>
+                            <option value="Beginner" selected>Beginner</option>
+                            <option value="Average">Average</option>
+                            <option value="Expert">Expert</option>
+
+                          </select>
+                        </div>
+                        <div class="col-sm-2">
+                          <button type="submit"  name="submit" (click)="FormSubmitted()" class="btn-green">{{AddUpdateButtonText}}</button>
+                        </div>
+                        <div *ngIf="f.submitted && formSubmitted && !skillname.valid" style="position: absolute;top: 10px;left: 370px;">
+                          <img src="../../assets/icons/cancel_16.png" height="16" width="16">
+                        </div>
+                        <div *ngIf="f.submitted && formSubmitted  &&  skillname.valid"  style="position: absolute;top: 10px;left: 370px;">
+                          <img src="../../assets/icons/tick_48.png" height="16" width="16"/>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row form-group" *ngFor="let Skillobj of skillobjList;let ind=index;">
+                    <md-expansion-panel>
+                      <md-expansion-panel-header>
+                        <md-panel-title>
+                          {{ind+1}}){{Skillobj.SkillName}}
+                        </md-panel-title>
+                        <md-panel-description>
+                          {{Skillobj.SkillLevel}}
+                          <!--<md-icon>map</md-icon>-->
+                        </md-panel-description>
+                      </md-expansion-panel-header>
+
+                      <md-form-field>
+                        <label>Skill Name: {{Skillobj.SkillName}}</label><br>
+                        <label>Skill Level : {{Skillobj.SkillLevel}}</label><br>
+                      </md-form-field>
+
+                      <md-action-row>
+                        <button md-button color="warn" (click)="DeleteSkillObj(ind)">Delete</button>
+                        <button md-button color="primary" (click)="EditSkillObj(ind,skillname1)">Edit</button>
+                      </md-action-row>
+                    </md-expansion-panel>
+                  </div>
+                  <div class="row form-group">
+                    <div *ngIf="skillobjList.length > 0" class="buttons pull-right">
+                      <a><button (click)="UpdateSkillInfo()" type="submit"  name="submit" class="btn-green">Save</button></a>
+                      &nbsp;&nbsp;<a style="cursor: pointer;" (click)="DeleteallSkillInfo()">Cancel</a>
+                    </div>
+                  </div>
+                  <div class="row form-group">
+                    <div class="buttons pull-right">
+                      <a><button routerLink="/expressyourself" class="btn-green">Next</button></a>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+              <!-- work-history -->
+            </form>
+          </fieldset></div>
+        <!-- quick-rules -->
+        <div class="col-md-4">
+          <div class="section quick-rules">
+            <h4>Quick rules about your Skills</h4>
+            <!-- <p class="lead">Posting an ad on <a href="#">jobs.com</a> is free! However, all ads must follow our rules:</p> -->
+
+            <ul>
+              <li>Enter your skills or Abilities</li>
+              <li>Define the level of your skills. How much strong you are in your skills</li>
+
+              <!-- <li>Do not post ads containing multiple items unless it's a package deal.</li> -->
+            </ul>
+          </div>
+        </div>
+      </div></div></div></section>

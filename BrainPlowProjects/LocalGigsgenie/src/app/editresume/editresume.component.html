@@ -1,0 +1,592 @@
+<app-loader></app-loader>
+<section class=" job-bg ad-details-page">
+  <div class="container">
+
+    <!--<div class="breadcrumb-section">-->
+      <!--&lt;!&ndash; breadcrumb &ndash;&gt;-->
+      <!--<ol class="breadcrumb">-->
+        <!--<li *ngFor="let i of ListTrack"><a routerLink="{{i.Url}}">{{i.Name}}</a></li>-->
+        <!--</ol>&lt;!&ndash; breadcrumb &ndash;&gt;-->
+      <!--<h2 class="title">Edit Resume</h2>-->
+    <!--</div>&lt;!&ndash; banner &ndash;&gt;-->
+<app-profilesection></app-profilesection>
+    <div class="adpost-details post-resume">
+      <div class="row">
+        <div class="col-md-8 clearfix">
+          <form action="#">
+            <fieldset>
+              <!--<div class="section express-yourself">-->
+                <!--<h4>Express Yourself</h4>-->
+                <!--<div class="row form-group">-->
+                  <!--<label class="col-sm-4 label-title">Full Name</label>-->
+                  <!--<div class="col-sm-8">-->
+                    <!--<input type="text" name="name" class="form-control" placeholder="ex Jhon Doe">-->
+                  <!--</div>-->
+                <!--</div>-->
+                <!--<div class="row form-group additional-information">-->
+                  <!--<label class="col-sm-4 label-title">Additional Information</label>-->
+                  <!--<div class="col-sm-8">-->
+                    <!--<textarea class="form-control" placeholder="Address: 123 West 12th Street, Suite 456 New York, NY 123456\n Phone: +012 345 678 910 \n Email: itsme@surzilegeek.com*"></textarea>-->
+                  <!--</div>-->
+                <!--</div>-->
+                <!--<div class="row form-group photos-resume">-->
+                  <!--<label class="col-sm-4 label-title">Photos for your Resume</label>-->
+                  <!--<div class="col-sm-8 ">-->
+                    <!--<label class="upload-image left" for="upload-image-one">-->
+                      <!--<input type="file" id="upload-image-one">-->
+                      <!--Type: JPG, PNG  Size: 3.5 x 4.5 cm-->
+                    <!--</label>-->
+                    <!--<label class="upload-image" for="upload-image-two">-->
+                      <!--<input type="file" id="upload-image-two">-->
+                      <!--Upload Photo-->
+                    <!--</label>-->
+                  <!--</div>-->
+                <!--</div>-->
+              <!--</div>&lt;!&ndash; postdetails &ndash;&gt;-->
+              <form  name="form1" role="form" (ngSubmit)="f1.form.valid && onSubmitExpressYourself(fullname1.value,description1.value)" #f1="ngForm" novalidate>
+                <div class="section express-yourself">
+                  <h4>Express Yourself</h4>
+
+
+
+                  <div class="row form-group">
+                    <label class="col-sm-4 label-title">Full Name</label>
+                    <div class="col-sm-8">
+                      <input type="text" name="name" class="form-control" placeholder="ex Jhon Doe"  [(ngModel)]="model.fullname" #fullname="ngModel" #fullname1
+                             required >
+                    </div>
+                  </div>
+                  <div style="color: red" *ngIf="f1.submitted && !fullname.valid" class="help-block">*Name is required</div>
+                  <div class="help-block" style="color: red" *ngIf="fullname.errors && fullname.errors.pattern">
+                    *Name is invalid
+                  </div>
+
+
+                  <div class="row form-group additional-information">
+                    <label class="col-sm-4 label-title">Additional Information</label>
+                    <div class="col-sm-8">
+      <textarea class="form-control" placeholder="Address: 123 West 12th Street, Suite 456 New York, NY 123456\n Phone: +012 345 678 910 \n Email: itsme@surzilegeek.com*"
+                name="name2" [(ngModel)]="model.description" #description="ngModel" #description1
+                required ></textarea>
+                    </div>
+                  </div>
+                  <div style="color: red" *ngIf="f1.submitted && !description.valid" class="help-block">*Description is required</div>
+                  <div class="help-block" style="color: red" *ngIf="description.errors && description.errors.pattern">
+                    *Description is invalid
+                  </div>
+
+
+
+                  <div class="row form-group photos-resume">
+                    <label class="col-sm-4 label-title">Photos for your Resume</label>
+                    <div class="col-sm-8 ">
+                      <label class="upload-image left">
+                        <!--<input class="file" (change)="onChange($event)" type="file" data-preview-file-type="text" id="file1"-->
+                               <!--name="file" #Picture multiple ng-files="getTheFiles($files)" />-->
+                        Type: JPG, PNG  Size: 3.5 x 4.5 cm
+                      </label>
+                      <label class="upload-image" for="upload-image-two">
+                        <input type="file" id="upload-image-two">
+                        Upload Photo
+                      </label>
+                    </div>
+                  </div>
+                  <div class="buttons pull-right">
+                    <a><button type="submit"  name="submit" class="btn">Add Info</button></a>
+                    &nbsp;&nbsp;<a routerLink="/skills">Skip</a></div>
+
+                </div><!-- postdetails -->
+              </form>
+
+              <div class="section career-objective">
+                <h4>Career Objective</h4>
+                <div class="form-group">
+                  <textarea class="form-control" placeholder="Write few lines about your career objective" rows="8"></textarea>
+                </div>
+                <span>5000 characters left</span>
+              </div><!-- career-objective -->
+
+              <!--<div class="section">-->
+                <!--<h4>Work History</h4>-->
+                <!--<div class="row form-group">-->
+                  <!--<label class="col-sm-3 label-title">Compnay Name</label>-->
+                  <!--<div class="col-sm-9">-->
+                    <!--<input type="text" name="name" class="form-control" placeholder="Name">-->
+                  <!--</div>-->
+                <!--</div>-->
+                <!--<div class="row form-group">-->
+                  <!--<label class="col-sm-3 label-title">Designation</label>-->
+                  <!--<div class="col-sm-9">-->
+                    <!--<input type="text" name="name" class="form-control" placeholder="Human Resource Manager">-->
+                  <!--</div>-->
+                <!--</div>-->
+                <!--<div class="row form-group time-period">-->
+                  <!--<label class="col-sm-3 label-title">Time Period</label>-->
+                  <!--<div class="col-sm-9">-->
+                    <!--<input type="text" name="name" class="form-control" placeholder="dd/mm/yy"><span>-</span>-->
+                    <!--<input type="text" name="name" class="form-control pull-right" placeholder="dd/mm/yy">-->
+                  <!--</div>-->
+                <!--</div>-->
+                <!--<div class="row form-group job-description">-->
+                  <!--<label class="col-sm-3 label-title">Job Description</label>-->
+                  <!--<div class="col-sm-9">-->
+                    <!--<textarea class="form-control" placeholder="" rows="8"></textarea>-->
+                  <!--</div>-->
+                <!--</div>-->
+                <!--<div class="buttons pull-right">-->
+                  <!--<a href="#" class="btn">Add New Exprience</a>-->
+                  <!--<a href="#" class="btn delete">Delete</a>-->
+                <!--</div>-->
+              <!--</div>&lt;!&ndash; work-history &ndash;&gt;-->
+
+              <form  name="form" role="form" (ngSubmit)="f.form.valid && onSubmitWorkExprience(company_name1.value,designation1.value,startdate1.value,enddate1.value,description1.value)" #f="ngForm" novalidate>
+
+                <div class="section">
+                  <h4>Work History</h4>
+
+
+
+
+
+                  <!--<div class="form-group" [ngClass]="{ 'has-error': f.submitted }">-->
+
+                  <div class="row form-group">
+                    <label class="col-sm-3 label-title">Compnay Name</label>
+                    <div class="col-sm-9">
+                      <!--<input type="text" name="name" class="form-control" placeholder="Name" name="company_name" [(ngModel)]="model.company_name" #company_name="ngModel" #company_name1-->
+                      <!--required >-->
+                      <input type="text" (keyup)="companynameChange(company_name1.value)" class="form-control" placeholder="Programing, Managerial etc" name="company_name" [(ngModel)]="model.company_name" #company_name="ngModel" #company_name1
+                             required list="languageList"/><!--your input textbox-->
+                      <datalist id="languageList" style="overflow-y: auto;max-height: 300px;">
+                        <option *ngFor="let i of Autocompanyname" value="{{i.Name}}" ></option>
+
+                      </datalist>
+                    </div>
+                  </div>
+                  <div style="color: red" *ngIf="f.submitted && !company_name.valid" class="help-block">*Name is required</div>
+                  <div class="help-block" style="color: red" *ngIf="company_name.errors && company_name.errors.pattern">
+                    *Name is invalid
+                  </div>
+
+                  <!--</div>-->
+
+
+
+
+                  <!--<div class="form-group" [ngClass]="{ 'has-error': f.submitted }">-->
+                  <div class="row form-group">
+                    <label class="col-sm-3 label-title">Designation</label>
+                    <div class="col-sm-9">
+                      <!--<input type="text" name="name" class="form-control" placeholder="Human Resource Manager"  name="designation" [(ngModel)]="model.designation" #designation="ngModel" #designation1-->
+                      <!--required >-->
+                      <input type="text" (keyup)="designationChange(designation1.value)" class="form-control" placeholder="Programing, Managerial etc" name="designation" [(ngModel)]="model.designation" #designation="ngModel" #designation1
+                             required list="languageList1"/><!--your input textbox-->
+                      <datalist id="languageList1" style="overflow-y: auto;max-height: 300px;">
+                        <option *ngFor="let i of Autodesignation" value="{{i.Name}}" ></option>
+
+                      </datalist>
+                    </div>
+                  </div>
+                  <div style="color: red" *ngIf="f.submitted && !designation.valid" class="help-block">*Designation is required</div>
+                  <div class="help-block" style="color: red" *ngIf="designation.errors && designation.errors.pattern">
+                    *Name is invalid
+                  </div>
+                  <!--</div>-->
+
+                  <div class="row form-group time-period">
+                    <label class="col-sm-3 label-title">Time Period</label>
+                    <div class="col-sm-9">
+                      <!--<my-date-picker name="mydate1" [options]="myDatePickerOptions"-->
+                      <!--[ngModel]="model" #mydp1="mydatepicker"  required></my-date-picker>-->
+                      <input type="date" name="startdate" class="form-control" placeholder="dd/mm/yy" [(ngModel)]="model.startdate" #startdate="ngModel" #startdate1
+                             required ><span>-</span>
+                      <input type="date" name="enddate" class="form-control pull-right" placeholder="dd/mm/yy"  [(ngModel)]="model.enddate" #enddate="ngModel" #enddate1
+                             required >
+                    </div>
+                  </div>
+                  <div style="color: red" *ngIf="f.submitted && !startdate.valid" class="help-block">*Start Date is required</div>
+                  <div class="help-block" style="color: red" *ngIf="startdate.errors && startdate.errors.pattern">
+                    *Start Date is invalid
+                  </div>
+                  <div style="color: red" *ngIf="f.submitted && !enddate.valid" class="help-block">*End Date is required</div>
+                  <div class="help-block" style="color: red" *ngIf="enddate.errors && enddate.errors.pattern">
+                    *End Date is invalid
+                  </div>
+
+
+                  <!--<div class="form-group" [ngClass]="{ 'has-error': f.submitted }">-->
+
+                  <div class="row form-group job-description">
+                    <label class="col-sm-3 label-title">Job Description</label>
+                    <div class="col-sm-9">
+      <textarea class="form-control" placeholder="" rows="8" name="description" [(ngModel)]="model.description" #description="ngModel" #description1
+                required ></textarea>
+                    </div>
+                  </div>
+                  <div style="color: red" *ngIf="f.submitted && !description.valid" class="help-block">*Description is required</div>
+                  <div class="help-block" style="color: red" *ngIf="description.errors && description.errors.pattern">
+                    *Description is invalid
+                  </div>
+                  <!--</div>-->
+
+                  <div class="buttons pull-right">
+                    <a><button type="submit"  name="submit" class="btn">Add Work History</button></a>
+                    &nbsp;&nbsp;<a routerLink="/expressyourself">Skip</a></div>
+                </div><!-- work-history -->
+
+              </form>
+
+
+              <!--<div class="section education-background">-->
+                <!--<h4>Education Background</h4>-->
+                <!--<div class="row form-group">-->
+                  <!--<label class="col-sm-3 label-title">Institute Name</label>-->
+                  <!--<div class="col-sm-9">-->
+                    <!--<input type="text" name="name" class="form-control" placeholder="ropbox">-->
+                  <!--</div>-->
+                <!--</div>-->
+                <!--<div class="row form-group">-->
+                  <!--<label class="col-sm-3 label-title">Degree</label>-->
+                  <!--<div class="col-sm-9">-->
+                    <!--<input type="text" name="name" class="form-control" placeholder="Human Resource Manager">-->
+                  <!--</div>-->
+                <!--</div>-->
+                <!--<div class="row form-group time-period">-->
+                  <!--<label class="col-sm-3 label-title">Time Period</label>-->
+                  <!--<div class="col-sm-9">-->
+                    <!--<input type="text" name="name" class="form-control" placeholder="dd/mm/yy"><span>-</span>-->
+                    <!--<input type="text" name="name" class="form-control pull-right" placeholder="dd/mm/yy">-->
+                  <!--</div>-->
+                <!--</div>-->
+                <!--<div class="row form-group job-description">-->
+                  <!--<label class="col-sm-3 label-title">Description</label>-->
+                  <!--<div class="col-sm-9">-->
+                    <!--<textarea class="form-control" placeholder="" rows="8"></textarea>-->
+                  <!--</div>-->
+                <!--</div>-->
+                <!--<div class="buttons pull-right">-->
+                  <!--<a href="#" class="btn">Add New Education</a>-->
+                  <!--<a href="#" class="btn delete">Delete</a>-->
+                <!--</div>-->
+              <!--</div>&lt;!&ndash; work-history &ndash;&gt;-->
+
+              <form
+                name="form2" role="form" (ngSubmit)="f2.form.valid && onSubmitEducationalInfo(institute1.value,degree1.value,startdate1.value,enddate1.value,percentile1.value)" #f2="ngForm" novalidate>
+                <div class="section education-background">
+                  <h4>Education Background</h4>
+
+                  <div class="row form-group">
+                    <label class="col-sm-3 label-title">Institute Name</label>
+                    <div class="col-sm-9">
+                      <!--<input type="text" name="name1" class="form-control" placeholder="Oxford University" [(ngModel)]="model.institute" #institute="ngModel" #institute1-->
+                      <!--required >-->
+                      <input type="text" (keyup)="instituteChange(institute1.value)" name="name1" class="form-control" placeholder="Oxford University" [(ngModel)]="model.institute" #institute="ngModel" #institute1
+                             required list="languageList"/><!--your input textbox-->
+                      <datalist id="languageList" style="overflow-y: auto;max-height: 300px;">
+                        <option *ngFor="let i of insName" value="{{i.Name}}" ></option>
+                      </datalist>
+
+                    </div>
+                  </div>
+                  <div style="color: red" *ngIf="f2.submitted && !institute.valid" class="help-block">*Institute Name is required</div>
+                  <div class="help-block" style="color: red" *ngIf="institute.errors && institute.errors.pattern">
+                    *Institute Name is invalid
+                  </div>
+
+
+
+                  <div class="row form-group">
+                    <label class="col-sm-3 label-title">Degree</label>
+                    <div class="col-sm-9">
+                      <input type="text"  (keyup)="degreeChange(degree1.value)" name="name2" class="form-control" placeholder="Human Resource Manager" [(ngModel)]="model.degree" #degree="ngModel" #degree1
+                             required list="languageList1"/>
+                      <datalist id="languageList1" style="overflow-y: auto;max-height: 300px;">
+                        <option *ngFor="let i of degreename" value="{{i.Name}}" ></option>
+                      </datalist>
+                    </div>
+                  </div>
+                  <div style="color: red" *ngIf="f2.submitted && !degree.valid" class="help-block">*Degree Name is required</div>
+                  <div class="help-block" style="color: red" *ngIf="degree.errors && degree.errors.pattern">
+                    *Degree Name is invalid
+                  </div>
+
+
+
+                  <div class="row form-group time-period">
+                    <label class="col-sm-3 label-title">Time Period</label>
+                    <div class="col-sm-9">
+                      <!--<my-date-picker name="mydate1" [options]="myDatePickerOptions"-->
+                      <!--[ngModel]="model" #mydp1="mydatepicker"  required></my-date-picker>-->
+                      <input type="date" name="startdateEdu" class="form-control" placeholder="dd/mm/yy" [(ngModel)]="model.startdate" #startdate="ngModel" #startdate1
+                             required ><span>-</span>
+                      <input type="date" name="enddateEdu" class="form-control pull-right" placeholder="dd/mm/yy"  [(ngModel)]="model.enddate" #enddate="ngModel" #enddate1
+                             required >
+                    </div>
+                  </div>
+                  <div style="color: red" *ngIf="f2.submitted && !startdate.valid" class="help-block">*Start Date is required</div>
+                  <div class="help-block" style="color: red" *ngIf="startdate.errors && startdate.errors.pattern">
+                    *Start Date is invalid
+                  </div>
+                  <div style="color: red" *ngIf="f2.submitted && !enddate.valid" class="help-block">*End Date is required</div>
+                  <div class="help-block" style="color: red" *ngIf="enddate.errors && enddate.errors.pattern">
+                    *End Date is invalid
+                  </div>
+
+
+                  <div class="row form-group job-description">
+                    <label class="col-sm-3 label-title">Percentile</label>
+                    <div class="col-sm-9">
+                      <!--<textarea class="form-control" placeholder="" rows="8"></textarea>-->
+                      <input type="text" name="name" class="form-control" placeholder="80%"  [(ngModel)]="model.percentile" #percentile="ngModel" #percentile1
+                             required list="languageList2" >
+                      <datalist id="languageList2" style="overflow-y: auto;max-height: 300px;">
+                        <option *ngFor="let i of Items" value="{{i}}" ></option>
+                      </datalist>
+                    </div>
+                  </div>
+                  <div style="color: red" *ngIf="f2.submitted && !percentile.valid" class="help-block">*Percentile is required</div>
+                  <div class="help-block" style="color: red" *ngIf="percentile.errors && percentile.errors.pattern">
+                    *Percentile is invalid
+                  </div>
+
+
+                  <div class="buttons pull-right">
+                    <a><button type="submit"  name="submit" class="btn">Add Education</button></a>
+                    &nbsp;&nbsp;<a routerLink="/workexperience">Skip</a>
+                  </div>
+
+                  <!--<div class="buttons pull-right">-->
+                  <!--<a type="submit" class="btn">Add New Exprience</a>-->
+                  <!--<a href="#" class="btn delete">Delete</a>-->
+                  <!--</div>-->
+
+
+                </div><!-- Educational Info -->
+              </form>
+
+
+              <div class="section special-qualification">
+                <h4>Special Qualification</h4>
+                <div class="form-group item-description">
+                  <textarea class="form-control" placeholder="Write few lines about your special qualification" rows="8"></textarea>
+                </div>
+              </div><!-- special-qualification -->
+
+              <form
+                name="form2" role="form" (ngSubmit)="fLang.form.valid && onSubmitEducationalInfo(language1.value)" #fLang="ngForm" novalidate>
+              <div class="section language-proficiency">
+                <h4>Language Proficiency:</h4>
+                <div class="row form-group">
+                  <label class="col-sm-3 label-title">Language Name</label>
+                  <div class="col-sm-9">
+                    <input type="text" name="language" class="form-control" placeholder="English"
+                           [(ngModel)]="model.language" #language="ngModel" #language1>
+                  </div>
+                  <div style="color: red" *ngIf="fLang.submitted && !language.valid" class="help-block">*Language is required</div>
+                </div>
+                <div class="row form-group rating">
+                  <label class="col-sm-3 label-title">Rating</label>
+                  <div class="col-sm-9">
+                    <div class="rating-star">
+                      <div class="rating">
+                        <input type="radio" id="star1" (click)="RatingClick('10')" name="rating"><label class="full" for="star1"></label>
+
+                        <input type="radio" id="star2" (click)="RatingClick('9')" name="rating"><label class="half" for="star2"></label>
+
+                        <input type="radio" id="star3" (click)="RatingClick('8')" name="rating"><label class="full" for="star3"></label>
+
+                        <input type="radio" id="star4" (click)="RatingClick('7')" name="rating"><label class="half" for="star4"></label>
+
+                        <input type="radio" id="star5" (click)="RatingClick('6')" name="rating"><label class="full" for="star5"></label>
+
+                        <input type="radio" id="star6" (click)="RatingClick('5')" name="rating"><label class="half" for="star6"></label>
+
+                        <input type="radio" id="star7" (click)="RatingClick('4')" name="rating"><label class="full" for="star7"></label>
+
+                        <input type="radio" id="star8" (click)="RatingClick('3')" name="rating"><label class="half" for="star8"></label>
+
+                        <input type="radio" id="star9" (click)="RatingClick('2')" name="rating"><label class="full" for="star9"></label>
+
+                        <input type="radio" id="star10" (click)="RatingClick('1')" name="rating"><label class="half" for="star10"></label>
+                      </div>
+                    </div><!-- rating-star -->
+                  </div>
+                </div>
+                <div class="buttons pull-right">
+                  <a (click)="PushLanguage(language1.value)" class="btn">Add New Language</a>
+                  <!--<a href="#" class="btn delete">Delete</a>-->
+                </div>
+
+<br>            <div class="row form-group rating">
+                <label class="col-sm-3 label-title">Rating</label>
+                <div class="col-sm-9">
+                <div class="container-fluid">
+                  <div class="row form-group">
+                    <div style="float: left;border: 1px solid;" class="col-md-3" *ngFor="let i of lstLanguage;let ind=index"><!--position:relative;float:right;margin-left: 3px;color: red"-->
+                      Language: {{i.Language}} Rating: {{i.Rating}}/10<span (click)="RemoveLanguage(ind)" style="cursor:pointer;position:relative;float:right;margin-left: 3px;"><img src="../../assets/icons/cancel_16.png" height="16" width="16"/></span></div>
+                  </div>
+                </div>
+                </div></div>
+
+
+              </div><!-- language-proficiency -->
+              </form>
+
+
+              <div class="section company-information">
+                <h4>Personal Deatils</h4>
+                <div class="row form-group">
+                  <label class="col-sm-3 label-title">Full Name</label>
+                  <div class="col-sm-9">
+                    <input type="text" name="name" class="form-control" placeholder="Jhon Doe">
+                  </div>
+                </div>
+                <div class="row form-group">
+                  <label class="col-sm-3 label-title">Father's Name</label>
+                  <div class="col-sm-9">
+                    <input type="text" name="name" class="form-control" placeholder="Robert Doe">
+                  </div>
+                </div>
+                <div class="row form-group">
+                  <label class="col-sm-3 label-title">Mother's Name</label>
+                  <div class="col-sm-9">
+                    <input type="text" name="name" class="form-control" placeholder="Ismatic Roderos Doe">
+                  </div>
+                </div>
+                <div class="row form-group">
+                  <label class="col-sm-3 label-title">Date of Birth</label>
+                  <div class="col-sm-9">
+                    <input type="text" name="name" class="form-control" placeholder="26/01/1982">
+                  </div>
+                </div>
+                <div class="row form-group">
+                  <label class="col-sm-3 label-title">Birth Place</label>
+                  <div class="col-sm-9">
+                    <input type="text" name="name" class="form-control" placeholder="United State of America">
+                  </div>
+                </div>
+                <div class="row form-group">
+                  <label class="col-sm-3 label-title">Nationality</label>
+                  <div class="col-sm-9">
+                    <input type="text" name="name" class="form-control" placeholder="Canadian">
+                  </div>
+                </div>
+                <div class="row form-group">
+                  <label class="col-sm-3 label-title">Sex</label>
+                  <div class="col-sm-9">
+                    <input type="text" name="name" class="form-control" placeholder="Male">
+                  </div>
+                </div>
+                <div class="row form-group">
+                  <label class="col-sm-3 label-title">Address</label>
+                  <div class="col-sm-9">
+                    <input type="text" name="name" class="form-control" placeholder="121 King Street, Melbourne Victoria, 1200 USA">
+                  </div>
+                </div>
+                <div class="buttons pull-right">
+                  <a href="#" class="btn">Add New Feild</a>
+                </div>
+              </div><!-- section -->
+
+              <div class="section special-qualification">
+                <h4>Declaration</h4>
+                <div class="form-group item-description">
+                  <textarea class="form-control" placeholder="" rows="8"></textarea>
+                </div>
+              </div><!-- special-qualification -->
+            </fieldset>
+          </form><!-- form -->
+          <div class="buttons">
+            <a href="#" class="btn">Update Profile</a>
+            <a href="#" class="btn cancle">Cancle</a>
+          </div>
+        </div>
+
+        <!-- quick-rules -->
+        <div class="col-md-4">
+          <div class="section quick-rules">
+            <h4>Quick rules</h4>
+            <p class="lead">Posting an ad on <a href="#">jobs.com</a> is free! However, all ads must follow our rules:</p>
+
+            <ul>
+              <li>Make sure you post in the correct category.</li>
+              <li>Do not post the same ad more than once or repost an ad within 48 hours.</li>
+              <li>Do not upload pictures with watermarks.</li>
+              <li>Do not post ads containing multiple items unless it's a package deal.</li>
+              <li>Do not put your email or phone numbers in the title or description.</li>
+              <li>Make sure you post in the correct category.</li>
+              <li>Do not post the same ad more than once or repost an ad within 48 hours.</li>
+              <li>Do not upload pictures with watermarks.</li>
+              <li>Do not post ads containing multiple items unless it's a package deal.</li>
+            </ul>
+          </div>
+        </div><!-- quick-rules -->
+      </div><!-- photos-ad -->
+    </div>
+  </div><!-- container -->
+</section><!-- main -->
+
+<!-- footer -->
+<footer id="footer" class="clearfix">
+  <!-- footer-top -->
+  <section class="footer-top clearfix">
+    <div class="container">
+      <div class="row">
+        <!-- footer-widget -->
+        <div class="col-sm-3">
+          <div class="footer-widget">
+            <h3>Quik Links</h3>
+            <ul>
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Contact Us</a></li>
+              <li><a href="#">Careers</a></li>
+              <li><a href="#">All Cities</a></li>
+              <li><a href="#">Help & Support</a></li>
+              <li><a href="#">Advertise With Us</a></li>
+            </ul>
+          </div>
+        </div><!-- footer-widget -->
+
+        <!-- footer-widget -->
+        <div class="col-sm-3">
+          <div class="footer-widget">
+            <h3>How to sell fast</h3>
+            <ul>
+              <li><a href="#">How to sell fast</a></li>
+              <li><a href="#">Membership</a></li>
+              <li><a href="#">Banner Advertising</a></li>
+              <li><a href="#">Promote your ad</a></li>
+              <li><a href="#">Jobs Delivers</a></li>
+              <li><a href="#">FAQ</a></li>
+            </ul>
+          </div>
+        </div><!-- footer-widget -->
+
+        <!-- footer-widget -->
+        <div class="col-sm-3">
+          <div class="footer-widget social-widget">
+            <h3>Follow us on</h3>
+            <ul>
+              <li><a href="#"><i class="fa fa-facebook-official"></i>Facebook</a></li>
+              <li><a href="#"><i class="fa fa-twitter-square"></i>Twitter</a></li>
+              <li><a href="#"><i class="fa fa-google-plus-square"></i>Google+</a></li>
+              <li><a href="#"><i class="fa fa-youtube-play"></i>youtube</a></li>
+            </ul>
+          </div>
+        </div><!-- footer-widget -->
+
+        <!-- footer-widget -->
+        <div class="col-sm-3">
+          <div class="footer-widget news-letter">
+            <h3>Newsletter</h3>
+            <p>Jobs is Worldest leading Portal platform that brings!</p>
+            <!-- form -->
+            <form action="#">
+              <input type="email" class="form-control" placeholder="Your email id">
+              <button type="submit" class="btn btn-primary">Sign Up</button>
+            </form><!-- form -->
+          </div>
+        </div><!-- footer-widget -->
+      </div><!-- row -->
+    </div><!-- container -->
+  </section>

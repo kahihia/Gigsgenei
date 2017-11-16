@@ -1,0 +1,59 @@
+
+<link href='http://fonts.googleapis.com/css?family=Bitter'>
+<div class="col-md-2">
+<app-adminpanel></app-adminpanel>
+</div>
+<div class="form-style-10">
+    
+  <h1>Add New Test Questions</h1>
+  <form name="form" role="form" (ngSubmit)=" onSubmit(catagory.value, question.value, a.value,  b.value, c.value,  d.value, answer.value)" #f="ngForm" novalidate>
+      <div class="section"><span>1</span>Add Test Questions</div>
+      
+      <div class="inner-wrap">
+           <h3>Select Category</h3>
+   
+ <select name="catagory" class="form-control"  [(ngModel)]="model.catagory" #Catagory="ngModel" #catagory required >
+ 
+ 
+    <option *ngFor="let catObj of catagoriesList;" [value]="">{{catObj.Catagory}}</option> 
+
+</select> 
+
+
+        <h3>Question</h3>
+           <input type="text" name="question" class="form-control"  [(ngModel)]="model.question" #Question="ngModel" #question
+            required >
+            <br>
+            <h3>A</h3>
+            <input type="text" name="A" class="form-control"  [(ngModel)]="model.a" #A="ngModel" #a
+            required >
+             
+            <br>
+            <h3>B</h3>
+            <input type="text" name="B" class="form-control" [(ngModel)]="model.b" #B="ngModel" #b
+            required >
+            <br>
+            
+            <h3>C</h3>
+            <input type="text" name="C" class="form-control"  [(ngModel)]="model.c" #C="ngModel" #c
+            required > <br>
+            
+            <h3>D</h3>
+            <input type="text" name="D" class="form-control" [(ngModel)]="model.d" #D="ngModel" #d
+            required > <br>
+            
+            <h3>Answer</h3>
+            <input type="text" name="Answer" class="form-control" [(ngModel)]="model.answer" #Answer="ngModel" #answer
+            required >
+            <br>
+        
+
+          
+      </div>
+  
+      <div class="button-section">
+       <input type="submit" name="Sign Up" value="Add Question"/>
+  
+      </div>
+  </form>
+  </div>

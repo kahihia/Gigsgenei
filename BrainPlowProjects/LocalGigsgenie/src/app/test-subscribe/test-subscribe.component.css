@@ -1,0 +1,22 @@
+.inputMessage
+{
+  border:2px solid #444444;
+  height:100px;
+  width:100px;
+  background:url(../../assets/icons/cancel_16.png) no-repeat right top;
+  padding-left:4px;
+  color: #68ff36;
+  font-size:20px; resize:none;
+}
+
+.user-account{
+border:2px solid black;
+
+}
+
+.btn:hover {
+
+	background-color: #008CBA;
+}
+
+ 

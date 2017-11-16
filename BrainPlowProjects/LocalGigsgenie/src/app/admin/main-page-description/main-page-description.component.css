@@ -1,0 +1,32 @@
+textarea {
+  width: 77.45%;
+  height: 210px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 4px solid #f80000;
+  border-radius: 4px;
+  background-color: white;
+  font-size: 16px;
+  resize: none;
+  margin-top: 3%;
+  margin-left: 135px;
+  }
+
+.postbutton{
+  padding: 20px 60px 20px 60px;
+  background: #f80000;
+  border: #f80000;
+  color: white;
+  font-size: 20px;
+  font-weight: bolder;
+  margin-top: 5px;
+  margin-left: 11%;
+}
+.box{
+  background: #dad7d7;
+  margin-top: -77%;
+  margin-left: 20%;
+  width: 80%;
+  position: absolute;
+  height: 150%;
+}

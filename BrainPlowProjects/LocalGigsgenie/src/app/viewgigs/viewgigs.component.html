@@ -1,0 +1,87 @@
+<app-loader></app-loader>
+<div class="banner-job"  style="margin-top: 25px;">
+
+  <!--<div class="banner-overlay">-->
+    <!--<ol class="breadcrumb">-->
+      <!--<li *ngFor="let i of ListTrack"><a routerLink="{{i.Url}}">{{i.Name}}</a></li>-->
+    <!--</ol>-->
+  <!--</div>-->
+  <div class="container text-center">
+    <h1 class="title">The Easiest Way to Get Your New Job</h1>
+    <h3>We offer 12000 jobs vacation right now</h3>
+    <div class="banner-form">
+      <form action="#">
+        <input type="text" class="form-control" placeholder="Type your key word">
+        <div class="dropdown category-dropdown">
+          <a data-toggle="dropdown" href="#"><span class="change-text">Job Location</span> <i class="fa fa-angle-down"></i></a>
+          <ul class="dropdown-menu category-change">
+            <li><a href="#">Location 1</a></li>
+            <li><a href="#">Location 2</a></li>
+            <li><a href="#">Location 3</a></li>
+          </ul>
+        </div><!-- category-change -->
+        <button type="submit" class="btn btn-primary" value="Search">Search</button>
+      </form>
+    </div><!-- banner-form -->
+
+    <ul class="banner-socail list-inline">
+      <li><a href="#" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+      <li><a href="#" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+      <li><a href="#" title="Google Plus"><i class="fa fa-google-plus"></i></a></li>
+      <li><a href="#" title="Youtube"><i class="fa fa-youtube"></i></a></li>
+    </ul><!-- banner-socail -->
+  </div><!-- container -->
+</div><!-- banner-section -->
+
+<!--<div class="page">-->
+  <div class="container">
+    <h2>Gigs</h2>
+    <div class="panel panel-default">
+      <div class="panel-heading">Showing from Gigs </div>
+      <div class="panel-body">
+        <!--<div class="section category-items job-category-items  text-center">-->
+
+          <!--<div class="container-fluid">-->
+            <!--<div class="row">-->
+              <!--<div class="col-xs-12 col-sm-12 col-lg-12" style="background-color:black;">.col-xs-6 .col-sm-8 .col-lg-10</div>-->
+            <!--</div>-->
+            <!--<div class="row">-->
+              <!--<div class="col-xs-4 col-sm-4 col-lg-4" style="background-color:red;">.col-xs-7 .col-sm-6 .col-lg-8</div>-->
+              <!--<div class="col-xs-4 col-sm-4 col-lg-4" style="background-color:lavender;">.col-xs-5 .col-sm-6 .col-lg-4</div>-->
+              <!--<div class="col-xs-4 col-sm-4 col-lg-4" style="background-color:blue;">.col-xs-5 .col-sm-6 .col-lg-4</div>-->
+            <!--</div>-->
+          <!--</div>-->
+
+
+        <ul class="category-list">
+
+              <div class="container-fluid" *ngFor="let data of ListViewGigs[0];let ind=index">
+              <div style="position: relative" >
+                <div style="position: absolute;top: 0px;right: 0px;color: #494949;">
+                  <img  height="150px" width="200px" src="{{data.ImageSrc}}">
+                  </div>
+                <div style="position: absolute;top: 151px;">
+                  <div style=" float: left;border: 1px solid;" *ngFor="let image of data.tracks;let ind1=index;" (click)="ImgClick(data.tracks[ind1], ListViewGigs[0][ind])" style="float: left">
+                    <img accept=".jpg, .jpeg, .png" width="50px" height="50px" src="{{GlobalImageAdress.Url}}{{image}}" alt="your image" allowmultiple="true"/>
+                  </div>
+                </div>
+                <div style="position: absolute;top: 200px;cursor: pointer;">
+                  <a style="float:left;" tooltip="Catagory of Gig Added By owner of this Gig">Catagory :{{data.Catagory}} </a>
+                  <a  routerLink="/choosegig" [queryParams]="{id: data.id, UserName: data.UserName}" style="float:left;">Title :{{data.Title}} </a>
+                </div>
+                <i style="position: absolute;top: 262px;left:2px;"class="ficon ficon-bars"></i>
+                <i class="fa fa-heart" style="position: absolute;top: 262px;left:10px;" aria-hidden="true" (click)="favouritegig(this)" onclick="changeColorFav(this)"></i>
+                <div style="position: absolute;top: 258px;width:200px;height:2px;border-top: 1px solid rgba(27,37,24,0.06)">
+                 </div>
+                </div>
+            </div>
+
+
+        </ul>
+      <!--</div>-->
+
+
+      </div>
+    </div>
+  </div>
+<!--</div>&lt;!&ndash; page &ndash;&gt;-->

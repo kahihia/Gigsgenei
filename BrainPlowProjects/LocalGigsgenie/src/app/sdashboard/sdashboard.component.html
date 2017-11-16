@@ -1,0 +1,352 @@
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<div id="wrapper">
+  <!-- <div id="sidebar-wrapper" style="float:left">
+      <aside id="sidebar">
+          <ul id="sidemenu" class="sidebar-nav">
+              <li>
+                  <a routerLink="/home">
+                      <span class="sidebar-icon"><i class="fa fa-home" style="font-size: 25px;
+                        margin-top: 10px;"></i></span>
+                      <span class="sidebar-title" style="font-size:25px; padding-left:4%;">Home</span>
+                  </a>
+              </li>
+
+              <li>
+                <a routerLink="/seller_dashboard">
+                    <span class="sidebar-icon"><i class="fa fa-dashboard" style="font-size: 25px;
+                      margin-top: 10px;"></i></span>
+                    <span class="sidebar-title" style="font-size:25px; padding-left:4%;" >Your Applied Jobs</span>
+                </a>
+            </li>
+
+            <li>
+              <a routerLink="/bookmark">
+                  <span class="sidebar-icon"><i class="fa fa-dashboard" style="font-size: 25px;
+                    margin-top: 10px;"></i></span>
+                  <span class="sidebar-title" style="font-size:25px; padding-left:4%;" >BookMark Jobs</span>
+              </a>
+          </li>
+
+            <li>
+              <a href="#">
+                  <span class="sidebar-icon"><i class="fa fa-money" style="font-size: 25px;
+                    margin-top: 10px;"></i></span>
+                  <span class="sidebar-title" style="font-size:25px; padding-left:4%;">Your Account Balance</span>
+              </a>
+          </li>
+
+          <li>
+            <a href="#">
+                <span class="sidebar-icon"><i class="fa fa-money" style="font-size: 25px;
+                  margin-top: 10px;"></i></span>
+                <span class="sidebar-title" style="font-size:25px; padding-left:4%;">Current Orders</span>
+            </a>
+        </li>
+
+          </ul>
+
+
+
+      </aside>
+
+
+  </div> -->
+
+
+
+  <div class="nav-side-menu">
+    <div class="brand">DashBoard</div>
+    <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+
+        <div class="menu-list">
+
+            <ul id="menu-content" class="menu-content collapse out">
+                <li>
+                  <a routerLink="/home">
+                  <i class="fa fa-home"></i> Home
+                  </a>
+                </li>
+
+                <li  data-toggle="collapse"  class="collapsed" data-target="#appliedjobs">
+                  <a routerLink="/sdashboard"><i class="fa fa-dashboard"></i>Your Applied Jobs <span class="arrow"></span></a>
+                </li>
+                <ul class="sub-menu collapse" id="appliedjobs" *ngIf="appliedJobs.length>0">
+                    <li *ngFor="let objappliedjob of appliedJobs;let ind=index;" (click)="LoadAppliedJobDetailsByJobId(objappliedjob.JobId)"><a routerLink="#">{{objappliedjob.JobDetail.JobName}}</a></li>
+                    <!--<li><a routerLink="#">Buttons</a></li>-->
+                    <!--<li><a routerLink="#">Tabs & Accordions</a></li>-->
+                    <!--<li><a routerLink="#">Typography</a></li>-->
+                    <!--<li><a routerLink="#">FontAwesome</a></li>-->
+                    <!--<li><a routerLink="#">Slider</a></li>-->
+                    <!--<li><a routerLink="#">Panels</a></li>-->
+                    <!--<li><a routerLink="#">Widgets</a></li>-->
+                    <!--<li *ngFor="let job of appliedJobs;let ind=index;" (click)="getJobPlusBids(ind)"><a routerLink="#">{{job.JobDetail.JobName}}</a></li>-->
+                </ul>
+
+
+                <li data-toggle="collapse" data-target="#service" class="collapsed">
+                  <a routerLink="/bookmark"><i class="fa fa-globe "></i>BookMark Jobs <span class="arrow"></span></a>
+                </li>
+                <ul class="sub-menu collapse" id="service">
+                  <li>New Service 1</li>
+                  <li>New Service 2</li>
+                  <li>New Service 3</li>
+                </ul>
+
+
+                <li data-toggle="collapse" data-target="#new" class="collapsed">
+                  <a routerLink="#"><i class="fa fa-users "></i> Current Orders <span class="arrow"></span></a>
+                </li>
+                <ul class="sub-menu collapse" id="new">
+                  <li>New New 1</li>
+                  <li>New New 2</li>
+                  <li>New New 3</li>
+                </ul>
+
+
+                <li data-toggle="collapse"  data-target="#new1" class="collapsed">
+                    <a routerLink="#"><i class="fa fa-money "></i> Account Balance <span class="arrow"></span></a>
+                    </li>
+
+                    <ul class="sub-menu collapse" id="new1">
+                        <li>New New 1</li>
+                        <li>New New 2</li>
+                        <li>New New 3</li>
+                      </ul>
+
+
+
+            </ul>
+     </div>
+</div>
+
+
+
+
+
+
+<!--
+  <div class="dropdown" style="float:left; margin-left:5%;">
+
+
+
+    <select class="dropbtn" (change)="getJobPlusBids(selectedCategory.value)" #selectedCategory>
+      <option class="dropjobs"> <a href="#">Please Select a Job</a> </option>
+      <option class="dropjobs" *ngFor="let job of appliedJobs;let ind=index;" (click)="getJobPlusBids(ind)" [value]="ind"> <a routerLink="#">{{job.JobDetail.jobname}}</a> </option>
+
+
+    </select>
+
+
+  </div> -->
+
+
+
+  <div class="posted">
+    <h3 style="margin-left:2%; padding-top: 2%; color:black"> Timer: {{timer() | secondsToTime}}</h3> <br> <br>
+
+    <!--<h3 style="margin-left:2%;  color:black"> Title: {{jobDetail.JobName}}</h3> <br> <br>-->
+
+    <!--<h3 style="margin-left:2%; color:black">Skills Needed: {{jobDetail.SkillsNeeded}}</h3> <br> <br>-->
+
+    <!--<h3 style="margin-left:2%; color:black">Estimated Time: {{jobDetail.CompletionTime}}</h3>-->
+
+    <ul class="category-list">
+      <div class="container-fluid" id="ul_id">
+        <!--<div class="form-group">-->
+        <div style="" >
+
+          <div class="namelogo">
+            <img src="../../assets/icons/icons8-Name-26.png" height="38" width="38"/>&nbsp;
+          </div>
+          <div class="nameheading">
+                      <span style="display:block;height:40px;width:200px;white-space: nowrap; overflow:hidden;text-overflow:ellipsis; font-weight: bolder; margin-right: 330px;">
+                        Project Title: &nbsp;&nbsp;&nbsp;{{objPostJob.JobName}}</span>
+          </div>
+
+
+          <div class="skillsneed">
+            <img src="../../assets/icons/icons8-CV Filled-50.png" height="38" width="38"/>
+          </div>
+          <div  class="skillsheading">
+            &nbsp;<span style="display:block;height:40px;width:200px;white-space: nowrap; overflow:hidden;text-overflow:ellipsis;font-weight: bolder; margin-right: 330px;">
+                    Skills Needed: &nbsp;&nbsp;&nbsp;{{objPostJob.SkillsNeeded}}</span>
+          </div>
+
+
+          <div class="timereq">
+            <img src="../../assets/icons/icons8-Countdown Clock Filled-50.png" height="38" width="38"/>
+          </div> <div class="timeheading">
+          &nbsp;<span style="display:block;height:40px;width:200px;white-space: nowrap; overflow:hidden;text-overflow:ellipsis; font-weight: bolder; margin-right: 330px;">
+                    &nbsp;Time: &nbsp;&nbsp;&nbsp;{{objPostJob.CompletionTime}}&nbsp;days
+                    </span>
+        </div>
+        </div>
+        <!--</div>-->
+      </div>
+
+    </ul>
+
+    <hr>
+
+    <div class="one">Biding on this Project</div> <br> <br>
+
+
+    <div *ngIf="bidsOnJObList.length>0">
+      <div *ngFor="let bid of bidsOnJObList;let ind=index;" class="job-ad-item" style="border-radius: 8px;border-color: gray;background: white;">
+        <div class="item-info">
+          <div class="item-image-box">
+            <div class="item-image">
+              <a><img src="{{bid.BidderImage}}" alt="Image" class="img-responsive"></a>
+            </div><!-- item-image -->
+          </div>
+
+          <div class="ad-info">
+            <span><a class=title>{{bid.Bidder}}</a></span>
+            <div class="ad-meta">
+              <ul>
+                <li><a ><i class="fa fa-usd" aria-hidden="true"></i>{{bid.BidPrize}}$</a></li>
+                <li><a ><i class="fa fa-clock-o" aria-hidden="true"></i>{{bid.Days}} Days</a></li>
+                <!--<li><a ><i class="fa fa-book fa-fw" aria-hidden="true"></i>Skills</a></li>-->
+              </ul>
+            </div><!-- ad-meta -->
+          </div><!-- ad-info -->
+          <div class="button">
+            <a (click)="btnDetailClick()" class="btn btn-primary">4.5 Star</a>
+          </div>
+          <div class="close-icon"><!--(click)="deleteClick(j.JobDetail.id)"-->
+            <i (click)="openDialog()" class="fa fa-window-close" aria-hidden="true"></i>
+          </div>
+        </div><!-- item-info -->
+      </div><!-- ad-item -->
+    </div>
+
+
+
+    <!--<div *ngFor="let bid of jobDetail.bids;">-->
+    <!--<img class="img-circle" src="http://127.0.0.1:8000/media/abc1.png">-->
+    <!--<a class="name">{{bid.Bidder}}</a>-->
+  <!--<fieldset class="ratings">-->
+    <!--<input type="radio" id="star5" name="ratings" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>-->
+    <!--<input type="radio" id="star4half" name="ratings" value="4 and a half" /><label class="half" for="star4half" title="Amazing - 4.5 stars"></label>-->
+    <!--<input type="radio" id="star4" name="ratings" value="4" /><label class = "full" for="star4" title="Excellent - 4 stars"></label>-->
+    <!--<input type="radio" id="star3half" name="ratings" value="3 and a half" /><label class="half" for="star3half" title="V Good - 3.5 stars"></label>-->
+    <!--<input type="radio" id="star3" name="ratings" value="3" /><label class = "full" for="star3" title="Good - 3 stars"></label>-->
+    <!--<input type="radio" id="star2half" name="ratings" value="2 and a half" /><label class="half" for="star2half" title="Normal - 2.5 stars"></label>-->
+    <!--<input type="radio" id="star2" name="ratings" value="2" /><label class = "full" for="star2" title="Bad - 2 stars"></label>-->
+    <!--<input type="radio" id="star1half" name="ratings" value="1 and a half" /><label class="half" for="star1half" title="V Bad - 1.5 stars"></label>-->
+    <!--<input type="radio" id="star1" name="ratings" value="1" /><label class = "full" for="star1" title="Poor - 1 star"></label>-->
+    <!--<input type="radio" id="starhalf" name="ratings" value="half" /><label class="half" for="starhalf" title="V Poor - 0.5 stars"></label>-->
+  <!--</fieldset>-->
+  <!--<p class="budget">Bid Prize: {{bid.BidPrize}}$<br> Days : {{bid.Days}}</p>-->
+
+  <!--<br>-->
+  <!--<hr>-->
+<!--</div>-->
+    <br>
+
+<br><br>
+    <!--<form-->
+      <!--name="form" role="form" #f1 (ngSubmit)="f.form.valid &&-->
+                 <!--SubmitBid(f1)" #f="ngForm" novalidate>-->
+      <!--<h3 style="margin-left:2%; color:black"> Title:</h3>-->
+      <!--<div style="position: relative">-->
+        <!--<input onkeydown="if (event.keyCode == 13) return false;" type="text" name="title" class="form-control" placeholder="Title" style="border:1px solid #f80000; height: 67px; font-size:20px;"-->
+               <!--[(ngModel)]="model.title" #title="ngModel" #title1 required >-->
+        <!--<div *ngIf="f.submitted && !title.valid"  style="position: absolute;top: 10px;right: 10px;">-->
+          <!--<span style="color: red;margin-right: 10px;">Title Required</span><img src="../../assets/icons/cancel_16.png" height="16" width="16">-->
+        <!--</div>-->
+      <!--</div>-->
+      <!--<br> <br>-->
+
+      <!--<h3 style="margin-left:2%; color:black">Your Budget:</h3>-->
+      <!--<div style="position: relative">-->
+        <!--<input onkeydown="if (event.keyCode == 13) return false;" type="text" name="budget" class="form-control" placeholder="Budget" style="border:1px solid #f80000; height: 67px; font-size:20px;"-->
+               <!--[(ngModel)]="model.budget" #budget="ngModel" #budget1 required >-->
+        <!--<div *ngIf="f.submitted && !budget.valid"  style="position: absolute;top: 10px;right: 10px;">-->
+          <!--<span style="color: red;margin-right: 10px;">Budget Required</span><img src="../../assets/icons/cancel_16.png" height="16" width="16">-->
+        <!--</div>-->
+      <!--</div>-->
+      <!--<br> <br>-->
+
+      <!--<h3 style="margin-left:2%; color:black">Estimated Time:</h3>-->
+      <!--<div style="position: relative">-->
+        <!--<input onkeydown="if (event.keyCode == 13) return false;" type="text" name="time" class="form-control" placeholder="Time" style="border:1px solid #f80000; height: 67px; font-size:20px;"-->
+               <!--[(ngModel)]="model.time" #time="ngModel" #time1 required >-->
+        <!--<div *ngIf="f.submitted && !time.valid"  style="position: absolute;top: 10px;right: 10px;">-->
+          <!--<span style="color: red;margin-right: 10px;">Time Required</span><img src="../../assets/icons/cancel_16.png" height="16" width="16">-->
+        <!--</div>-->
+      <!--</div>-->
+
+      <!--<hr>-->
+      <!--<button type="submit" class="one">Submit Your Quotation</button>-->
+    <!--</form>-->
+    <button type="submit" data-toggle="modal" data-target="#myModal" class="one">Submit Your Quotation</button> <!--(click)="openDialog()"-->
+  </div>
+  <main id="page-content-wrapper" role="main">
+  </main>
+</div>
+
+
+
+
+<div class="modal fade" id="myModal" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <form
+      name="form" role="form" #f1 (ngSubmit)="f.form.valid &&
+        SubmitBid(title1.value,budget1.value,time1.value)" #f="ngForm" novalidate>
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Modal Header</h4>
+      </div>
+      <div class="modal-body">
+        <h3 style="margin-left:2%; color:black"> Title:</h3>
+        <div style="position: relative">
+        <input onkeydown="if (event.keyCode == 13) return false;" type="text" name="title" class="form-control" placeholder="Title" style="border:1px solid #f80000; height: 67px; font-size:20px;"
+        [(ngModel)]="model.title" #title="ngModel" #title1 required >
+        <div *ngIf="f.submitted && !title.valid"  style="position: absolute;top: 10px;right: 10px;">
+        <span style="color: red;margin-right: 10px;">Title Required</span><img src="../../assets/icons/cancel_16.png" height="16" width="16">
+        </div>
+        </div>
+        <br> <br>
+
+        <h3 style="margin-left:2%; color:black">Your Budget:</h3>
+        <div style="position: relative">
+        <input onkeydown="if (event.keyCode == 13) return false;" type="text" name="budget" class="form-control" placeholder="Budget" style="border:1px solid #f80000; height: 67px; font-size:20px;"
+        [(ngModel)]="model.budget" #budget="ngModel" #budget1 required >
+        <div *ngIf="f.submitted && !budget.valid"  style="position: absolute;top: 10px;right: 10px;">
+        <span style="color: red;margin-right: 10px;">Budget Required</span><img src="../../assets/icons/cancel_16.png" height="16" width="16">
+        </div>
+        </div>
+        <br> <br>
+
+        <h3 style="margin-left:2%; color:black">Estimated Time:</h3>
+        <div style="position: relative">
+        <input onkeydown="if (event.keyCode == 13) return false;" type="text" name="time" class="form-control" placeholder="Time" style="border:1px solid #f80000; height: 67px; font-size:20px;"
+        [(ngModel)]="model.time" #time="ngModel" #time1 required >
+        <div *ngIf="f.submitted && !time.valid"  style="position: absolute;top: 10px;right: 10px;">
+        <span style="color: red;margin-right: 10px;">Time Required</span><img src="../../assets/icons/cancel_16.png" height="16" width="16">
+        </div>
+        </div>
+
+        <hr>
+        <!--<button type="submit" class="one">Submit Your Quotation</button>-->
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-default">Submit Your Quotation</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+    </form>
+
+  </div>
+</div>
+
+
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>

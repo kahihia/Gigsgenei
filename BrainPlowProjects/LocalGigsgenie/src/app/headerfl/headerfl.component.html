@@ -1,0 +1,125 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container nav-container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" routerLink="/home"><img src="../../assets/images/logo1.png" style="margin-top:11px;"/></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav" style="margin-top: 14px;
+        margin-left: 105px;" >
+        <li class="dropdown">
+          <a RouterLink="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Looking For Work <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a routerLink="/makegigs">Create Show Case</a></li>
+            <!-- <li><a routerLink="/educationalinfo">Educational Info</a></li>
+            <li><a routerLink="/workexperience">Work History</a></li>
+            <li><a routerLink="/expressyourself">Express Yourself</a></li>
+            <li><a routerLink="/skills">Add Skills</a></li> -->
+            <li><a routerLink="/joblist">Job Lists</a></li>
+            <li><a routerLink="/instructions">Test Yourself</a></li>
+            <!--<li><a routerLink="/bookmark">BookMarked Jobs</a></li>-->
+            <li><a routerLink="/sdashboard">Dash Board</a></li>
+            <li><a routerLink="#">Manage Order</a></li>
+
+
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a RouterLink="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hire For Work <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a routerLink="/post">Post a Job</a></li>
+            <li><a routerLink="/bdashboard">Dash Board</a></li>
+            <li><a routerLink="#">Manage Order</a></li>
+          </ul>
+        </li>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+          <!--<li class="gliph"><a routerLink="/home"><img src="../../assets/icons/Asset 4.png" style="margin-top:17px;"/></a></li>-->
+          <li class="gliph"><a routerLink="/message"><span class="glyphicon glyphicon glyphicon-envelope" aria-hidden="true" style="margin-top:16px; font-size:37px; margin-right:5px;"></span></a></li>
+
+          <!--<li class="gliph">-->
+            <!--<a routerLink="/home"><img src="../../assets/icons/Asset 3.png" style="margin-top:16px;"/></a>-->
+          <!--</li>-->
+        <li class="dropdown" (click)="ResetNotificationLength()">
+          <a RouterLink="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img src="../../assets/icons/Asset 3.png" style="margin-top:5px;"><b style="color:red;" *ngIf="NotificationsLength>0">({{NotificationsLength}})</b></a>
+          <ul class="dropdown-menu notify-drop" style="width: 357px;">
+            <div class="notify-drop-title">
+              <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-6">Notifications</div><!--(<b>2</b>)-->
+                <div class="col-md-6 col-sm-6 col-xs-6 text-right"><a RouterLink="" class="rIcon allRead" data-tooltip="tooltip" data-placement="bottom" title="tümü okundu."><i class="fa fa-dot-circle-o"></i></a></div>
+              </div>
+            </div>
+            <!-- end notify title -->
+            <!-- notify content -->
+            <div class="drop-content">
+              <li>
+                <div class="col-md-3 col-sm-3 col-xs-3"><div class="notify-img"><img src="http://placehold.it/45x45" alt=""></div></div>
+                <div class="col-md-9 col-sm-9 col-xs-9 pd-l0"><a RouterLink="">Ahmet</a> yorumladı. <a RouterLink="">Çicek bahçeleri...</a> <a RouterLink="" class="rIcon"><i class="fa fa-dot-circle-o"></i></a>
+
+                  <hr>
+                  <p class="time">Şimdi</p>
+                </div>
+              </li>
+              <li *ngFor="let notif of Notifications;let ind=index;">
+                <div class="col-md-3 col-sm-3 col-xs-3"><div class="notify-img"><img src="{{this.expressyourself.Resume}}" alt=""></div></div>
+                <div class="col-md-9 col-sm-9 col-xs-9 pd-l0"><a >{{notif.username}}</a><a class="rIcon"><i class="fa fa-dot-circle-o"></i></a>
+                  <p>{{notif.jobname}} has been posted</p>
+                  <p class="time">{{notif.createdat}}</p>
+                </div>
+              </li>
+
+            </div>
+            <div class="notify-drop-footer text-center">
+              <a RouterLink=""><i class="fa fa-eye"></i> Tümünü Göster</a>
+            </div>
+          </ul>
+        </li>
+
+        <li class="dropdown dp">
+          <a RouterLink="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img src="{{this.expressyourself.Resume}}"></a>
+          <ul class="dropdown-menu">
+            <li><a routerLink="#">{{contractor.username}}</a></li>
+            <li><a routerLink="/educationalinfo">Make Resume</a></li>
+            <li><a routerLink="/profile">My Resume</a></li>
+            <li><a routerLink="#">Profile Details</a></li>
+            <li><a routerLink="/change-password">Change Password</a></li>
+            <li><a routerLink="/deleteaccount">Deactivate Account</a></li>
+            <!-- <li role="separator" class="divider"></li> -->
+            <li><a (click)="logout()">Logout</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+<head>
+  <script>
+  alert('23');
+  if ('serviceWorker' in navigator && 'PushManager' in window) {
+  console.log('Service Worker and Push is supported');
+
+  navigator.serviceWorker.register('http://localhost:4200')
+  .then(function(swReg) {
+  console.log('Service Worker is registered', swReg);
+
+  swRegistration  = swReg;
+  })
+  .catch(function(error) {
+  console.error('Service Worker Error', error);
+  });
+  } else {
+  console.warn('Push messaging is not supported');
+  pushButton.textContent = 'Push Not Supported';
+  }
+  </script>
+</head>

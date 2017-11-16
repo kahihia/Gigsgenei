@@ -1,0 +1,695 @@
+body{
+
+  background-color: #f5f5f5;
+}
+
+.container1{
+
+  background-color: white;
+  width: 51%;
+  margin-top: 15px;
+  margin-left: 90px;
+  border: 1px solid #dddddd;
+  height: auto;
+}
+
+hr{
+  color: black;
+}
+
+
+h3{
+  color: #f80000;
+  padding-top: 0px;
+}
+
+.image
+{
+
+  background-color: lightgrey;
+  height: auto;
+  width: 78%;
+  margin-left: 72px;
+}
+
+.packeges{
+
+  background-color: white;
+  padding-top: 0px;
+  margin-top: 40px;
+  width: 51%;
+  margin-left: 90px;
+
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 20px;
+}
+
+td:hover{
+
+  /*background-color: lightcyan;*/
+  color:#00B22D;
+
+}
+
+tr:nth-child(even) {
+  background-color:  #efe9e9;
+}
+
+.dropbtn {
+  background-color: #f80000;
+  color: white;
+  padding: 25px;
+  font-size: 18px;
+  border: none;
+  cursor: pointer;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  font-weight: bold;
+
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  margin-left: 18%;
+
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+/*
+.dropdown-content a:hover {background-color: darkred;}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+    color: white;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: darkred;
+}*/
+
+.about{
+
+  width: 51%;
+  background-color: white;
+  margin-left: 90px;
+  height: auto;
+  border: 1px solid #dddddd;
+  margin-top: 35px;
+}
+
+.about p{
+
+
+  color: black;
+  text-align: justify;
+  padding: 40px;
+}
+
+/*.verticalLine {
+  border-left: 2px solid black;
+  margin-right: 85px;
+  float: right;
+  height:300px;
+  margin-left: 35px;
+}*/
+
+.reviews{
+
+  width: 51%;
+  background-color: white;
+  margin-left: 90px;
+  height: auto;
+  border: 1px solid #dddddd;
+  margin-top: 35px;
+
+}
+
+@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+
+fieldset, label { margin: 0; padding: 0; }
+body{ margin: 20px; }
+h1 { font-size: 1.5em; margin: 10px; }
+
+/****** Style Star Rating Widget *****/
+
+.ratings {
+  border: none;
+  float: left;
+  margin-left: 218px;
+  margin-top: 15px;
+}
+
+.ratings > input { display: none; }
+.ratings > label:before {
+  margin: 5px;
+  font-size: 1.25em;
+  font-family: FontAwesome;
+  display: inline-block;
+  content: "\f005";
+}
+
+.ratings > .half:before {
+  content: "\f089";
+  position: absolute;
+}
+
+.ratings > label {
+  color: #ddd;
+  float: right;
+}
+
+/***** CSS Magic to Highlight Stars on Hover *****/
+
+.ratings > input:checked ~ label, /* show gold star when clicked */
+.ratings:not(:checked) > label:hover, /* hover current star */
+.ratings:not(:checked) > label:hover ~ label { color: #FFD700;  } /* hover previous stars in list */
+
+.ratings > input:checked + label:hover, /* hover current star when changing rating */
+.ratings > input:checked ~ label:hover,
+.ratings > label:hover ~ input:checked ~ label, /* lighten current selection */
+.ratings > input:checked ~ label:hover ~ label { color: #FFED85;  }
+
+
+.comments
+{
+  height: auto;
+
+}
+
+
+.aside{
+
+  width: 35%;
+  float: right;
+  height: auto;
+  margin-top: 15px;
+  margin-right: 89px;
+  border: 1px solid #dddddd;
+  background-color: lightyellow;
+}
+
+.img-circle {
+  border-radius: 50%;
+  height: 150px;
+  width: 150px;
+  display: block;
+  margin-top: 43px;
+  margin-left: 25px;
+}
+
+.username a{
+  /* color: #00B22D;
+  text-decoration: underline;
+  font-size: 16px;
+  font-weight: bold;
+  margin-left: 37%; */
+
+  margin-left: 39%;
+  margin-top: -17%;
+  font-size: 20px;
+  font-weight: bold;
+  color: #f80000;
+}
+
+.username{
+  margin-left: 39%;
+  margin-top: -17%;
+  font-size: 20px;
+  font-weight: bold;
+  color: #f80000;
+  float: left;
+}
+
+.contactme {
+
+  color: white;
+  border: #f80000;
+  background-color: #f80000;
+  height: 50px;
+  width: 188px;
+  font-size: 20px;
+  margin-top: 50px;
+  margin-left: -5%;
+  margin-right: 35px;
+  font-weight: bold;
+}
+
+.sendrequest {
+  color: white;
+  border: #f80000;
+  background-color: #f80000;
+  height: 50px;
+  width: 188px;
+  font-size: 20px;
+  margin-top: 50px;
+  margin-left: 15%;
+  margin-right: 35px;
+  font-weight: bold;
+  }
+
+.intro{
+
+  text-align: justify;
+  padding: 25px;
+  color: black;
+}
+
+.socialicons{
+
+  width: 50%;
+  height: 50%;
+  display: block;
+  display: inline;
+  margin-left: 17%;
+
+
+}
+
+.fa {
+  padding: 20px;
+  font-size: 30px;
+  width: 65px;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px 2px;
+  border-radius: 50%;
+}
+
+.fa:hover {
+  opacity: 0.7;
+}
+
+.fa-facebook {
+  background: #3B5998;
+  color: white;
+}
+
+.fa-twitter {
+  background: #55ACEE;
+  color: white;
+}
+
+.fa-google {
+  background: red;
+  color: white;
+}
+
+.fa-linkedin {
+  background: #007bb5;
+  color: white;
+}
+
+.fa-youtube {
+  background: #00B22D;
+  color: white;
+}
+
+.fa-instagram {
+  background: #125688;
+  color: white;
+}
+
+@media only screen and (max-width: 1300px) {
+
+  .container1{
+    margin-left: 23px;
+    width: 94%;
+    margin-top: 88%;
+
+  }
+
+
+  .image
+  {
+    margin-left: 45px;
+    width: 87%;
+
+  }
+
+  .container1 h3{
+    padding-top: 28%;
+  }
+
+  .aside
+  {
+    float: left;
+    width: 94%;
+    margin-left: 23px;
+
+
+  }
+  .packeges{
+
+    margin-left: 23px;
+    width: 94%;
+
+  }
+
+  .about{
+
+    margin-left: 23px;
+    width: 94%;
+  }
+
+  .reviews{
+    margin-left: 23px;
+    width: 94%;
+
+  }
+
+  .rating
+  {
+    margin-left: 40%;
+  }
+  .img-circle {
+
+    margin-left: 3%;
+    margin-top: 17%;
+    height: 195px;
+    width: 195px;
+
+  }
+
+  .username a{
+    font-size: 25px;
+    margin-left: 35%;
+
+  }
+
+
+  .username {
+    font-size: 25px;
+    margin-left: 35%;
+
+  }
+
+  .ratings{
+    margin-top: -25px;
+    margin-left: 34%;
+  }
+
+  .sendrequest{
+
+        width: 30%;
+        margin-left: -35%;
+
+      }
+  .contactme{
+
+    width: 30%;
+    margin-left: 2%;
+
+  }
+  .intro{
+
+    height: auto;
+    padding: 35px;
+  }
+  .socialicons{
+
+    margin-left: 25%;
+
+  }
+
+}
+
+@media only screen and  (max-width : 760px) {
+
+  .container1{
+
+    width: 100%;
+    margin-left: 1px;
+  }
+
+  .aside{
+
+    width: 100%;
+    margin-left: 1px;
+  }
+  .img-circle{
+
+    margin-left: 4%;
+    margin-top: 23%;
+    height: 78px;
+    width: 23%;
+  }
+
+  .username{
+
+    /* margin-left: -25%; */
+  }
+
+.contactme{
+
+  width: 65%;
+  margin-left: 18%;
+}
+
+.sendrequest{
+  width: 65%;
+  margin-left: 18%;
+
+
+    }
+  .packeges{
+    margin-left: 3px;
+    width: 100%;
+
+
+  }
+  .about{
+    width: 100%;
+    margin-left: 1px;
+
+  }
+
+  .reviews{
+    width: 100%;
+    margin-left: 1px;
+  }
+
+  .ratings{
+
+    margin-left: 33%;
+  }
+  .socialicons{
+
+    margin-left: 3px;
+  }
+
+  .dropbtn{
+
+    margin-left: -26px;
+      }
+
+      td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 1px;
+      }
+}
+
+/*Css For home page copied gigs in bottom*/
+.span3{
+  width: 255px;
+  margin-bottom: 35px;
+}
+h4.title .pull-left {
+  padding-bottom: 11px;
+  padding-top: 2%;
+}
+
+h4.title .left{
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+}
+#wrapper{
+  margin-left: 94px;
+  margin-right: 60px;
+}
+h4.title{
+
+  /*background: url(./assets/themes/images/line_bar.png) 0 8px repeat-x;*/
+  padding-bottom: 5px;
+  margin-bottom: 15px;
+  overflow: hidden;
+  text-transform: uppercase;
+  font-size: 15px;
+  min-height: 27px;
+  width: 100%;
+
+}
+
+/*h4.title img{
+	background: url(./assets/themes/images/line_bar.png) 0 8px repeat-x;
+
+}*/
+
+#search{
+  border: 2px solid #f80000;
+  font-size: 20px;
+  height: 70px;
+  width: 1115px;
+  background-color: antiquewhite;
+}
+.fa-2x {
+  font-size: 3em;
+  margin-left: 1510%;
+  margin-top: 6px;
+}
+
+
+hr{
+  color: red;
+}
+
+.img-circlegig {
+  border-radius: 50%;
+  width: 46px;
+  height: 46px;
+  margin-right: 10px;
+  margin-left: -80px;
+}
+
+
+@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+
+fieldset, label { margin: 0; padding: 0; }
+body{ margin: 20px; }
+h1 { font-size: 1.5em; margin: 10px; }
+
+/****** Style Star Rating Widget *****/
+
+.ratingsgig {
+  border: none;
+  margin-right: 66px;
+  margin-top: 5px;
+  margin-bottom: -12px;
+}
+
+.ratingsgig > input { display: none; }
+.ratingsgig > label:before {
+  margin: 5px;
+  font-size: 1.25em;
+  font-family: FontAwesome;
+  display: inline-block;
+  content: "\f005";
+}
+
+.ratingsgig > .half:before {
+  content: "\f089";
+  position: absolute;
+}
+
+.ratingsgig > label {
+  color: #ddd;
+  float: right;
+}
+
+/***** CSS Magic to Highlight Stars on Hover *****/
+
+.ratingsgig > input:checked ~ label, /* show gold star when clicked */
+.ratingsgig:not(:checked) > label:hover, /* hover current star */
+.ratingsgig:not(:checked) > label:hover ~ label { color: #FFD700;  } /* hover previous stars in list */
+
+.ratingsgig > input:checked + label:hover, /* hover current star when changing rating */
+.ratingsgig > input:checked ~ label:hover,
+.ratingsgig > label:hover ~ input:checked ~ label, /* lighten current selection */
+.ratingsgig > input:checked ~ label:hover ~ label { color: #FFED85;  }
+
+
+
+
+
+.row feature_box{
+
+  background-color:#1b2c39; color:white; margin-left:-39px; width:107.5%; font-size:18px;
+}
+
+@media only screen and (max-width: 1300px) {
+
+  #search{
+    margin-top: 15%;
+    width: 300%;
+    margin-left: 6%;
+  }
+
+  .fa-2x {
+    font-size: 2em;
+    margin-left: 1348%;
+    margin-top: 50%;
+  }
+
+  .myCarousel.carousel {
+    margin-bottom: 0;
+  }
+
+
+  .product-box{
+
+    margin-top: 24px;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+
+  #search{
+    width: 97%;
+    margin-left: 4px;
+    margin-top: -10px;
+
+  }
+  .fa-2x {
+    font-size: 2em;
+
+
+  }
+  .span12{
+    width: 94%;
+    padding-left:12px;
+  }
+
+  h4.title strong {
+    margin-left: 11px;
+    font-size: 19px;
+
+  }
+  .product-box{
+    padding-top: 0px;
+    margin-left: 12%;
+
+  }
+
+  #box{
+
+    margin: 0px;
+  }
+}
+

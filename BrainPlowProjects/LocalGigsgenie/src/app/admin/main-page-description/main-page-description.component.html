@@ -1,0 +1,22 @@
+
+ <div>
+ <app-adminpanel></app-adminpanel>
+
+ </div>
+
+<div class="box">
+
+     <form name="form" role="form" (ngSubmit)=" onSubmit(textarea.value)" #f="ngForm" novalidate>
+  <textarea placeholder="Write Home Page Description" name="textarea" class="form-control"  [(ngModel)]="model.textarea" #Textarea="ngModel" #textarea
+                required></textarea>
+              
+   
+
+        <button type="submit" class="postbutton"><span class="glyphicon glyphicon-share" aria-hidden="true"
+            style="margin-left: -6px;margin-right: 16px;padding-top: 2px;"></span>Post </button>
+        
+
+
+
+</form>
+</div>

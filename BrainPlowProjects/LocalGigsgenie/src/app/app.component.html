@@ -1,0 +1,10 @@
+<app-header *ngIf="header()"></app-header>
+<!--<app-headerhfw *ngIf="headerhfw()"></app-headerhfw>-->
+<app-headerfl *ngIf="!header()"></app-headerfl>
+<!--<app-headerfl></app-headerfl>-->
+<router-outlet></router-outlet>
+<!--(activate)="changeOfRoutes()"-->
+<button id="myBtn" (click)="funcBack()" title="Back"><i class="fa fa-chevron-left" aria-hidden="true"></i>
+  Back</button>
+<app-footer></app-footer>
+

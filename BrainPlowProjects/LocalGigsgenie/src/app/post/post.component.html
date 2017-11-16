@@ -1,0 +1,361 @@
+<app-loader></app-loader>
+<section class=" job-bg ad-details-page">
+  <div class="container">
+    <!--<div class="breadcrumb-section">-->
+      <!--&lt;!&ndash; breadcrumb &ndash;&gt;-->
+      <!--&lt;!&ndash;<div class="banner-overlay">&ndash;&gt;-->
+        <!--<ol class="breadcrumb">-->
+          <!--<li *ngFor="let i of ListTrack"><a routerLink="{{i.Url}}">{{i.Name}}</a></li>-->
+        <!--</ol>-->
+      <!--&lt;!&ndash;</div>&lt;!&ndash; breadcrumb &ndash;&gt;&ndash;&gt;-->
+      <!--<h2 class="title">Post Your Gig</h2>-->
+    <!--</div>&lt;!&ndash; banner &ndash;&gt;-->
+
+
+    <!--<div class="panel panel-default">-->
+      <!--<div class="panel-heading">Panel Heading</div>-->
+      <!--<div class="panel-body">Panel Content</div>-->
+    <!--</div>-->
+    <div class="alert alert-success alert-dismissable" *ngIf="ShowHideAlert"><!--*ngIf="ShowHideAlert"-->
+      <a (click)="ShowHideAlertClick()" style="cursor: pointer;float: right"><img src="../../assets/icons/cancel_16.png" height="16" width="16"/></a>
+      <strong>Congrats! You have Successfully Posted Your Gig!&nbsp;&nbsp;&nbsp;&nbsp;</strong>
+    </div>
+
+    <div class="alert alert-danger alert-dismissable" *ngIf="ShowHideDanger"><!--*ngIf="ShowHideAlert"-->
+      <a (click)="ShowHideDangerClick()" style="cursor: pointer;float: right"><img src="../../assets/icons/cancel_16.png" height="16" width="16"/></a>
+      <strong>Sorry! Data can't be submitted due to errors &nbsp;&nbsp;&nbsp;&nbsp;</strong>
+    </div>
+
+    <div class="job-postdetails" style="margin-top: 60px;">
+      <div class="row">
+        <div class="panel">
+          <div class="panel-heading"><h1>Post Your Gig</h1>
+
+
+            <!--<a href="#demo" class="btn btn-info" data-toggle="collapse">Simple collapsible</a>-->
+            <!--<div id="demo" class="collapse">-->
+              <!--<ul style="height:200px;overflow-y: scroll;" role="menu" aria-labelledby="dropdownMenu">-->
+                <!--<li class="divider"></li>-->
+                <!--<li style="cursor:pointer;" (click)="funcLoadTemplate(ind)" *ngFor="let i of ListLoadedJobs; let ind=index" >&lt;!&ndash;(click)="list(i.catagory)"&ndash;&gt;-->
+                  <!--<a tabindex="-1">{{ind + 1}}:{{i.jobname}}</a>-->
+
+                <!--</li>-->
+                <!--<li class="divider"></li>-->
+                <!--<li style="cursor:pointer;" (click)="clickListLoadTemplate()">-->
+                  <!--<a tabindex="-1">Load More</a>-->
+                <!--</li>-->
+              <!--</ul>-->
+            <!--</div>-->
+            <!--<div class="panel-group">-->
+              <!--<div class="panel panel-default">-->
+                <!--<a data-toggle="collapse" href="#collapse1">Load Previous Job</a>-->
+                <!--<div id="collapse1" class="panel-collapse collapse">-->
+                  <!--<ul style="height:200px;overflow-y: scroll;" role="menu" aria-labelledby="dropdownMenu">-->
+                    <!--<li class="divider"></li>-->
+                    <!--<li data-toggle="collapse" href="#collapse1" style="cursor:pointer;" (click)="funcLoadTemplate(ind)" *ngFor="let i of ListLoadedJobs; let ind=index" >&lt;!&ndash;(click)="list(i.catagory)"&ndash;&gt;-->
+                      <!--<a tabindex="-1">{{ind + 1}}:{{i.jobname}}</a>-->
+
+                    <!--</li>-->
+                    <!--<li class="divider"></li>-->
+                    <!--<li style="cursor:pointer;" (click)="clickListLoadTemplate()">-->
+                      <!--<a tabindex="-1">Load More</a>-->
+                    <!--</li>-->
+                  <!--</ul>-->
+                  <!--<div class="panel-footer" style="cursor:pointer;" (click)="clickListLoadTemplate()">Load More</div>-->
+                <!--</div>-->
+              <!--</div>-->
+            <!--</div>-->
+
+              <div class="dropdown category-dropdown">
+                <!--<div class="dropdown">-->
+                <a data-toggle="dropdown" href="#" aria-expanded="false"><span class="change-text">{{drpLoadPreviusJob}}</span> <i class="fa fa-angle-down pull-right"></i></a>
+                <ul  class="dropdown-menu multi-level" style="height:200px;overflow-y: scroll;" role="menu" aria-labelledby="dropdownMenu">
+                  <li class="divider"></li>
+                  <li style="cursor:pointer;" (click)="funcLoadTemplate(ind)" *ngFor="let i of ListLoadedJobs; let ind=index" ><!--(click)="list(i.catagory)"-->
+                    <a tabindex="-1">{{ind + 1}}:{{i.JobName}}</a>
+
+                  </li>
+                  <li class="divider"></li>
+                  <li style="cursor:pointer;" (click)="clickListLoadTemplate()">
+                    <a aria-expanded="false" tabindex="-1">Load More</a>
+                    </li>
+                </ul>
+            </div>
+          </div>
+          <!--<form name="form" role="form" (ngSubmit)="f.form.valid" #f="ngForm" novalidate>-->
+        <form name="form">
+          <fieldset>
+              <div class="panel-body">
+                <div class="section postdetails">
+                <!--<h4>Post Your Job<span class="pull-right">* Mandatory Fields</span></h4>-->
+                <div class="row form-group add-title">
+                  <label class="col-sm-3 label-title">Gig Category</label>
+                  <div class="col-sm-4">
+                    <div class="dropdown category-dropdown">
+                      <!--<div class="dropdown">-->
+                      <a data-toggle="dropdown" href="#" aria-expanded="false"><span class="change-text">{{drpTextCatagory}}</span> <i class="fa fa-angle-down pull-right"></i></a>
+                      <ul  class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
+                        <li class="divider"></li>
+                        <li style="cursor:pointer;" class="dropdown-submenu" *ngFor="let i of temp; let ind=index" ><!--(click)="list(i.catagory)"-->
+                          <a tabindex="-1">{{i.Catagory}}</a>
+                          <ul class="dropdown-menu">
+                            <li  *ngFor="let j of i.subcatagories" (click)="list(j.SubCatagory)"><a tabindex="-1">{{j.SubCatagory}}</a></li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </div>
+
+                  </div>
+                  <div *ngIf="ErrorchkdrpTextCatagory()&&formsumitted" style="float:right;" class="col-md-5"><img src="../../assets/icons/close_48.png" height="40" width="40"/></div>
+                  <div *ngIf="!ErrorchkdrpTextCatagory()&&formsumitted" style="float:right;" class="col-md-5"><img src="../../assets/icons/tick_48.png" height="40" width="40"/></div>
+
+                </div>
+
+                <div class="row form-group">
+                  <label class="col-sm-3">Gig Type<span class="required"></span></label>
+                  <div class="col-sm-8 user-type">
+                    <img src="../../assets/icons/person_48.png" height="30" width="30"/>&nbsp;&nbsp;<span>Public</span><input type="radio" style="top:-14px;margin-left: 14px;" name="sellType" value="public" (click)="chkJObTypeClick(chkPublicValue1)" #chkPublicValue1 id="full-time"> <label style="top:-14px;margin-left: 14px;" for="full-time">
+                      </label>
+                    <img src="../../assets/icons/redlock_48.png" height="30" width="30"/>&nbsp;&nbsp;<span>Private</span><input type="radio" style="top:-14px;margin-left: 14px;" name="sellType" value="private"(click)="chkJObTypeClick(chkPrivateValue1)" #chkPrivateValue1 id="part-time"> <label style="top:-14px;margin-left: 14px;" for="part-time">
+                    </label>
+                  </div>
+                  <div *ngIf="ErrorchkPublicPrivate() && formsumitted" class="col-md-1"><img src="../../assets/icons/close_48.png" height="40" width="40"/></div>
+                  <div *ngIf="!ErrorchkPublicPrivate() && formsumitted" class="col-md-1"><img src="../../assets/icons/tick_48.png" height="40" width="40"/></div>
+                </div>
+
+                <div class="row form-group">
+                  <label class="col-sm-3 label-title">Add Skills<span class="required"></span></label>
+                  <div class="col-sm-6">
+                    <input class="form-control" type="text" [(ngModel)]="newItem" name="kj" placeholder="Add Item"
+                           list="languageList1"   (keyup)="skillnameChange(skillname1.value)" #skillname1>
+
+                    <datalist id="languageList1" style="overflow-y: auto;max-height: 300px;" >
+                      <option *ngFor="let i of Autoskillname" value="{{i.Name}}" ></option>
+
+                    </datalist>
+                 </div>
+                  <label class="col-sm-2"><button (click)="pushItem()" class="btn-green">Add</button></label>
+                  <div *ngIf="ErrorchkSkillNames() && formsumitted" class="col-md-1"><img src="../../assets/icons/close_48.png" height="40" width="40"/></div>
+                  <div *ngIf="!ErrorchkSkillNames() && formsumitted" class="col-md-1"><img src="../../assets/icons/tick_48.png" height="40" width="40"/></div>
+                </div>
+
+                <div class="row form-group">
+                  <!--<label class="col-sm-3 label-title"><span class="required"></span></label>-->
+                  <div class="col-lg-12">
+
+                    <div class="container-fluid">
+                      <!--<div class="row form-group">-->
+                      <div style="float: left;border: 1px solid;" class="col-md-2" *ngFor="let i of items;let ind=index">
+                        <!--<span style="display: inline-block;vertical-align: middle;white-space: nowrap;overflow: hidden;text-overflow: ellipsis" class="change-text">-->
+
+                        <span style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">{{i}}</span>
+                        <!--</span>-->
+                        <span (click)="removeItem(ind)" style="cursor:pointer;position:relative;float:right;margin-left: 3px;">
+                        <img src="../../assets/icons/cancel_16.png" height="16" width="16"/>
+                      </span></div>
+                      <!--</div>-->
+                    </div>
+
+
+                    <!--<ul style="list-style: none;font-size:20px;color: #00a651;margin-left:-20px;margin-bottom: 0px;">-->
+                  <!--<li style="  border-bottom:1px solid #bfbfbf;padding:10px 0px;margin-bottom: 5px;"-->
+                      <!--*ngFor="let i of items;let ind=index">-->
+                    <!--{{i}}-->
+
+                    <!--<span style="cursor:pointer;position:relative;float:right;color: red;margin-left: -10px;"-->
+                          <!--(click)="removeItem(ind)">X</span>-->
+                  <!--</li>-->
+                <!--</ul>-->
+                  </div></div>
+<!--<input data-eo-datepicker-popup type="date" ng-date="ng-date" min="2017-08-10" min-date="minDate" data-datepicker-options="dateOptions"-->
+       <!--data-is-open="status.opened" data-ng-model-options="{ timezone: 'UTC' }" class="form-control ng-dirty ng-touched ng-not-empty ng-valid ng-valid-date ng-valid-min"-->
+       <!--ng-focus="focus_startDate = true" ng-blur="focus_startDate = false">-->
+
+                <div class="row form-group">
+                  <label class="col-sm-3 label-title">Title for your Gig<span class="required"></span></label>
+                  <div class="col-sm-8">
+                    <input type="text" class="form-control" [(ngModel)]="jobTitle" name="jobtitlename" placeholder="ex, Human Resource Manager" required>
+                  </div>
+                  <div *ngIf="ErrorchkJobTitle()&&formsumitted" class="col-md-1"><img src="../../assets/icons/close_48.png" height="40" width="40"/></div>
+                  <div *ngIf="!ErrorchkJobTitle()&&formsumitted" class="col-md-1"><img src="../../assets/icons/tick_48.png" height="40" width="40"/></div>
+                </div>
+                <div class="row form-group item-description">
+                  <label class="col-sm-3 label-title">Description<span class="required"></span></label>
+                  <div class="col-sm-8">
+                    <textarea class="form-control" id="textarea" [(ngModel)]="description" name="desname" placeholder="Write few lines about your jobs" rows="8"></textarea>
+                  </div>
+                  <div *ngIf="ErrorchkDescription()&&formsumitted" class="col-md-1"><img src="../../assets/icons/close_48.png" height="40" width="40"/></div>
+                  <div *ngIf="!ErrorchkDescription()&&formsumitted" class="col-md-1"><img src="../../assets/icons/tick_48.png" height="40" width="40"/></div>
+                </div>
+                <div class="row characters">
+                  <div class="col-sm-9 col-sm-offset-3">
+                    <p>5000 characters left</p>
+                  </div>
+                </div>
+
+                <div class="row form-group add-title">
+                  <label class="col-sm-3 label-title">Exprienpce<span class="required"></span></label>
+                  <div class="col-sm-8">
+                    <div class="dropdown category-dropdown">
+                      <a data-toggle="dropdown" href="#" aria-expanded="false"><span class="change-text">{{txtExperienceLevel}}</span> <i class="fa fa-angle-down pull-right"></i></a>
+                      <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+                        <li style="cursor: pointer;" *ngFor="let j of lstExperienceLevel" (click)="listClick(j)"><a>{{j}}</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div *ngIf="ErrorchktxtExperienceLevel() && formsumitted" class="col-md-1"><img src="../../assets/icons/close_48.png" height="40" width="40"/></div>
+                  <div *ngIf="!ErrorchktxtExperienceLevel() && formsumitted" class="col-md-1"><img src="../../assets/icons/tick_48.png" height="40" width="40"/></div>
+
+                </div>
+
+
+                  <div class="row form-group add-title">
+                    <label class="col-sm-3 label-title">Price Negotiation<span class="required"></span></label>
+                    <div class="col-sm-8">
+                      <div class="dropdown category-dropdown">
+                        <a data-toggle="dropdown" href="#" aria-expanded="false"><span class="change-text">{{txtNegotiation}}</span> <i class="fa fa-angle-down pull-right"></i></a>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+                          <li style="cursor: pointer;" *ngFor="let j of lstNegotiation" (click)="listnegotitionClick(j)"><a>{{j}}</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                    <!--<div *ngIf="ErrorchktxtExperienceLevel() && formsumitted" class="col-md-1"><img src="../../assets/icons/close_48.png" height="40" width="40"/></div>-->
+                    <div *ngIf="formsumitted" class="col-md-1"><img src="../../assets/icons/tick_48.png" height="40" width="40"/></div>
+
+                  </div>
+
+
+                <div class="row form-group brand-name">
+                  <label class="col-sm-3 label-title">Gig Duration (Days)<span class="required"></span></label>
+                  <div class="col-sm-8">
+
+                  <div style="position: relative">
+                    <input type="number" name="nDays" [(ngModel)]="Days" class="form-control" placeholder="0,1,2..." #days required>
+                    <div style="position: relative;">
+                      <mat-chip-list>
+                        <mat-chip style="cursor: pointer" (click)="DaysClick(3,days)">3 Days</mat-chip>
+                        <mat-chip style="cursor: pointer" (click)="DaysClick(7,days)">One Week</mat-chip>
+                        <mat-chip style="cursor: pointer" (click)="DaysClick(14,days)">Two Weeks</mat-chip>
+                        <mat-chip style="cursor: pointer" (click)="DaysClick(30,days)">One Month</mat-chip>
+                        <mat-chip style="cursor: pointer" (click)="DaysClick(1,days)">Other</mat-chip>
+                      </mat-chip-list>
+                    </div>
+                  </div>
+
+                  </div>
+                  <div *ngIf="ErrorchkdrpJobPeriod(days.value) && formsumitted" class="col-md-1"><img src="../../assets/icons/close_48.png" height="40" width="40"/></div>
+                  <div *ngIf="!ErrorchkdrpJobPeriod(days.value) && formsumitted" class="col-md-1"><img src="../../assets/icons/tick_48.png" height="40" width="40"/></div>
+
+                </div>
+
+                  <div class="row form-group brand-name">
+                    <label class="col-sm-3 label-title">Budget<span class="required"></span></label>
+                    <div class="col-sm-8">
+
+                      <div style="position: relative">
+                        <input type="number" name="nBudget" [(ngModel)]="Budget" class="form-control" placeholder="0,1,2..." #budget required>
+                        <div style="position: relative;">
+                          <mat-chip-list>
+                            <mat-chip style="cursor: pointer" (click)="BudgetClick(5,budget)">5$</mat-chip>
+                            <mat-chip style="cursor: pointer" (click)="BudgetClick(50,budget)">50$</mat-chip>
+                            <mat-chip style="cursor: pointer" (click)="BudgetClick(500,budget)">500$</mat-chip>
+                            <mat-chip style="cursor: pointer" (click)="BudgetClick(1000,budget)">1000$</mat-chip>
+                            <mat-chip style="cursor: pointer" (click)="BudgetClick(1,budget)">Other</mat-chip>
+                          </mat-chip-list>
+                        </div>
+                      </div>
+
+                    </div>
+                    <div *ngIf="Errorchkbudget(budget.value) && formsumitted" class="col-md-1"><img src="../../assets/icons/close_48.png" height="40" width="40"/></div>
+                    <div *ngIf="!Errorchkbudget(budget.value) && formsumitted" class="col-md-1"><img src="../../assets/icons/tick_48.png" height="40" width="40"/></div>
+
+                  </div>
+
+                </div><!-- postdetails -->
+
+              <div class="section">
+                <h4>Make Your Post Premium</h4>
+                <p>More replies means more interested buyers. With lots of interested buyers, you have a better chance of selling for the price that you want.<a href="#">Learn more</a></p>
+                <ul class="premium-options">
+                  <li class="premium">
+                    <input type="radio" name="premiumOption" value="0" id="day-one" (click)="chkPostTypeClick(chk1.value)" #chk1 required>
+                    <label for="day-one">Regular Post</label>
+                    <span>Free of Cost</span>
+                  </li>
+                  <li class="premium">
+                    <input type="radio" name="premiumOption" value="1" id="day-two" (click)="chkPostTypeClick(chk2.value)" #chk2 required>
+                    <label for="day-two">Top Post for one Day</label>
+                    <span>$10.00</span>
+                  </li>
+                  <li class="premium">
+                    <input type="radio" name="premiumOption" value="2" id="day-three" (click)="chkPostTypeClick(chk3.value)" #chk3 required>
+                    <label for="day-three">Top Post for 7 days</label>
+                    <span>$50.00</span>
+                  </li>
+                  <li class="premium">
+                    <input type="radio" name="premiumOption" value="3" id="day-four" (click)="chkPostTypeClick(chk4.value)" #chk4 required>
+                    <label for="day-four">Daily Bump Up for 7 days</label>
+                    <span>$100.00</span>
+                  </li>
+                </ul>
+                <div *ngIf="ErrorchkPostType()&& formsumitted" class="row form-group brand-name">
+                  <label class="col-sm-3 label-title" style="color: red;">Please Select A Value<span class="required"></span></label>
+                  <div class="col-sm-8">
+                  </div>
+                  <div  class="col-md-1"><img src="../../assets/icons/close_48.png" height="40" width="40"/></div>
+
+                  <!--</div>-->
+                </div><!-- postdetails -->
+                <div *ngIf="!ErrorchkPostType()&& formsumitted" class="row form-group brand-name">
+                  <label class="col-sm-3 label-title"><span class="required"></span></label>
+                  <div class="col-sm-8">
+                  </div>
+                  <div  class="col-md-1"><img src="../../assets/icons/tick_48.png" height="40" width="40"/></div>
+
+                  <!--</div>-->
+                </div><!-- postdetails -->
+              </div><!-- section -->
+
+
+
+              <div class="checkbox section agreement">
+                <!--<label for="send">-->
+                <!--<div class="row form-group brand-name">-->
+                    <!--<div class="checkbox">-->
+                      <!--<label><input type="checkbox" name="terms" [(ngModel)]="checkboxValue" (click)="TermsClick()">You Agree to our-->
+                      <!--<a href="#">Terms of Use</a> and <a href="#">Privacy Policy</a> and acknowledge that you are the rightful owner of this item and using Jobs to find a genuine buyer.-->
+                      <!--</label> </div>-->
+
+                  <!--</div>&lt;!&ndash; section &ndash;&gt;-->
+                <input type="submit" (click)="_btnSubmitClick(days.value,budget.value)" class="btn-green" value="Post Your Gig">
+                <span *ngIf="false" style="color: blue  " class="glyphicon glyphicon-refresh glyphicon-refresh-animate form-control-feedback"></span>
+              </div>
+              </div>
+            </fieldset>
+          </form><!-- form -->
+        </div>
+
+
+        <!-- quick-rules -->
+        <!--<div class="col-md-4">-->
+          <!--<div class="section quick-rules">-->
+            <!--<h4>Quick rules</h4>-->
+            <!--<p class="lead">Posting an ad on <a href="#">jobs.com</a> is free! However, all ads must follow our rules:</p>-->
+
+            <!--<ul>-->
+              <!--<li>Make sure you post in the correct category.</li>-->
+              <!--<li>Do not post the same ad more than once or repost an ad within 48 hours.</li>-->
+              <!--<li>Do not upload pictures with watermarks.</li>-->
+              <!--<li>Do not post ads containing multiple items unless it's a package deal.</li>-->
+              <!--<li>Do not put your email or phone numbers in the title or description.</li>-->
+              <!--<li>Make sure you post in the correct category.</li>-->
+              <!--<li>Do not post the same ad more than once or repost an ad within 48 hours.</li>-->
+              <!--<li>Do not upload pictures with watermarks.</li>-->
+              <!--<li>Do not post ads containing multiple items unless it's a package deal.</li>-->
+            <!--</ul>-->
+          <!--</div>-->
+        <!--</div>&lt;!&ndash; quick-rules &ndash;&gt;-->
+      </div><!-- photos-ad -->
+    </div>
+  </div><!-- container -->
+</section><!-- main -->

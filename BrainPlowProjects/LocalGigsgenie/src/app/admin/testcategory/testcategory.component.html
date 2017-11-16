@@ -1,0 +1,174 @@
+
+<link href='http://fonts.googleapis.com/css?family=Bitter'>
+<div class="col-md-2">
+<app-adminpanel></app-adminpanel>
+</div>
+<div class="form-style-10">
+    
+  <h1>Add New Test Category</h1>
+  <form name="form" role="form" (ngSubmit)=" onSubmit(catagory1.value)" #f="ngForm" novalidate>
+      <div class="section"><span>1</span>Enter New Test Category</div>
+      
+      <div class="inner-wrap">
+            <label style="color:black; font-size: 20px;">Category
+         <input type="text" name="catagory" class="form-control" placeholder="HTML, CSS, PHP"  [(ngModel)]="model.catagory" #Catagory="ngModel" #catagory1
+            required style="margin-top:5%;">
+
+         
+          </label>
+      </div>
+  
+      <div class="button-section">
+       <input type="submit" name="Sign Up" value="Add" (click)="showSuccess()"/>
+  
+      </div>
+  </form>
+  </div>
+  
+  <div class="container">
+      <div style="height: 310px;overflow-y: scroll;">
+     
+      <table class="table" style=" 
+      width: 85%;
+      max-width: 99%;
+      margin-bottom: 20px;
+      margin-left: 14%;
+      border: 1px solid black;">
+        <thead >
+          <tr>
+           
+            <th>Category Name</th>
+            <th style="padding-left:10%">Action</th>
+            
+        
+          </tr>
+        </thead>
+        
+        <tbody>     
+          
+          <tr *ngFor="let catObj of catagoriesList;" class="success" 
+          style="font-size: 25px;
+          padding-top: 10px;
+          padding-left: 6%;">  
+            
+            <td>{{catObj.Catagory}}</td>
+            
+            <td> 
+               
+                 <!-- <input type="submit" value="Edit" (click)="UpdateClick(catObj.id)" style="background:darkblue;
+                 border: #626496;
+                 color: white;
+                 width: 40%;
+                 height: 50px;
+                 margin-left:-11%;"/> -->
+              
+                    <button type="submit" value="Edit" (click)="btnEditClick(catObj.Catagory,catObj.id)"  class="btn btn-info btn-lg" 
+                    data-toggle="modal" data-target="#myModal1" style="width:35%">Edit</button>
+
+                  
+                    <button type="submit" value="Delete" (click)="btnDeleteClick(catObj.id)" class="btn btn-info btn-lg" 
+                    data-toggle="modal" data-target="#myModal2" style="width:35%; background:red; border:1px solid red">Delete</button>
+        
+          
+              
+              </td>
+
+                
+          </tr>
+          
+        </tbody>
+  
+      </table>
+
+    </div>
+      
+ </div>
+      
+  
+        
+      
+    
+                  <!-- Delete Category PopUp Starts-->
+                  <div class="modal fade" id="myModal2" role="dialog">
+                      <div class="modal-dialog">
+                      
+                        <!-- Modal content-->
+                        <div class="modal-content" style="margin-top:25%; width:119%;">
+                          <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title" style="text-align: center;
+                            color: red;
+                            font-size: 30px;">Confirmation Alert</h4>
+                          </div>
+                          <div class="modal-body" style="font-size: 18px;
+                          text-align: center;">
+                            <p>Do you want to Delete this Category?</p>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-default" (click)="deleteClick(catagoryId)" data-dismiss="modal" style="background: red;
+                            color: white;
+                            border: red;
+                            width: 20%;
+                            height: 45px;
+                            font-size: 18px;">Delete</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal" style="background: gray;
+                            color: white;
+                            border: gray;
+                            width: 20%;
+                            height: 45px;
+                            font-size: 18px;">Cancel</button>
+                          </div>
+                        </div>
+                        
+                      </div>
+                    </div>  <!-- Delete Category PopUp Ends-->
+
+
+                          <!-- Update Category PopUp Starts-->
+                  <div class="modal fade" id="myModal1" role="dialog">
+                  <div class="modal-dialog">
+
+                  <!-- Modal content-->
+                  <div class="modal-content" style="margin-top:25%; width:119%;">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      <h4 class="modal-title"  style="text-align: center;
+                      color: green;
+                      font-size: 30px;">Confirmation Update</h4>
+                    </div>
+                    <div class="modal-body" style="font-size: 18px;
+                    text-align: center;">
+                      <p>Do You want to Update this category?</p>
+                      <input type="text" value="{{catagory}}" name="catagory" #updatedCatagory style="
+                      padding-left:2%;
+                      border-radius: 20px;
+                      width: 51%;
+                      height: 45px;
+                      margin-top: 3%;
+                      border: 1px solid red;">
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" (click)="UpdateClick(updatedCatagory.value)" data-dismiss="modal" style="background: green;
+                      color: white;
+                      border: green;
+                      width: 20%;
+                      height: 45px;
+                      font-size: 18px;">Update</button>
+                      <button type="button" class="btn btn-default" data-dismiss="modal" style="background: gray;
+                      color: white;
+                      border: gray;
+                      width: 20%;
+                      height: 45px;
+                      font-size: 18px;">Cancel</button>
+                    </div>
+                  </div>
+
+                  </div>
+                  </div> <!-- Update Category PopUp End-->
+
+    <head>
+      
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+      </head>

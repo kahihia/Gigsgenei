@@ -1,0 +1,146 @@
+<app-loader></app-loader>
+<section class="job-bg page job-details-page">
+  <div class="container" *ngFor="let j of jobsList">
+    <!--<div class="breadcrumb-section">-->
+      <!--<ol class="breadcrumb">-->
+        <!--<li *ngFor="let i of ListTrack"><a routerLink="{{i.Url}}">{{i.Name}}</a></li>-->
+        <!--</ol>&lt;!&ndash; breadcrumb &ndash;&gt;-->
+      <!--<h2 class="title">{{j.jobcatagory}}</h2>-->
+    <!--</div>&lt;!&ndash; breadcrumb &ndash;&gt;-->
+
+    <div class="banner-form banner-form-full job-list-form" style="margin-top: 75px;">
+      <!--<form action="#">-->
+        <!--&lt;!&ndash; category-change &ndash;&gt;-->
+
+            <!--<div class="dropdown category-dropdown">-->
+              <!--&lt;!&ndash;<div class="dropdown">&ndash;&gt;-->
+              <!--<a data-toggle="dropdown" href="#" aria-expanded="false"><span style="width: 100px;display: inline-block;vertical-align: middle;white-space: nowrap;overflow: hidden;text-overflow: ellipsis" class="change-text">{{drpTextCatagory}}</span> <i class="fa fa-angle-down fa-align-center"></i></a>-->
+              <!--<ul  class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu" style="height:200px;overflow-y: scroll;">-->
+                <!--<li class="divider"></li>-->
+                <!--<li style="cursor: text" class="dropdown-submenu" *ngFor="let i of temp; let ind=index" >&lt;!&ndash;(click)="list(i.catagory)"&ndash;&gt;-->
+                  <!--<a tabindex="-1">{{i.catagory}}</a>-->
+                  <!--<ul class="dropdown-submenu">-->
+                    <!--<li style="cursor: pointer" *ngFor="let k of i.values" (click)="list(k)"><a tabindex="-1">{{k}}</a></li>-->
+                    <!--&lt;!&ndash;<li  ><a tabindex="-1">val1</a></li>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<li  ><a tabindex="-1">Val2</a></li>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<li  ><a tabindex="-1">Val3</a></li>&ndash;&gt;-->
+                  <!--</ul>-->
+                <!--</li>-->
+              <!--</ul>-->
+            <!--</div>-->
+
+        <!--&lt;!&ndash; language-dropdown &ndash;&gt;-->
+        <!--<div class="dropdown category-dropdown language-dropdown">-->
+          <!--<a data-toggle="dropdown" href="#"><span class="change-text">Job Location</span> <i class="fa fa-angle-down"></i></a>-->
+          <!--<ul class="dropdown-menu category-change language-change">-->
+            <!--<li><a href="#">Location 1</a></li>-->
+            <!--<li><a href="#">Location 2</a></li>-->
+            <!--<li><a href="#">Location 3</a></li>-->
+          <!--</ul>-->
+        <!--</div>&lt;!&ndash; language-dropdown &ndash;&gt;-->
+
+        <!--<input type="text" class="form-control" placeholder="Type your key word">-->
+        <!--<button type="submit" class="btn btn-primary" value="Search">Search</button>-->
+      <!--</form>-->
+    </div><!-- banner-form -->
+
+    <div class="job-details">
+      <div class="section job-ad-item">
+        <div class="item-info">
+          <div class="item-image-box">
+            <div class="item-image">
+              <img src="../../assets/icons/icons8-Name-26.png" height="82" width="100"/> <!--<img src="../../assets/icons/briefcase_512.png" height="50" width="50"/>-->
+            </div><!-- item-image -->
+          </div>
+                 <div class="ad-info" style="margin-left: 43px;">
+            <span><a href="#" class="title"> Project Title: &nbsp;&nbsp;{{j.JobName}}</a></span>
+            <div class="ad-meta">
+              <ul>
+                <li><a ><img src="../../assets/icons/icons8-Countdown Clock-48.png" style="margin-right:10px;  margin-top: -5px;"   height="37" width="37"/> <b>Time </b> : {{j.CompletionTime}} Days</a></li>
+                <li><a >
+                  <img *ngIf="j.JobType==='public'" src="../../assets/icons/person_48.png"   style="margin-right:10px;" height="30" width="30"/>
+                  <img *ngIf="j.JobType==='private'" src="../../assets/icons/redlock_48.png" style="margin-right:10px;" height="30" width="30"/>
+                  <b>Status</b> : {{j.JobType}}</a></li>
+
+                <!--<li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i>San Francisco, CA, US</a></li>-->
+                <!--<li><a href="#"><i class="fa fa-clock-o" aria-hidden="true"></i>Full Time</a></li>-->
+                <!--<li><i class="fa fa-money" aria-hidden="true"></i>$25,000 - $35,000</li>-->
+                <!--<li><a href="#"><i class="fa fa-tags" aria-hidden="true"></i>HR/Org. Development</a></li>-->
+                <!--<li><i class="fa fa-hourglass-start" aria-hidden="true"></i>Application Deadline : Jan 10, 2017</li>-->
+              </ul>
+            </div><!-- ad-meta -->
+          </div><!-- ad-info -->
+        </div><!-- item-info -->
+
+        <!--routerLink="/sdashboard" [queryParams]="{jobid: j.id}"-->
+            <a class="btn-green" (click)="ApplyforJob()" id= "apply_job" style="cursor: pointer;" ><i style="margin-right: 10px;" class="fa fa-briefcase" aria-hidden="true"></i>Bid Now</a>
+            <br> <br> <br>
+
+            <a (click)="btnBookmarkClick(j.id)" *ngIf="CheckBookMark(j.id)" class="btn-blue" id="Bookmark" style="cursor: pointer;" ><i style="margin-right: 10px;" class="fa fa-bookmark-o" aria-hidden="true"></i>Bookmark</a>
+
+       <!--    <ul class="share-social">
+            <li>Share this ad</li>
+            <li><a href="#"><i class="fa fa-facebook-official" aria-hidden="true"></i></a></li>
+            <li><a href="#"><i class="fa fa-twitter-square" aria-hidden="true"></i></a></li>
+            <li><a href="#"><i class="fa fa-google-plus-square" aria-hidden="true"></i></a></li>
+            <li><a href="#"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a></li>
+            <li><a href="#"><i class="fa fa-pinterest-square" aria-hidden="true"></i></a></li>
+            <li><a href="#"><i class="fa fa-tumblr-square" aria-hidden="true"></i></a></li>
+          </ul> -->
+
+      </div><!-- job-ad-item -->
+
+      <div class="job-details-info">
+        <div class="row">
+          <div class="col-sm-8">
+            <div class="section job-description">
+              <div class="description-info">
+                <h1>Description of Project</h1>
+                <p><span>{{j.Description}}</span></p>
+              </div>
+
+              <div class="requirements">
+                <h1>Skills Required</h1>
+                <ul>
+                  <li *ngFor="let skill of j.skillsneeded;let ind=index;">{{ind+1}}){{skill.SkillName}}</li>
+                  <!--<li>2-5 years of relevant experience ( or equivalent educational experience)</li>-->
+                  <!--<li>Experience developing in Wordpress and other web design platforms</li>-->
+                  <!--<li>HTML, CSS and JavaScript experience a plus</li>-->
+               <!--    <li>In depth knowledge & technical experience of Photoshop, Illustrator, InDesign, Adobe PDF, Keynote, PowerPoint, Microsoft Word & Excel</li>
+                  <li>Exceptional eye for design, deep understanding of creativity and ability to recognize fresh approaches to Advertising </li>
+                  <li>Must be fluent in Spanish; working written and spoken proficiency</li>
+                  <li>**All applicants must be eligible to work in the U.S. without sponsorship</li> -->
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="section job-short-info">
+              <h1>Other Information</h1>
+              <ul>
+                <li><span class="icon"><i class="fa fa-industry" aria-hidden="true"></i></span> <b> Category: </b><a >{{j.JobCatagory}}</a></li>
+                <li><span class="icon"><img src="../../assets/icons/icons8-Name-26.png" height="20" width="20"/></span> <b> Project Title: </b> <a>{{j.JobName}}</a></li>
+                <li><span class="icon"><img src="../../assets/icons/icons8-Countdown Clock Filled-50.png" height="20" width="20"/></span> <b>Time Required: </b> <a>{{j.CompletionTime}} Days</a></li>
+                <li><span class="icon"><img src="../../assets/icons/icons8-CV Filled-50.png" height="20" width="20"/></span> <b>Experience: </b> <a>{{j.ExprienceLevel}}</a></li>
+                <!-- <li><span class="icon"><i class="fa fa-user-plus" aria-hidden="true"></i></span> Job poster: <a >Lance Ladaga</a></li> -->
+                </ul>
+            </div>
+
+          </div>
+        </div><!-- row -->
+      </div><!-- job-details-info -->
+    </div><!-- job-details -->
+  </div><!-- container -->
+</section><!-- job-details-page -->
+
+<section id="something-sell" class="clearfix parallax-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 text-center">
+        <h2 class="title">Add your resume and let your next job find you.</h2>
+        <h4>Post your Resume for free on <a href="#">Jobs.com</a></h4>
+        <a href="post-resume.html" class="btn btn-primary">Add Your Resume</a>
+      </div>
+    </div><!-- row -->
+  </div><!-- contaioner -->
+</section><!-- something-sell -->

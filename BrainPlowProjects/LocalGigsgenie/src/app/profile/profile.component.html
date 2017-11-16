@@ -1,0 +1,619 @@
+<app-loader></app-loader>
+<section class=" job-bg page  ad-profile-page">
+  <div class="container">
+    <!--<div class="breadcrumb-section">-->
+      <!--<ol class="breadcrumb">-->
+        <!--<li *ngFor="let i of ListTrack"><a routerLink="{{i.Url}}">{{i.Name}}</a></li>-->
+      <!--</ol>-->
+      <!--<h2 class="title">My Profile</h2>-->
+    <!--</div>&lt;!&ndash; breadcrumb-section &ndash;&gt;-->
+
+<app-profilesection></app-profilesection>
+
+    <div class="resume-content" style="margin-top: 70px;">
+
+      <div class="profile section clearfix" mdTooltip="User Profile Info" [mdTooltipPosition]="position">
+        <div class="profile-logo">
+          <img class="img-responsive" src="{{this.expressyourself.Resume}}" height="100" width="100" style="height: 90px; margin-top:20%;" alt="Image">
+        </div>
+        <div class="profile-info">
+          <h1>{{contractor.username}}</h1>
+              <!-- <address>
+            <p><!--Address: 123 West 12th Street, Suite 456 New York, NY 123456--> <br>
+               <!-- Phone No: {{contractor.PhoneNo}}<br> Email:<a> {{contractor.Email}}</a></p> 
+          </address> -->
+        </div>
+        <div style="margin-left: 40px;float: right;margin-top: -45px;">
+          <md-progress-spinner style="background-color: #d7d7d9;border-radius: 56px;"
+            mdTooltip="Profile Completion Percentage" [mdTooltipPosition]="position"
+            class="example-margin"
+            [color]="color"
+            [mode]="mode"
+            [value]="value">
+          </md-progress-spinner>
+        </div>
+      </div><!-- profile -->
+
+
+
+      <div class="work-history section">
+        <div class="icons">
+          <i class="fa fa-briefcase" aria-hidden="true"></i>
+        </div>
+        <div class="work-info">
+          <h3>Work History</h3>
+         
+ 
+            
+          <ul>
+            <li *ngFor="let work of workexprience;let ind=index;">
+              
+              <h4>{{work.CompanyName}}</h4>
+              <h4 style="text-align: center;
+              margin-top: -33px;
+              margin-right: 17%;">{{work.Designation}} </h4>
+               <h4 style="float:right;
+               margin-top: -47px;margin-right:60px;"><span>{{work.StartYear}} &nbsp;&nbsp;-&nbsp;&nbsp; {{work.EndYear}} </span></h4> 
+              <p [innerHTML]="work.Description|emoji"></p> <br> <br>
+              <button type="submit" value="Edit" (click)="btnworkEditClick(ind,work.CompanyName,work.Designation,work.StartYear,
+               work.EndYear,work.Description,work.id)"  class="EditBtn" 
+              data-toggle="modal" data-target="#myModal1" >Edit</button>
+
+            
+              <button type="submit" value="Delete" (click)="btnworkDeleteClick(work.id)" class="DelBtn" 
+              data-toggle="modal" data-target="#myModal2" >Delete</button>
+             
+              </li>
+          </ul>
+        </div>
+      </div><!-- work-history -->
+
+
+ <!-- Delete Work History PopUp Starts-->
+ <div class="modal fade" id="myModal2" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content" style="margin-top:25%; width:119%;">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title" style="text-align: center;
+          color: red;
+          font-size: 30px;">Confirmation Alert</h4>
+        </div>
+        <div class="modal-body" style="font-size: 18px;
+        text-align: center;">
+          <p>Do you want to Delete this Information?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" (click)="deleteworkexperienceClick(workId)" data-dismiss="modal" style="background: red;
+          color: white;
+          border: red;
+          width: 20%;
+          height: 45px;
+          font-size: 18px;">Delete</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal" style="background: gray;
+          color: white;
+          border: gray;
+          width: 20%;
+          height: 45px;
+          font-size: 18px;">Cancel</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>  <!-- Delete Work History PopUp Ends-->
+
+
+        <!-- Update Work History PopUp Starts-->
+<div class="modal fade" id="myModal1" role="dialog">
+<div class="modal-dialog">
+
+<!-- Modal content-->
+<div class="modal-content" style="margin-top:25%; width:119%;">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">&times;</button>
+    <h4 class="modal-title"  style="text-align: center;
+    color: green;
+    font-size: 30px;">Confirmation Update</h4>
+  </div>
+  <div class="modal-body" style="font-size: 18px;
+  text-align: center;">
+    <p>Do You want to Update this Information?</p> <br>
+    Company Name <br>
+    <input type="text" value="{{companyname}}" name="companyname" #updatedCompanyName style="
+    padding-left:2%;
+    border-radius: 20px;
+    width: 51%;
+    height: 45px;
+    margin-top: 3%;
+    border: 1px solid red;">
+
+    <br><br>
+    Designation <br>
+    <input type="text" value="{{designation}}" name="designation" #updatedDesignation style="
+    padding-left:2%;
+    border-radius: 20px;
+    width: 51%;
+    height: 45px;
+    margin-top: 3%;
+    border: 1px solid red;">
+    <br><br>
+   Start Date <br>
+    <input type="text" value="{{startYear}}" name="startYear" #updatedStartYear style="
+    padding-left:2%;
+    border-radius: 20px;
+    width: 51%;
+    height: 45px;
+    margin-top: 3%;
+    border: 1px solid red;">
+    <br><br>
+    End Date <br>
+    <input type="text" value="{{endYear}}" name="endYear" #updatedEndYear style="
+    padding-left:2%;
+    border-radius: 20px;
+    width: 51%;
+    height: 45px;
+    margin-top: 3%;
+    border: 1px solid red;">
+
+    <br><br>
+    Job Description <br>
+    <form>
+        <textarea style="
+        padding-left:2%;
+        border-radius: 20px;
+        width: 51%;
+        height: 80px;
+        margin-top: 3%;
+        border: 1px solid red;
+        padding: 12px 20px;
+        box-sizing: border-box;
+        border: 1px solid #f80000;
+        border-radius: 4px;
+        font-size: 16px;
+        resize: none;
+        margin-top: 5%;
+        margin-left: -3px;" value="{{description}}" name="description" #updatedDescription ></textarea>
+      </form>
+   
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-default" 
+    (click)="UpdateworkexperienceClick(updatedCompanyName.value,updatedDesignation.value, 
+    updatedStartYear.value, updatedEndYear.value, updatedDescription.value)" data-dismiss="modal" style="background: green;
+    color: white;
+    border: green;
+    width: 20%;
+    height: 45px;
+    font-size: 18px;">Update</button>
+    <button type="button" class="btn btn-default" data-dismiss="modal" style="background: gray;
+    color: white;
+    border: gray;
+    width: 20%;
+    height: 45px;
+    font-size: 18px;">Cancel</button>
+  </div>
+</div>
+
+</div>
+</div> <!-- Update Work History PopUp End-->
+
+
+      <div class="educational-background section">
+        <div class="icons">
+          <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+        </div>
+        <div class="educational-info">
+          <h3>Education Background</h3>
+          <ul>
+            <li *ngFor="let edu of education; let ind=index;">
+              <h4>
+                {{edu.Institution}}
+              </h4>
+              <h4 style="text-align: center;
+              margin-top: -16px;
+              margin-right: 17%;">{{edu.DegreeName}}</h4> 
+              <ul>
+                <li>
+                Year: <span>{{edu.StartYear}}&nbsp;&nbsp; - &nbsp;&nbsp;{{edu.EndYear}}</span> </li>
+                <!-- <li>Concentration/Major: <span>Major in Accounting</span></li> -->
+                <!--<li>Course Duration: <span>2 Years</span></li>--><br>
+                <li>Result: <span>{{edu.Percentile}}</span></li>
+              </ul>
+              <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p> -->
+              <button type="submit" value="Edit" (click)="btneducationEditClick(ind,edu.Institution,edu.DegreeName,edu.StartYear,
+              edu.EndYear,edu.Percentile,edu.id)" class="EditBtn" 
+              data-toggle="modal" data-target="#myModal3" >Edit</button>
+
+            
+              <button type="submit" value="Delete" (click)="btneducationDeleteClick(edu.id)" class="DelBtn" 
+              data-toggle="modal" data-target="#myModal4" >Delete</button>          
+            </li>
+          </ul>
+        </div>
+      </div><!-- educational-background -->
+
+    
+
+ <!-- Delete Education background PopUp Starts-->
+ <div class="modal fade" id="myModal4" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content" style="margin-top:25%; width:119%;">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title" style="text-align: center;
+          color: red;
+          font-size: 30px;">Confirmation Alert</h4>
+        </div>
+        <div class="modal-body" style="font-size: 18px;
+        text-align: center;">
+          <p>Do you want to Delete this Information?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" (click)="deleteeducationClick(eduId)" data-dismiss="modal" style="background: red;
+          color: white;
+          border: red;
+          width: 20%;
+          height: 45px;
+          font-size: 18px;">Delete</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal" style="background: gray;
+          color: white;
+          border: gray;
+          width: 20%;
+          height: 45px;
+          font-size: 18px;">Cancel</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>  <!-- Delete Education Background PopUp Ends-->
+
+
+        <!-- Update Education Background PopUp Starts-->
+<div class="modal fade" id="myModal3" role="dialog">
+<div class="modal-dialog">
+
+<!-- Modal content-->
+<div class="modal-content" style="margin-top:25%; width:119%;">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">&times;</button>
+    <h4 class="modal-title"  style="text-align: center;
+    color: green;
+    font-size: 30px;">Confirmation Update</h4>
+  </div>
+  <div class="modal-body" style="font-size: 18px;
+  text-align: center;">
+    <p>Do You want to Update this Information?</p> <br>
+    Institute Name <br>
+    <input type="text" value="{{institution}}" name="institution" #updatedInstitution style="
+    padding-left:2%;
+    border-radius: 20px;
+    width: 51%;
+    height: 45px;
+    margin-top: 3%;
+    border: 1px solid red;">
+
+    <br><br>
+    Degree <br>
+    <input type="text" value="{{degreename}}" name="degreename" #updatedDegreeName style="
+    padding-left:2%;
+    border-radius: 20px;
+    width: 51%;
+    height: 45px;
+    margin-top: 3%;
+    border: 1px solid red;">
+    <br><br>
+   Start Date <br>
+    <input type="text" value="{{startyear}}" name="startyear" #updatedStartYear style="
+    padding-left:2%;
+    border-radius: 20px;
+    width: 51%;
+    height: 45px;
+    margin-top: 3%;
+    border: 1px solid red;">
+    <br><br>
+    End Date <br>
+    <input type="text" value="{{endyear}}" name="endyear" #updatedEndYear style="
+    padding-left:2%;
+    border-radius: 20px;
+    width: 51%;
+    height: 45px;
+    margin-top: 3%;
+    border: 1px solid red;">
+
+    <br><br>
+    Percentile <br>
+    <input type="text" value="{{percentile}}" name="percentile" #updatedPercentile style="
+    padding-left:2%;
+    border-radius: 20px;
+    width: 51%;
+    height: 45px;
+    margin-top: 3%;
+    border: 1px solid red;">   
+
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-default" (click)="UpdateeducationClick(updatedInstitution.value,updatedDegreeName.value,
+    updatedStartYear.value,updatedEndYear.value,updatedPercentile.value)" data-dismiss="modal" style="background: green;
+    color: white;
+    border: green;
+    width: 20%;
+    height: 45px;
+    font-size: 18px;">Update</button>
+    <button type="button" class="btn btn-default" data-dismiss="modal" style="background: gray;
+    color: white;
+    border: gray;
+    width: 20%;
+    height: 45px;
+    font-size: 18px;">Cancel</button>
+  </div>
+</div>
+
+</div>
+</div> <!-- Update Education Background PopUp End-->
+
+<div class="work-history section">
+    <div class="icons">
+      <i class="fa fa-briefcase" aria-hidden="true"></i>
+    </div>
+    <div class="work-info">
+      <h3>Skills</h3>
+      <ul>
+          <!-- let ind=index; -->
+        <li *ngFor="let skill of skills; let ind=index;">
+          
+          <h4>{{skill.SkillName}}</h4>
+          <h4 style="text-align: center;
+          margin-top: -33px;
+          margin-right: 17%;">{{skill.SkillLevel}} </h4>
+          <!-- ind, -->
+          <button type="submit" value="Edit" (click)="btnskillsEditClick(ind,skill.SkillName,skill.SkillLevel,skill.id)"  class="EditBtn" 
+          data-toggle="modal" data-target="#myModal5" >Edit</button>
+
+        
+          <button type="submit" value="Delete" (click)="btnskillsDeleteClick(skill.id)" class="DelBtn" 
+          data-toggle="modal" data-target="#myModal6" >Delete</button>
+
+          
+          </li>
+      </ul>
+    </div>
+  </div><!-- Skills -->
+
+
+ <!-- Delete Skills PopUp Starts-->
+ <div class="modal fade" id="myModal6" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content" style="margin-top:25%; width:119%;">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title" style="text-align: center;
+          color: red;
+          font-size: 30px;">Confirmation Alert</h4>
+        </div>
+        <div class="modal-body" style="font-size: 18px;
+        text-align: center;">
+          <p>Do you want to Delete this Information?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" (click)="deleteskillsClick(skillId)" data-dismiss="modal" style="background: red;
+          color: white;
+          border: red;
+          width: 20%;
+          height: 45px;
+          font-size: 18px;">Delete</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal" style="background: gray;
+          color: white;
+          border: gray;
+          width: 20%;
+          height: 45px;
+          font-size: 18px;">Cancel</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>  <!-- Delete Skills PopUp Ends-->
+
+
+        <!-- Update Skills PopUp Starts-->
+<div class="modal fade" id="myModal5" role="dialog">
+<div class="modal-dialog">
+
+<!-- Modal content-->
+<div class="modal-content" style="margin-top:25%; width:119%;">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">&times;</button>
+    <h4 class="modal-title"  style="text-align: center;
+    color: green;
+    font-size: 30px;">Confirmation Update</h4>
+  </div>
+  <div class="modal-body" style="font-size: 18px;
+  text-align: center;">
+    <p>Do You want to Update this Information?</p> <br>
+    Skill Name <br>
+    <input type="text" value="{{skillname}}" name="skillname" #updatedSkillName style="
+    padding-left:2%;
+    border-radius: 20px;
+    width: 51%;
+    height: 45px;
+    margin-top: 3%;
+    border: 1px solid red;">
+
+    <br><br>
+    Skill Level <br>
+    <input type="text" value="{{skilllevel}}" name="skilllevel" #updatedSkillLevel style="
+    padding-left:2%;
+    border-radius: 20px;
+    width: 51%;
+    height: 45px;
+    margin-top: 3%;
+    border: 1px solid red;">
+    <br><br>
+  
+
+
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-default" (click)="UpdateskillsClick(updatedSkillName.value,updatedSkillLevel.value)" data-dismiss="modal" style="background: green;
+    color: white;
+    border: green;
+    width: 20%;
+    height: 45px;
+    font-size: 18px;">Update</button>
+    <button type="button" class="btn btn-default" data-dismiss="modal" style="background: gray;
+    color: white;
+    border: gray;
+    width: 20%;
+    height: 45px;
+    font-size: 18px;">Cancel</button>
+  </div>
+</div>
+
+</div>
+</div> <!-- Update Skills PopUp End-->
+
+<!-- 
+<div class="work-history section">
+    <div class="icons">
+      <i class="fa fa-user-circle" aria-hidden="true"></i>
+    </div>
+    <div class="work-info">
+      <h3>Introduction</h3>
+      <ul>
+        <li *ngFor="let intro of expressyourself;">
+          
+          <h4>{{intro.FullName}}</h4>
+          <h4 style="text-align: center;
+          margin-top: -33px;
+          margin-right: 17%;">{{intro.Description}} </h4>
+
+          <br>
+
+          <h4 style="text-align: center;
+          margin-top: -33px;
+          margin-right: 17%;">{{intro.Resume}} </h4>
+           
+          <button type="submit" value="Edit" (click)="btnEditClick(catObj.Catagory,catObj.id)"  class="EditBtn" 
+          data-toggle="modal" data-target="#myModal7" >Edit</button>
+
+        
+          <button type="submit" value="Delete" (click)="btnDeleteClick(catObj.id)" class="DelBtn" 
+          data-toggle="modal" data-target="#myModal8" >Delete</button>
+
+          
+          </li>
+      </ul>
+    </div>
+  </div>expressyourself -->
+
+
+   <!-- Delete express Youself PopUp Starts-->
+ <!-- <div class="modal fade" id="myModal8" role="dialog">
+    <div class="modal-dialog">
+    
+
+      <div class="modal-content" style="margin-top:25%; width:119%;">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title" style="text-align: center;
+          color: red;
+          font-size: 30px;">Confirmation Alert</h4>
+        </div>
+        <div class="modal-body" style="font-size: 18px;
+        text-align: center;">
+          <p>Do you want to Delete this Information?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" (click)="deleteClick(catagoryId)" data-dismiss="modal" style="background: red;
+          color: white;
+          border: red;
+          width: 20%;
+          height: 45px;
+          font-size: 18px;">Delete</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal" style="background: gray;
+          color: white;
+          border: gray;
+          width: 20%;
+          height: 45px;
+          font-size: 18px;">Cancel</button>
+        </div>
+      </div>
+      
+    </div>
+  </div> -->
+
+
+        <!-- Update express youself PopUp Starts-->
+<!-- <div class="modal fade" id="myModal7" role="dialog">
+<div class="modal-dialog">
+
+
+<div class="modal-content" style="margin-top:25%; width:119%;">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">&times;</button>
+    <h4 class="modal-title"  style="text-align: center;
+    color: green;
+    font-size: 30px;">Confirmation Update</h4>
+  </div>
+  <div class="modal-body" style="font-size: 18px;
+  text-align: center;">
+    <p>Do You want to Update this Information?</p> <br>
+    Full Name <br>
+    <input type="text" value="{{catagory}}" name="fullname" #updatedCatagory style="
+    padding-left:2%;
+    border-radius: 20px;
+    width: 51%;
+    height: 45px;
+    margin-top: 3%;
+    border: 1px solid red;">
+
+    <br><br>
+   Introduction <br>
+    <input type="text" value="{{catagory}}" name="introduction" #updatedCatagory style="
+    padding-left:2%;
+    border-radius: 20px;
+    width: 51%;
+    height: 45px;
+    margin-top: 3%;
+    border: 1px solid red;">
+    <br><br>
+       
+
+    <br><br>
+    Introduction <br>
+     <input type="file" value="{{catagory}}" name="picture" #updatedCatagory style="
+     padding-left:2%;
+     border-radius: 20px;
+     width: 51%;
+     height: 45px;
+     margin-top: 3%;
+     border: 1px solid red;">
+     <br><br>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-default" (click)="UpdateClick(updatedCatagory.value)" data-dismiss="modal" style="background: green;
+    color: white;
+    border: green;
+    width: 20%;
+    height: 45px;
+    font-size: 18px;">Update</button>
+    <button type="button" class="btn btn-default" data-dismiss="modal" style="background: gray;
+    color: white;
+    border: gray;
+    width: 20%;
+    height: 45px;
+    font-size: 18px;">Cancel</button>
+  </div>
+</div> -->
+
+<!-- </div> -->
+<!-- </div> -->
+</div> 
+
+  </div><!-- container -->
+</section><!-- ad-profile-page -->

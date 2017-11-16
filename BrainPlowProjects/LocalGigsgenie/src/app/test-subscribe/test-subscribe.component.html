@@ -1,0 +1,113 @@
+<!-- <p>
+  test-subscribe works!
+</p>
+ -->
+
+ <!-- signin-page -->
+<section class="clearfix job-bg user-page">
+  <div class="container" >
+    <div class="row text-center">
+      <!-- user-login -->
+      <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+        <div class="user-account">
+          <h2>Please Provide your Information</h2>
+
+          <!-- form -->
+          <form
+            name= "form"
+            #f = "ngForm"
+            (ngSubmit)="f.form.valid && onSubmit()">
+
+
+
+
+
+           <div class="form-group" style="position: relative">
+             <div style="position: relative">
+               <input type="text" class="form-control" placeholder="Enter your Username Here" #username = "ngModel" [(ngModel)] = "model.username" name = "username" required>
+               <div *ngIf="f.submitted && !username.valid"  style="position: absolute;top: 10px;right: 10px;">
+                 <span style="color: red;margin-right: 10px; ">User Name Required</span>
+               </div>
+               </div>
+           </div>
+
+                    <!--<div *ngIf="f.submitted && !username.valid ">-->
+                      <!--<span style="color: red;margin-right: 10px; ">User Name Required</span>-->
+                    <!--</div>-->
+
+
+
+
+            <div class="form-group" style="position: relative">
+              <div style="position: relative">
+              <input type="text" class="form-control" placeholder="Enter your Name Here"  #name = "ngModel" [(ngModel)] = "model.name" name = "name" required>
+                <div *ngIf="f.submitted && !name.valid"  style="position: absolute;top: 10px;right: 10px;">
+                  <span style="color: red;margin-right: 10px;">Name is Required</span>
+                </div>
+                </div>
+                  <!--<div *ngIf="f.submitted && !name.valid">-->
+                      <!--<span style="color: red;margin-right: 10px;">Name is Required</span>-->
+                    <!--</div>             -->
+            </div>
+
+<!--
+              <div class="form-group">
+              <input type="text" class="form-control" placeholder="Enter your Email Here" #email = "ngModel" [(ngModel)] = "model.email" name = "email"  required
+              pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"/>
+
+                   <div *ngIf="f.submitted && !email.valid">
+                      <span style="color: red;margin-right: 10px;">Email is Required</span>
+                    </div>
+
+                   <div *ngIf="email.errors && email.errors.pattern">
+                   <span style="color: red;margin-right: 10px;">Email is Invalid</span>
+                  </div>
+
+        </div>
+ -->
+    <div class="form-group">
+
+      <div style="position: relative">
+      <input type="text" class="form-control" placeholder="Enter your Email Here" #email = "ngModel" [(ngModel)] = "model.email" name = "email"  required
+     pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"/>
+        <div *ngIf="f.submitted && !email.valid && !(email.errors && email.errors.pattern)"  style="position: absolute;top: 10px;right: 10px;">
+          <span style="color: red;margin-right: 10px;">Email is Required</span>
+        </div>
+        <div *ngIf="email.errors && email.errors.pattern"  style="position: absolute;top: 10px;right: 10px;">
+          <span style="color: red;margin-right: 10px;">Email is Invalid</span>
+        </div>
+      </div>
+ <!--<div class="md-errors-spacer" [hidden]="email.valid && email.untouched">-->
+            <!--<div  *ngIf="email.errors && email.errors.required">-->
+             <!--<span style="color: red;margin-right: 10px;">Email is Required</span>-->
+            <!--</div>-->
+            <!--<div  *ngIf="email.errors && email.errors.pattern">-->
+               <!--<span style="color: red;margin-right: 10px;">Email is Invalid</span>-->
+            <!--</div>-->
+          <!--</div>-->
+        </div>
+
+
+
+             <select class="form-control" name="a5" style="overflow-y: auto;max-height: 300px;"  #field = "ngModel" [(ngModel)] = "model.field" name = "field" required>
+
+
+
+                  <option value="wordpress">Word Press</option>
+                  <option value="Logo Designing">Logo Designing</option>
+
+
+        </select>
+
+
+            <!-- <div style="color: red" *ngIf="boolchkLogin" class="help-block">*Invalid Details</div> -->
+            <button type="submit" class="btn" > Continue</button>
+            <!-- </form>form -->
+
+          <!-- forgot-password -->
+
+        <!-- <a routerLink="/starttest" class="btn-primary">Continue</a> -->
+      <!-- </div>user-login -->
+   <!--  </div>row -->
+
+<!-- </section>signin-page -->

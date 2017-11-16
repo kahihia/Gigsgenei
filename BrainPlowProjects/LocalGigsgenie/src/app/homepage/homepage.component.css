@@ -1,0 +1,334 @@
+/*Banner 1920x400*/
+.business-header {
+  height: 50vh;
+  min-height: 300px;
+  background: url('http://placehold.it/1920x400') center center no-repeat scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+}
+/*Search Bar Overlay*/
+.overlay {
+  height: 0%;
+  width: 100%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0, 0.5);
+  overflow-y: hidden;
+  transition: 0.5s;
+}
+
+.overlay-content {
+  position: relative;
+  top: 15%;
+  width: 100%;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.overlay a {
+  padding: 8px;
+  text-decoration: none;
+  font-size: 36px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.overlay a:hover, .overlay a:focus {
+  color: #f1f1f1;
+}
+
+.overlay .closebtn {
+  position: absolute;
+  top: 20px;
+  right: 45px;
+  font-size: 60px;
+}
+
+@media screen and (max-height: 450px) {
+  .overlay {
+    overflow-y: auto;
+  }
+
+  .overlay a {
+    font-size: 20px
+  }
+
+  .overlay .closebtn {
+    font-size: 40px;
+    top: 15px;
+    right: 35px;
+  }
+}
+
+  #custom-search-input1 {
+    margin:0;
+    margin-top: 10px;
+    padding: 0;
+  }
+
+  #custom-search-input1 .search-query {
+    padding-right: 3px;
+    padding-right: 4px \9;
+    padding-left: 3px;
+    padding-left: 4px \9;
+    /* IE7-8 doesn't have border-radius, so don't indent the padding */
+
+    margin-bottom: 0;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+  }
+
+  #custom-search-input1 button {
+    border: 0;
+    background: none;
+    /** belows styles are working good */
+    padding: 2px 5px;
+    margin-top: 2px;
+    position: relative;
+    left: -28px;
+    /* IE7-8 doesn't have border-radius, so don't indent the padding */
+    margin-bottom: 0;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    color:#D9230F;
+  }
+/*Search Bar Simple*/
+#custom-search-input {
+  margin:0;
+  margin-top: 10px;
+  padding: 0;
+}
+
+#custom-search-input .search-query {
+  padding-right: 3px;
+  padding-right: 4px \9;
+  padding-left: 3px;
+  padding-left: 4px \9;
+  /* IE7-8 doesn't have border-radius, so don't indent the padding */
+
+  margin-bottom: 0;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+
+#custom-search-input button {
+  border: 0;
+  background: none;
+  /** belows styles are working good */
+  padding: 2px 5px;
+  margin-top: 2px;
+  position: relative;
+  left: -28px;
+  /* IE7-8 doesn't have border-radius, so don't indent the padding */
+  margin-bottom: 0;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  color:#D9230F;
+}
+
+/*.search-query:focus + button {*/
+  /*z-index: 3;*/
+/*}*/
+
+
+
+
+
+
+
+
+
+
+/*Home Page Css*/
+.span12{
+
+  /* width: 1115px;  */
+}
+.span3{
+  width: 255px;
+}
+
+h4.title{
+
+  /*background: url(./assets/themes/images/line_bar.png) 0 8px repeat-x;*/
+  padding-bottom: 5px;
+  margin-bottom: 15px;
+  overflow: hidden;
+  text-transform: uppercase;
+  font-size: 15px;
+  min-height: 27px;
+  width: 100%;
+
+}
+
+/*h4.title img{
+	background: url(./assets/themes/images/line_bar.png) 0 8px repeat-x;
+
+}*/
+
+#search{
+  border: 2px solid #f80000;
+  font-size: 20px;
+  height: 70px;
+  width: 1115px;
+  background-color: antiquewhite;
+}
+.fa-2x {
+  font-size: 3em;
+  margin-left: 1510%;
+  margin-top: 6px;
+}
+
+
+hr{
+  color: red;
+}
+
+  .img-circle {       border-radius: 50%;
+    width: 46px;
+    height: 46px;
+    margin-left: -23px;}
+
+
+@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+
+fieldset, label { margin: 0; padding: 0; }
+body{ margin: 20px; }
+h1 { font-size: 1.5em; margin: 10px; }
+
+/****** Style Star Rating Widget *****/
+
+.ratings {
+  border: none;
+  margin-right: 66px;
+  margin-top: 5px;
+  /* padding-bottom: 0%; */
+  margin-bottom: -12px;
+}
+
+.ratings > input { display: none; }
+.ratings > label:before {
+  margin: 5px;
+  font-size: 1.25em;
+  font-family: FontAwesome;
+  display: inline-block;
+  content: "\f005";
+}
+
+.ratings > .half:before {
+  content: "\f089";
+  position: absolute;
+}
+
+.ratings > label {
+  color: #ddd;
+  float: right;
+}
+
+/***** CSS Magic to Highlight Stars on Hover *****/
+
+.ratings > input:checked ~ label, /* show gold star when clicked */
+.ratings:not(:checked) > label:hover, /* hover current star */
+.ratings:not(:checked) > label:hover ~ label { color: #FFD700;  } /* hover previous stars in list */
+
+.ratings > input:checked + label:hover, /* hover current star when changing rating */
+.ratings > input:checked ~ label:hover,
+.ratings > label:hover ~ input:checked ~ label, /* lighten current selection */
+.ratings > input:checked ~ label:hover ~ label { color: #FFED85;  }
+
+
+
+h4.title .pull-left {
+  padding-bottom: 11px;
+  padding-top: 2%;
+}
+
+.row feature_box{
+
+  background-color:#1b2c39; color:white; margin-left:-39px; width:107.5%; font-size:18px;
+}
+
+@media only screen and (max-width: 1300px) {
+
+#search{
+  margin-top: 15%;
+  width: 300%;
+  margin-left: 6%;
+}
+
+.fa-2x {
+  font-size: 2em;
+  margin-left: 1348%;
+  margin-top: 50%;
+}
+
+
+h4.title .left{
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+}
+.myCarousel.carousel {
+  margin-bottom: 0;
+}
+
+h4.title .pull-left {
+  background-color: #fff;
+  padding-right: 10px;
+}
+h4.title .pull-right {
+  background-color: #fff;
+  padding-right: 10px;
+}
+
+.product-box{
+
+  margin-top: 24px;
+}
+}
+
+@media only screen and (max-width: 700px) {
+
+  #search{
+    width: 97%;
+    margin-left: 4px;
+    margin-top: -10px;
+
+  }
+  .fa-2x {
+    font-size: 2em;
+
+
+  }
+.span12{
+  width: 94%;
+  padding-left:12px;
+}
+
+h4.title strong {
+  margin-left: 11px;
+  font-size: 19px;
+
+}
+.product-box{
+  padding-top: 0px;
+  margin-left: 12%;
+
+  }
+
+  #box{
+
+    margin: 0px;
+  }
+}

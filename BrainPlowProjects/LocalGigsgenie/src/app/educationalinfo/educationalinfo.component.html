@@ -1,0 +1,208 @@
+<app-loader></app-loader>
+
+<section class=" job-bg ad-details-page">
+
+  <div class="container">
+
+    <!--<div class="breadcrumb-section">-->
+    <!--&lt;!&ndash; breadcrumb &ndash;&gt;-->
+    <!--<ol class="breadcrumb">-->
+    <!--<li *ngFor="let i of ListTrack"><a routerLink="{{i.Url}}">{{i.Name}}</a></li>-->
+    <!--</ol>-->
+    <!--<h2 class="title">Post My Resume</h2>-->
+    <!--</div>&lt;!&ndash; banner &ndash;&gt;-->
+
+    <div class="job-postdetails post-resume" style="margin-top: 75px;">
+      <div class="row">
+        <div class="col-md-8 clearfix">
+          <fieldset>
+            <div class="alert alert-success alert-dismissable" *ngIf="ShowHideAlert"><!--*ngIf="ShowHideAlert"-->
+              <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+              <strong> '{{UserName}}' &nbsp; You Successfully Added Your Educational Information!&nbsp;</strong>
+            </div>
+            <form
+              name="form" role="form" (ngSubmit)="f.form.valid && PushEducation(institute1.value,degree1.value,startdate1.value,enddate1.value,percentile1.value,f)" #f="ngForm" novalidate>
+              <div class="panel panel-default">
+                <div class="panel-heading" style="font-size: 50px;
+                font-family: -webkit-body;">
+                  Education Background
+                </div>
+                <!--<div class="panel-body">-->
+                <div class="section education-background">
+
+
+
+                  <md-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle="true" style="margin-bottom: 30px;">
+                    <md-expansion-panel-header>
+                      <md-panel-title>
+                        <i class="fa fa-plus-circle fa-3x" aria-hidden="true"></i>
+                      </md-panel-title>
+                      <md-panel-description style="font-size: x-large;color: black;">
+                        Click to Add Education
+                      </md-panel-description>
+                    </md-expansion-panel-header>
+                    <md-form-field>
+
+
+
+
+                      <div class="row form-group">
+                        <label class="col-sm-3 label-title">Institute Name</label>
+                        <div class="col-sm-9">
+                          <!--<input type="text" name="name1" class="form-control" placeholder="Oxford University" [(ngModel)]="model.institute" #institute="ngModel" #institute1-->
+                          <!--required >-->
+                          <div style="position: relative">
+                            <input type="text" id="institutenameid" name="name1" class="form-control" placeholder="Oxford University" [(ngModel)]="model.institute" #institute="ngModel" #institute1
+                                   required />
+                            <div *ngIf="f.submitted && formSubmitted && !institute.valid" style="position: absolute;top: 10px;right: 10px;">
+                              <span style="color: red;margin-right: 10px;">Institute Name is required</span><img src="../../assets/icons/cancel_16.png" height="16" width="16">
+                            </div>
+                            <div *ngIf="f.submitted && formSubmitted &&   institute.valid"  style="position: absolute;top: 10px;right: 10px;">
+                              <img src="../../assets/icons/tick_48.png" height="16" width="16"/>
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+
+                      <div class="row form-group">
+                        <label class="col-sm-3 label-title">Degree</label>
+                        <div class="col-sm-9">
+                          <div style="position: relative;">
+                            <input type="text"  autocomplete="on" id="insname" (keyup)="degreeChange(degree1.value)" name="name2" class="form-control" placeholder="Human Resource Manager" [(ngModel)]="model.degree" #degree="ngModel" #degree1
+                                   required list="languageList1"/>
+                            <datalist id="languageList1" style="overflow-y: auto;max-height: 300px;">
+                              <option *ngFor="let i of degreename" value="{{i.Name}}" ></option>
+                            </datalist>
+                            <div *ngIf="f.submitted && formSubmitted &&  !degree.valid" style="position: absolute;top: 10px;right: 10px;">
+                              <span style="color: red;margin-right: 10px;">Degree Name is required</span><img src="../../assets/icons/cancel_16.png" height="16" width="16">
+                            </div>
+                            <div *ngIf="f.submitted && formSubmitted &&   degree.valid"  style="position: absolute;top: 10px;right: 10px;">
+                              <img src="../../assets/icons/tick_48.png" height="16" width="16"/>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+
+                      <div class="row form-group time-period">
+                        <label class="col-sm-3 label-title">Time Period</label>
+                        <div class="col-sm-9">
+                          <div style="position: relative;">
+                            <input mdInput (dateChange)="onChangeStartdate($event)" [min]="minDateStart" [max]="maxDateStart" [mdDatepicker]="pickerstart" placeholder="Choose a start date" name="startdate" class="form-control" [(ngModel)]="model.startdate" #startdate="ngModel" #startdate1
+                                   required ><span>-</span>
+                            <div style="position: absolute;top: 0px;right: 278px;">
+                              <md-datepicker-toggle mdSuffix [for]="pickerstart"></md-datepicker-toggle>
+                              <md-datepicker #pickerstart></md-datepicker>
+                            </div>
+                            <input mdInput (dateChange)="onChangeEnddate($event)" [min]="minDateEnd" [max]="maxDateEnd" [mdDatepicker]="picker" name="enddate" class="form-control pull-right" placeholder="Choose a end date"  [(ngModel)]="model.enddate" #enddate="ngModel" #enddate1
+                                   required >
+                            <div style="position: absolute;top: 0px;right: 3px;">
+                              <md-datepicker-toggle mdSuffix [for]="picker"></md-datepicker-toggle>
+                              <md-datepicker #picker></md-datepicker>
+                            </div>
+                            <div *ngIf="f.submitted && formSubmitted &&  !startdate.valid" style="position: absolute;top: 10px;right: 324px;">
+                              <span style="color: red;margin-right: 10px;"></span><img src="../../assets/icons/cancel_16.png" height="16" width="16">
+                            </div>
+                            <div *ngIf="f.submitted &&  formSubmitted &&  startdate.valid"  style="position: absolute;top: 10px;right: 324px;">
+                              <img src="../../assets/icons/tick_48.png" height="16" width="16"/>
+                            </div>
+                            <div *ngIf="f.submitted &&  formSubmitted && !enddate.valid" style="position: absolute;top: 10px;right: 52px;">
+                              <span style="color: red;margin-right: 10px;"></span><img src="../../assets/icons/cancel_16.png" height="16" width="16">
+                            </div>
+                            <div *ngIf="f.submitted &&  formSubmitted &&  enddate.valid"  style="position: absolute;top: 10px;right: 52px;">
+                              <img src="../../assets/icons/tick_48.png" height="16" width="16"/>
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+
+
+                      <div class="row form-group job-description">
+                        <label class="col-sm-3 label-title">Percentile</label>
+                        <div class="col-sm-9">
+                          <div style="position: relative;">
+                            <!--<textarea class="form-control" placeholder="" rows="8"></textarea>-->
+                            <input type="number" name="name" min="33" max="100" class="form-control" placeholder="80%"  [(ngModel)]="model.percentile" #percentile="ngModel" #percentile1
+                                   required list="languageList2" >
+                            <datalist id="languageList2" style="overflow-y: auto;max-height: 300px;">
+                              <option *ngFor="let i of Items" value="{{i}}" ></option>
+                            </datalist>
+                            <div *ngIf="f.submitted && formSubmitted &&  !percentile.valid" style="position: absolute;top: 10px;right: 10px;">
+                              <span style="color: red;margin-right: 10px;">percentile is required</span><img src="../../assets/icons/cancel_16.png" height="16" width="16">
+                            </div>
+                            <div *ngIf="f.submitted && formSubmitted &&   percentile.valid"  style="position: absolute;top: 10px;right: 10px;">
+                              <img src="../../assets/icons/tick_48.png" height="16" width="16"/>
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+                    </md-form-field>
+
+                    <md-action-row>
+
+                      <a><button (click)="FormSubmitted()" type="submit"  name="submit" class="btn-green">{{AddUpdateButtonText}}</button></a>
+                      &nbsp;&nbsp;<a><button (click)="cancelClickAddEducation(f)" class="btn-blue" name="next">Cancel</button></a>
+                    </md-action-row>
+                  </md-expansion-panel>
+
+                  <div class="row form-group" *ngFor="let educationobj of educationObjList;let ind=index;">
+                    <md-expansion-panel [expanded]="step === (ind+1)" (opened)="setStep(ind+1)" hideToggle="true">
+                      <md-expansion-panel-header>
+                        <md-panel-title>
+                          {{ind+1}}){{educationobj.Institution}}
+                        </md-panel-title>
+                        <md-panel-description>
+                          {{educationobj.DegreeName}}
+                          <!--<md-icon>map</md-icon>-->
+                        </md-panel-description>
+                      </md-expansion-panel-header>
+
+                      <md-form-field>
+                        <label>Institue : {{educationobj.Institution}}</label><br>
+                        <label>Degree : {{educationobj.DegreeName}}</label><br>
+                        <label>Start Date : {{educationobj.StartYear}}</label><br>
+                        <label>Completion Date : {{educationobj.EndYear}}</label><br>
+                        <label>Percetile : {{educationobj.Percentile}}</label><br>
+                      </md-form-field>
+
+                      <md-action-row>
+                        <button md-button color="warn" (click)="DeleteEducationObj(ind)">Delete</button>
+                        <button md-button color="primary" (click)="EditEducationObj(ind)">Edit</button>
+                      </md-action-row>
+                    </md-expansion-panel>
+                  </div>
+                  <div class="row form-group">
+                    <div *ngIf="educationObjList.length > 0" class="buttons pull-right">
+                      <a><button (click)="UpdateEducationalInfo()" type="submit"  name="submit" class="btn-green">Save</button></a>
+                      &nbsp;&nbsp;<a style="cursor: pointer;" (click)="DeleteallEducationalInfo()">Cancel</a>
+                    </div>
+                  </div>
+                  <div class="row form-group">
+                    <div class="buttons pull-right">
+                      <a><button routerLink="/workexperience" class="btn-green">Next</button></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </fieldset></div>
+
+        <!-- quick-rules -->
+        <div class="col-md-4">
+          <div class="section quick-rules">
+            <h4>Quick rules about Education Background</h4>
+            <!-- <p class="lead">Posting an ad on <a href="#">jobs.com</a> is free! However1, all ads must follow our rules:</p> -->
+            <ul>
+              <li>Institute name is your educational institute name from where you studied</li>
+              <li>Degree name means your degree. Enter the degree name that you have received</li>
+              <li>Time Period is the time that you spent in particular degree</li>
+
+              <li>Percentage is your Percentage that you received in particular degree. Please Enter only Integer value here</li>
+
+            </ul>
+          </div>
+        </div>
+      </div></div></div></section>

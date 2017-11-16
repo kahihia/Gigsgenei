@@ -1,0 +1,159 @@
+<app-loader></app-loader>
+
+<section class=" job-bg ad-details-page">
+  <div class="container">
+
+    <!--<div class="breadcrumb-section">-->
+    <!--&lt;!&ndash; breadcrumb &ndash;&gt;-->
+    <!--<ol class="breadcrumb">-->
+    <!--<li *ngFor="let i of ListTrack"><a routerLink="{{i.Url}}">{{i.Name}}</a></li>-->
+    <!--</ol>-->
+    <!--<h2 class="title">Post My Resume</h2>-->
+    <!--</div>&lt;!&ndash; banner &ndash;&gt;-->
+
+    <div class="job-postdetails post-resume" style="margin-top: 75px;">
+      <div class="row">
+        <div class="col-md-8 clearfix">
+          <fieldset>
+
+            <div class="alert alert-success alert-dismissable" *ngIf="ShowHideAlert"><!--*ngIf="ShowHideAlert"-->
+              <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+              <strong> '{{UserName}}' &nbsp; You Successfully Added Your Skills Information!&nbsp;</strong>
+            </div>
+
+            <form  name="form" role="form" (ngSubmit)="f.form.valid && onSubmit(fullname1.value,description1.value)" #f="ngForm" novalidate>
+              <div class="panel panel-default">
+                <div class="panel-heading" style="font-size: 50px;
+                font-family: -webkit-body;">
+                  Express Yourself
+                </div>
+                <div class="panel-body">
+                  <div class="section express-yourself">
+                    <!--<h4 style="font-size: 50px;font-family: -webkit-body;">Express Yourself</h4>-->
+
+
+
+                    <div class="row form-group">
+                      <label class="col-sm-4 label-title">Full Name</label>
+                      <div class="col-sm-8">
+                        <div style="position: relative;">
+                          <input type="text" name="name" class="form-control" placeholder="ex Jhon Doe"  [(ngModel)]="model.fullname" #fullname="ngModel" #fullname1
+                                 required >
+                          <div *ngIf="f.submitted && !fullname.valid" style="position: absolute;top: 10px;right: 10px;">
+                            <span style="color: red;margin-right: 10px;">Name is required</span><img src="../../assets/icons/cancel_16.png" height="16" width="16">
+                          </div>
+                          <div *ngIf="f.submitted &&  fullname.valid"  style="position: absolute;top: 10px;right: 10px;">
+                            <img src="../../assets/icons/tick_48.png" height="16" width="16"/>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!--<div style="color: red" *ngIf="f.submitted && !fullname.valid" class="help-block">*Name is required</div>-->
+                    <!--<div class="help-block" style="color: red" *ngIf="fullname.errors && fullname.errors.pattern">-->
+                    <!--*Name is invalid-->
+                    <!--</div>-->
+
+
+                    <div class="row form-group additional-information">
+                      <label class="col-sm-4 label-title">Introduction</label>
+                      <div class="col-sm-8">
+                        <div style="position: relative;">
+    <textarea class="form-control" placeholder="
+    I am very good at learning ..."
+              name="name2" [(ngModel)]="model.description" #description="ngModel" #description1
+              required ></textarea>
+                          <div *ngIf="f.submitted && !description.valid" style="position: absolute;top: 10px;right: 10px;">
+                            <span style="color: red;margin-right: 10px;">Information is required</span><img src="../../assets/icons/cancel_16.png" height="16" width="16">
+                          </div>
+                          <div *ngIf="f.submitted &&  description.valid"  style="position: absolute;top: 10px;right: 10px;">
+                            <img src="../../assets/icons/tick_48.png" height="16" width="16"/>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!--<div style="color: red" *ngIf="f.submitted && !description.valid" class="help-block">*Description is required</div>-->
+                    <!--<div class="help-block" style="color: red" *ngIf="description.errors && description.errors.pattern">-->
+                    <!--*Description is invalid-->
+                    <!--</div>-->
+
+
+
+
+
+                    <div class="row form-group photos-resume" style="margin-top: 50px;">
+                      <label>Upload Profile Picture</label>
+                      <div class="col-lg-12">
+                        <div class="container-fluid">
+                          <div style=" float: right;border: 1px solid;" class="col-md-2" *ngIf="!FuncCheckNumberOfImages()">
+                            <div class="new" (click)="OverLay(myNav)">
+                              <img accept=".jpg, .jpeg, .png" src="{{ImgSrc}}" alt="your image" allowmultiple="true"/>
+                            </div>
+                            <span (click)="removeItem()" style="cursor:pointer;position:relative;float:right;margin: 2px;">
+                          <img class="cancel-icon" src="../../assets/icons/cancel_16.png" height="20" width="20"/>
+                      </span>
+                            <span (click)="OverLay(myNav)" style="cursor:pointer;position:relative;float:left;margin-top: -7px;">
+                        <img class="gallery-icon" src="../../assets/icons/gallery_512.png" height="37" width="37"/></span>
+                          </div>
+                          <div style=" float: right;" *ngIf="FuncCheckNumberOfImages()">
+                            <label style=" float: right;"  class="upload-image left">
+                              Add Image
+                              <input class="file" (change)="onChange($event)" type="file" data-preview-file-type="text" id="file1"
+                                     accept=".jpg, .jpeg, .png"  name="file" #Picture multiple ng-files="getTheFiles($files)" />
+                              <img accept=".jpg, .jpeg, .png" src="../../assets/icons/addimage_512.png" alt="Add Image"/>
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div style="color: red" *ngIf="f.submitted && FuncCheckNumberOfImages()" class="help-block">*Profile Photo is required</div>
+                    <!--<div class="help-block" style="color: red" *ngIf="description.errors && description.errors.pattern">-->
+                    <!--*Description is invalid-->
+                    <!--</div>-->
+
+                    <div #myNav class="overlay" (click)="closeNav(myNav)" >
+                      <a href="javascript:void(0)" class="closebtn" style="margin-top: 60px;" (click)="closeNav(myNav)">&times;</a>
+                      <div class="overlay-content">
+                        <img style="display: inline-block;vertical-align: middle; height:500px; width: 700px;" src="{{ImgSrc}}" alt="your image" />
+                      </div>
+                    </div>
+
+
+                    <!--<div class="row form-group photos-resume">-->
+                    <!--<label class="col-sm-4 label-title">Photos for your Resume</label>-->
+                    <!--<div class="col-sm-8 ">-->
+                    <!--<label class="upload-image left">-->
+                    <!--<input class="file" (change)="onChange($event)" type="file" data-preview-file-type="text" id="file1"-->
+                    <!--name="file" #Picture multiple ng-files="getTheFiles($files)" />-->
+                    <!--Type: JPG, PNG  Size: 3.5 x 4.5 cm-->
+                    <!--</label>-->
+                    <!--<label class="upload-image" for="upload-image-two">-->
+                    <!--<input type="file" id="upload-image-two">-->
+                    <!--Upload Photo-->
+                    <!--</label>-->
+                    <!--</div>-->
+                    <!--</div>-->
+                    <div class="buttons pull-right" style="margin-top: 55px;">
+                      <a><button type="submit"  name="submit" class="btn-green">Save</button></a>
+                       &nbsp;&nbsp;<a routerLink="/profile"><button type="submit"  name="submit" class="btn-blue">Show Resume</button></a>
+                    </div>
+
+                  </div><!-- postdetails -->
+                </div>
+              </div>
+            </form></fieldset></div>
+        <!-- quick-rules -->
+        <div class="col-md-4">
+          <div class="section quick-rules">
+            <h4>Quick rules about Express Yourself </h4>
+            <!-- <p class="lead">Posting an ad on <a href="#">jobs.com</a> is free! However, all ads must follow our rules:</p> -->
+
+            <ul>
+              <li>Write your full name. Please write your original name that you mentioned in your Bank Details and other official documents</li>
+              <li>Tell me something about Yourself in Introduction field</li>
+              <li>Upload your profile picture from here. This profile picture will show everywhere in GigsGenie</li>
+
+            </ul>
+          </div>
+        </div>
+      </div></div></div></section>

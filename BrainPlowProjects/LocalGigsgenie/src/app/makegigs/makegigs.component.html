@@ -1,0 +1,798 @@
+<app-loader></app-loader>
+<!--<nav class="navbar navbar-default navbar-fixed-top" id="affix">-->
+  <!--<div class="container">-->
+    <!--<ul class="nav navbar-nav">-->
+      <!--<li style="background-color: #a3ff9e"><a href="#"><img-->
+        <!--src="../../assets/icons/palce1_128.png" height="30" width="30"/> &nbsp;&nbsp;Add Pics</a></li>-->
+
+      <!--<li ><a ><img-->
+        <!--src="../../assets/icons/two_128.png" height="30" width="30"/>&nbsp;&nbsp;Overview</a></li>-->
+
+      <!--<li ><a ><img-->
+        <!--src="../../assets/icons/three_128.png" height="30" width="30"/> &nbsp;&nbsp;Description</a></li>-->
+
+      <!--<li ><a ><img-->
+        <!--src="../../assets/icons/four_128.png" height="30" width="30"/>&nbsp;&nbsp; Requirements</a></li>-->
+
+      <!--<li ><a ><img-->
+        <!--src="../../assets/icons/five_128.png" height="30" width="30"/>&nbsp;&nbsp; Publish</a></li>-->
+    <!--</ul>-->
+  <!--</div>-->
+<!--</nav>-->
+<section class=" job-bg ad-details-page" style="top: 50px;margin-bottom:250px;">
+  <div class="container">
+
+    <!--<div class="breadcrumb-section">-->
+      <!--&lt;!&ndash; breadcrumb &ndash;&gt;-->
+      <!--<ol class="breadcrumb">-->
+        <!--<li *ngFor="let i of ListTrack"><a routerLink="{{i.Url}}">{{i.Name}}</a></li>-->
+      <!--</ol>-->
+      <!--<h2 class="title">Make a Gig</h2>-->
+    <!--</div>&lt;!&ndash; banner &ndash;&gt;-->
+
+    <div class="job-postdetails post-resume">
+      <div class="row">
+        <div class="col-md-12 clearfix">
+          <fieldset>
+
+
+
+
+            <!--<form name="form" role="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>-->
+              <!--<div class="page">-->
+              <div *ngIf="StepNo === '1'" class="container">
+                <div class="panel panel-default" style="margin-top: 75px;">
+                  <div class="panel-heading"  style="font-size: 50px;
+                font-family: -webkit-body;">
+                    Gallery
+                  </div>
+
+                  <nav *ngIf="StepNo === '1'" class="navbar navbar-default navbar-fixed-top" id="affix1" style="width: 72%;margin-left: 15%;border-radius: 5px;">
+                      <div class="container">
+                        <ul class="nav navbar-nav">
+                          <li style="background-color: #a3ff9e"><a href="#"><img
+                            src="../../assets/icons/palce1_128.png" height="30" width="30"/> &nbsp;&nbsp;Add Pics</a></li>
+
+                          <li ><a ><img
+                            src="../../assets/icons/two_128.png" height="30" width="30"/>&nbsp;&nbsp;Overview</a></li>
+
+                          <li ><a ><img
+                            src="../../assets/icons/three_128.png" height="30" width="30"/> &nbsp;&nbsp;Description</a></li>
+
+                          <li ><a ><img
+                            src="../../assets/icons/four_128.png" height="30" width="30"/>&nbsp;&nbsp; Requirements</a></li>
+
+                          <li ><a ><img
+                            src="../../assets/icons/five_128.png" height="30" width="30"/>&nbsp;&nbsp; Publish</a></li>
+                        </ul>
+                      </div>
+                    </nav>
+
+
+                  <!--</div>-->
+                  <div class="panel-body">
+                    <!--<div class="section category-items job-category-items  text-center">-->
+
+
+                    <div class="row form-group additional-information">
+                      <label class="col-sm-4 label-title">Add Pics To Your Gig</label>
+                      <div class="col-sm-8">
+                      </div>
+                    </div>
+
+                    <div class="row form-group photos-resume" style="margin-top: 50px;">
+                      <div class="col-lg-12 ">
+                        <div class="container-fluid">
+                          <div style=" float: left;border: 1px solid;" class="col-md-2" *ngFor="let img of ImgSrc;let ind=index">
+                            <div class="new" (click)="OverLay(ind, myNav)">
+                              <img accept=".jpg, .jpeg, .png" src="{{img}}" alt="your image" allowmultiple="true"/>
+                            </div>
+                            <span (click)="removeItem(ind)" style="cursor:pointer;position:relative;float:right;margin: 2px;">
+                          <img class="cancel-icon" src="../../assets/icons/cancel_16.png" height="20" width="20"/>
+                      </span>
+                            <span (click)="OverLay(ind, myNav)" style="cursor:pointer;position:relative;float:left;margin-top: -7px;">
+                        <img class="gallery-icon" src="../../assets/icons/gallery_512.png" height="37" width="37"/></span>
+                          </div>
+                          <div style=" float: left;">
+                            <label *ngIf="FuncCheckNumberOfImages()" class="upload-image left">
+                              Add Image
+                              <input class="file" (change)="onChange($event)" type="file" data-preview-file-type="text" id="file1"
+                                     accept=".jpg, .jpeg, .png"  name="file" #Picture multiple ng-files="getTheFiles($files)" />
+                              <img accept=".jpg, .jpeg, .png" src="../../assets/icons/addimage_512.png" alt="Add Image"/>
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div #myNav class="overlay" (click)="closeNav(myNav)" >
+                      <a href="javascript:void(0)" class="closebtn" style="margin-top: 60px;" (click)="closeNav(myNav)">&times;</a>
+                      <div class="overlay-content">
+                        <img style="display: inline-block;vertical-align: middle; height:500px; width: 700px;" src="{{imgOverLay}}" alt="your image" />
+                      </div>
+                    </div>
+
+                    <div class="buttons pull-right">
+                      <a><button *ngIf="FuncCheckIfImageUploaded()" onclick="topFunction()" (click)="Step1Click()" type="submit"  name="submit" class="btn-green">Save and Continue</button></a>
+                      <!--&nbsp;&nbsp;<a><button *ngIf="FuncCheckIfImageUploaded()" type="submit"  name="submit" class="btn-blue">Cancel</button></a>-->
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            <!--</form>-->
+
+
+
+
+            <!----------                 Step 2                ---------------->
+
+
+            <form  name="form" role="form" (ngSubmit)="f.form.valid && Step2Click(f, title1)" #f="ngForm" novalidate>
+              <div *ngIf="StepNo === '2'" class="container">
+                <div class="panel panel-default" style="margin-top: 75px;">
+                  <div class="panel-heading"  style="font-size: 50px;
+                font-family: -webkit-body;">
+                    Overview
+                  </div>
+                  <nav *ngIf="StepNo === '2'" class="navbar navbar-default navbar-fixed-top" id="affix2" style="width: 72%;margin-left: 15%;border-radius: 5px;" >
+                    <div class="container">
+                        <ul class="nav navbar-nav">
+                          <li ><a href="#"><img
+                            src="../../assets/icons/tick_48.png" height="30" width="30"/> &nbsp;&nbsp;Add Pics</a></li>
+
+                          <li style="background-color: #a3ff9e"><a ><img
+                            src="../../assets/icons/palce1_128.png" height="30" width="30"/>&nbsp;&nbsp;Overview</a></li>
+
+                          <li ><a ><img
+                            src="../../assets/icons/three_128.png" height="30" width="30"/> &nbsp;&nbsp;Description</a></li>
+
+                          <li ><a ><img
+                            src="../../assets/icons/four_128.png" height="30" width="30"/>&nbsp;&nbsp; Requirements</a></li>
+
+                          <li ><a ><img
+                            src="../../assets/icons/five_128.png" height="30" width="30"/>&nbsp;&nbsp; Publish</a></li>
+                        </ul>
+                      </div>
+                    </nav>
+
+                  <!--</div>-->
+                  <div class="panel-body">
+                      <!--<h4>Post Your Job<span class="pull-right">* Mandatory Fields</span></h4>-->
+                      <div class="row form-group add-title">
+                        <label class="col-sm-3 label-title">Gig Category</label>
+                        <div class="col-sm-6">
+                          <div style="position: relative">
+                          <div class="dropdown category-dropdown">
+                            <!--<div class="dropdown">-->
+                            <a data-toggle="dropdown" href="#" aria-expanded="false"><span class="change-text">{{drpTextCatagory}}</span> <i class="fa fa-angle-down pull-right"></i></a>
+                            <ul  class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
+                              <li class="divider"></li>
+                              <li style="cursor:pointer;" class="dropdown-submenu" *ngFor="let i of tempCatagories; let ind=index" ><!--(click)="list(i.catagory)"-->
+                                <a tabindex="-1">{{i.Catagory}}</a>
+                                <ul class="dropdown-menu">
+                                  <li  *ngFor="let j of i.subcatagories" (click)="CatagoryClick(j.SubCatagory)"><a tabindex="-1">{{j.SubCatagory}}</a></li>
+                                </ul>
+                              </li>
+                            </ul>
+                          </div>
+                            <div *ngIf="f.submitted &&  ErrorchkdrpTextCatagory()"  style="position: absolute;top: 10px;right: 3px;">
+                              <img src="../../assets/icons/cancel_16.png" height="16" width="16"/>
+                            </div>
+                            <div *ngIf="f.submitted &&  !ErrorchkdrpTextCatagory()"  style="position: absolute;top: 10px;right: 3px;">
+                              <img src="../../assets/icons/tick_48.png" height="16" width="16"/>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="row form-group">
+                        <label class="col-sm-3 label-title">Title for your Gig<span class="required"></span></label>
+                        <div class="col-sm-6">
+                            <div style="position: relative">
+                            <input type="text" onkeydown="if (event.keyCode == 13) return false;" name="titlename" class="form-control" placeholder="Title"
+                                   (ngModelChange)="TitleChange(title1.value)" [(ngModel)]="model.title" #title="ngModel" #title1 required >
+                            <div *ngIf="f.submitted && !title.valid" style="position: absolute;top: 10px;right: 10px;">
+                              <span style="color: red;margin-right: 10px;">Title Required</span><img src="../../assets/icons/cancel_16.png" height="16" width="16">
+                            </div>
+                            <div *ngIf="f.submitted &&  title.valid"  style="position: absolute;top: 10px;right: 10px;">
+                              <img src="../../assets/icons/tick_48.png" height="16" width="16"/>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="row form-group">
+                        <label class="col-sm-3 label-title">Search Terms<span class="required"></span></label>
+                        <div class="col-sm-6">
+                          <div style="position: relative">
+                            <input type="text" id="searchtermevententer" name="searchtermsname" class="form-control" placeholder="Search Terms"
+                                   onkeydown="if (event.keyCode == 13) return false;" (ngModelChange)="searchtermChange(searchterms1.value)"     [(ngModel)]="model.searchterms" #searchterms="ngModel" #searchterms1 required >
+                            <div *ngIf="f.submitted && searchItemLength()<=5 && searchItemLength()>0" style="position: absolute;top: 10px;right: 10px;">
+                              <span style="color: red;margin-right: 10px;">{{searchItemLength()}} Search Terms Remaining</span><img src="../../assets/icons/cancel_16.png" height="16" width="16">
+                            </div>
+                            <div *ngIf="f.submitted &&  searchItemLength()<=0"  style="position: absolute;top: 10px;right: 10px;">
+                              <img src="../../assets/icons/tick_48.png" height="16" width="16"/>
+                            </div>
+                          </div>
+                        </div>
+                        <label class="col-sm-2"><button type="button" (click)="pushSearchItem()" class="btn-green">Add</button></label>
+                      </div>
+                      <div class="row form-group" *ngIf="searchItemExist()">
+                        <label class="col-sm-3 label-title"><span class="required"></span></label>
+                        <div class="col-sm-8">
+
+
+
+                          <!--<div class="container">-->
+                            <div class="panel-group">
+                              <div class="panel panel-default">
+                                <div class="panel-heading">
+                                  <h4 class="panel-title">
+                                    <a data-toggle="collapse" href="#collapse1">Added Search Terms</a>
+                                  </h4>
+                                </div>
+                                <div id="collapse1" class="panel-collapse">
+                                  <div id="panelSearchTerm" class="panel-body" *ngFor="let i of Searchitems;let ind=index">
+                                    {{i}}
+                                    <img (click)="removeSearchItem(ind)" style="cursor:pointer;float: right;"
+                                         src="../../assets/icons/basket_64.png" height="30" width="30"/>
+                                  <img (click)="editSearchItem(ind, searchterms1)" style="cursor:pointer;float: right;"
+                                       src="../../assets/icons/pencil_128.png" height="30" width="30"/></div>
+                                <div class="panel-footer"></div>
+                                </div>
+                              </div>
+                            </div>
+                          <!--</div>-->
+
+
+
+                          <!--<div class="container-fluid">-->
+                            <!--<div style="float: left;border: 1px solid;" class="col-lg-2" *ngFor="let i of Searchitems;let ind=index">-->
+                              <!--<span style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">{{i}}</span>-->
+                              <!--<span (click)="removeSearchItem(ind)" style="cursor:pointer;position:relative;float:right;margin-left: 3px;">-->
+                                <!--<img src="../../assets/icons/cancel_16.png" height="16" width="16"/>-->
+                              <!--</span>-->
+                            <!--</div>-->
+                          <!--</div>-->
+
+                        </div>
+                      <!--</div>-->
+
+                    </div>
+                    <div class="buttons pull-right">
+                      <a><button onclick="topFunction()" type="submit"  name="submit" class="btn-green">Save and Continue</button></a>
+                      &nbsp;&nbsp;<a><button (click)="Step1BackClick()" onclick="topFunction()" type="submit"  name="submit" class="btn-blue">Back</button></a>
+                    </div>
+                  </div>
+                  <!--<div class="panel-body">-->
+
+                    <!--<div class="row form-group additional-information">-->
+                      <!--&lt;!&ndash;<label class="col-sm-2 label-title">Title</label>&ndash;&gt;-->
+                      <!--&lt;!&ndash;<div class="col-sm-10">&ndash;&gt;-->
+
+                        <!--<div class="form-group">-->
+                          <!--<div style="position: relative">-->
+
+                            <!--<div style="position: absolute;top: 40px;right: 1051px;"><span style="font-family: Arial">Title:</span></div>-->
+
+                            <!--<div style="position: absolute;top: 30px;right: 180px;width:800px;">-->
+                            <!--<input type="text" name="addtitle" class="form-control" placeholder="Title"-->
+                                   <!--[(ngModel)]="model.title" #title="ngModel" #title1 required >-->
+                          <!--</div>-->
+
+                          <!--<div *ngIf="f.submitted && !title.valid" style="position: absolute;top: 10px;right: 10px;">-->
+                              <!--<span style="color: red;margin-right: 10px;">Title Required</span><img src="../../assets/icons/cancel_16.png" height="16" width="16">-->
+                            <!--</div>-->
+
+                            <!--<div *ngIf="f.submitted && title.valid"  style="position: absolute;top: 10px;right: 10px;">-->
+                              <!--<img src="../../assets/icons/tick_48.png" height="16" width="16"/>-->
+                            <!--</div>-->
+                          <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+
+
+                    <!--<div class="form-group">-->
+                      <!--<div style="position: relative">-->
+                        <!--<div style="position: absolute;top: 40px;right: 1051px;"><span style="font-family: Arial">Title:</span></div>-->
+                        <!--<div style="position: absolute;top: 30px;right: 180px;width:800px;">-->
+                          <!--<div class="dropdown category-dropdown">-->
+                            <!--&lt;!&ndash;<div class="dropdown">&ndash;&gt;-->
+                            <!--<a data-toggle="dropdown" href="#" aria-expanded="false"><span class="change-text">{{drpTextCatagory}}</span> <i class="fa fa-angle-down pull-right"></i></a>-->
+                            <!--<ul  class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">-->
+                              <!--<li class="divider"></li>-->
+                              <!--<li style="cursor:pointer;" class="dropdown-submenu" *ngFor="let i of tempCatagories; let ind=index" >&lt;!&ndash;(click)="list(i.catagory)"&ndash;&gt;-->
+                                <!--<a tabindex="-1">{{i.catagory}}</a>-->
+                                <!--<ul class="dropdown-menu">-->
+                                  <!--<li  *ngFor="let j of i.values" (click)="CatagoryClick(j)"><a tabindex="-1">{{j}}</a></li>-->
+                                <!--</ul>-->
+                              <!--</li>-->
+                            <!--</ul>-->
+                          <!--</div>-->
+                        <!--</div>-->
+                        <!--<div *ngIf="f.submitted && !title.valid" style="position: absolute;top: 10px;right: 10px;">-->
+                          <!--<span style="color: red;margin-right: 10px;">Title Required</span><img src="../../assets/icons/cancel_16.png" height="16" width="16">-->
+                        <!--</div>-->
+                        <!--<div *ngIf="f.submitted && title.valid"  style="position: absolute;top: 10px;right: 10px;">-->
+                          <!--<img src="../../assets/icons/tick_48.png" height="16" width="16"/>-->
+                        <!--</div>-->
+                      <!--</div>-->
+                    <!--</div>-->
+                  <!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+
+
+
+                  </div>
+                </div>
+              <!--</div>-->
+            </form>
+
+
+
+            <!----------                 Step 3                ---------------->
+
+
+
+
+            <form  name="form" role="form" (ngSubmit)="f1.form.valid && onSubmit()" #f1="ngForm" novalidate>
+              <div *ngIf="StepNo === '3'" class="container">
+                <div class="panel panel-default" style="margin-top: 75px;">
+                  <div class="panel-heading"  style="font-size: 50px;
+                font-family: -webkit-body;">
+                    Description
+                  </div>
+                  <nav *ngIf="StepNo === '3'" class="navbar navbar-default navbar-fixed-top" id="affix3" style="width: 72%;margin-left: 15%;border-radius: 5px;">
+                    <div class="container">
+                    <ul class="nav navbar-nav">
+                          <li ><a href="#"><img
+                            src="../../assets/icons/tick_48.png" height="30" width="30"/> &nbsp;&nbsp;Add Pics</a></li>
+
+                          <li ><a ><img
+                            src="../../assets/icons/tick_48.png" height="30" width="30"/>&nbsp;&nbsp; Overview</a></li>
+
+                          <li style="background-color: #a3ff9e"><a ><img
+                            src="../../assets/icons/palce1_128.png" height="30" width="30"/> &nbsp;&nbsp;Description</a></li>
+
+                          <li ><a ><img
+                            src="../../assets/icons/four_128.png" height="30" width="30"/>&nbsp;&nbsp; Requirement</a></li>
+
+                          <li ><a ><img
+                            src="../../assets/icons/five_128.png" height="30" width="30"/>&nbsp;&nbsp; Publish</a></li>
+                        </ul>
+                      </div>
+                    </nav>
+                  <!--</div>-->
+
+                  <div class="panel-body">
+                    <div class="section postdetails">
+                    <!--<label class="col-sm-4 label-title">Add Pics To Your Gig</label>-->
+                      <!--<div class="col-sm-8">-->
+                      <div class="panel-body">
+                      <div class="row form-group item-description">
+                          <label class="col-sm-3 label-title">Description<span class="required"></span></label>
+                          <div class="col-sm-8">
+                            <!--<div >Hello, Froala!</div>-->
+                            <textarea [froalaEditor] class="form-control" (ngModelChange)="DescriptionChange(description1.value)" id="textarea"
+                                      [(ngModel)]="model.description" #description="ngModel" name="desname" #description1 placeholder="Write few lines about your jobs" rows="8"></textarea>
+                          </div>
+                        </div>
+                        <div class="row characters">
+                          <div class="col-sm-9 col-sm-offset-3" style="color: red" *ngIf="Description.length < 100">
+                            <p>{{100 - Description.length}}/100 characters left</p>
+                          </div>
+                          <div class="col-sm-9 col-sm-offset-3" style="color: green" *ngIf="Description.length >= 100">
+                            <p>{{Description.length}} characters just perfect</p>
+                          </div>
+                        </div>
+
+
+                      <div class="row form-group">
+                        <div class="col-sm-12">
+                          <div class="panel-group">
+                        <div class="panel panel-default">
+                          <div class="panel-heading">
+
+                            <div class="form-group">
+                                <h4 class="panel-title">
+                                Add frequently asked Questions
+                                  <a style="color: #00B22D;text-decoration: underline;font-size: 15px;" data-toggle="collapse" href="#collapse2">FAQ+</a>
+                                </h4>
+
+                            </div>
+                          </div>
+                          <div id="collapse2" class="panel-collapse collapse">
+
+
+
+                            <div class="panel-body" *ngFor="let i of QuestionItem;let ind=index">
+                              Question: {{i}}<br>Answer: {{AnswerItem[ind]}}
+                              <img (click)="removeQuestionAnswerItem(ind)" style="cursor:pointer;float: right;"
+                                   src="../../assets/icons/basket_64.png" height="30" width="30"/>
+                              <img (click)="editQuestionAnswerItem(ind, question1, answer1)" style="cursor:pointer;float: right;"
+                                   src="../../assets/icons/pencil_128.png" height="30" width="30"/>
+                            </div>
+
+                            <div class="row form-group" style="margin-top: 37px;">
+                              <label class="col-sm-2 col-sm-offset-1 label-title">Question<span class="required"></span></label>
+                              <div class="col-sm-8">
+                                <div style="position: relative">
+                                  <input type="text" name="questionname" class="form-control" placeholder="i.e. Can you speak English?"
+                                         [(ngModel)]="model.question" #question="ngModel" #question1 >
+                                  <!--<div *ngIf="f.submitted && !question.valid" style="position: absolute;top: 10px;right: 10px;">-->
+                                    <!--<span style="color: red;margin-right: 10px;">Question Required</span><img src="../../assets/icons/cancel_16.png" height="16" width="16">-->
+                                  <!--</div>-->
+                                  <!--<div *ngIf="f.submitted &&  question.valid"  style="position: absolute;top: 10px;right: 10px;">-->
+                                    <!--<img src="../../assets/icons/tick_48.png" height="16" width="16"/>-->
+                                  <!--</div>-->
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row form-group">
+                              <label class="col-sm-2 col-sm-offset-1 label-title">Answer<span class="required"></span></label>
+                              <div class="col-sm-8">
+                                <div style="position: relative">
+                                  <input type="text" name="answername" class="form-control" placeholder="i.e. Yes i am very fluent in English."
+                                         [(ngModel)]="model.answer" #answer="ngModel" #answer1 >
+                                  <!--<div *ngIf="f.submitted && !answer.valid" style="position: absolute;top: 10px;right: 10px;">-->
+                                    <!--<span style="color: red;margin-right: 10px;">Answer Required</span><img src="../../assets/icons/cancel_16.png" height="16" width="16">-->
+                                  <!--</div>-->
+                                  <!--<div *ngIf="f.submitted &&  answer.valid"  style="position: absolute;top: 10px;right: 10px;">-->
+                                    <!--<img src="../../assets/icons/tick_48.png" height="16" width="16"/>-->
+                                  <!--</div>-->
+                                </div>
+                              </div>
+                            </div>
+
+
+                            <div class="row form-group">
+                              <label class="col-sm-2 col-sm-offset-1 label-title"><span class="required"></span></label>
+                              <div class="col-sm-8">
+                              <div class="buttons pull-right">
+                              <a><button (click)="pushQuestionAnswerItem(question1.value, answer1.value)" class="btn-green">Add</button></a>
+                              &nbsp;&nbsp;<a><button class="btn-blue">Cancel</button></a>
+                            </div>
+                              </div>
+                            </div>
+                          </div>
+
+
+                            <!--<div class="panel-body">-->
+
+                            <!--</div>-->
+
+                            <div class="panel-footer"></div>
+                          </div>
+                        </div>
+                      </div>
+                        </div>
+                      </div>
+                      <!--</div>-->
+                    </div>
+
+
+
+                    <div class="buttons pull-right">
+                      <a><button (click)="Step3Click(f1, description1.value)" onclick="topFunction()" type="submit"  name="submit" class="btn-green">Save and Continue</button></a>
+                      &nbsp;&nbsp;<a><button (click)="Step2BackClick()" onclick="topFunction()" type="submit"  name="submit" class="btn-blue">Back</button></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+
+
+
+
+
+
+
+            <!----------                 Step 4                ---------------->
+
+
+
+
+
+
+
+            <!--<form name="form" role="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>-->
+              <div *ngIf="StepNo === '4'" class="container">
+                <div class="panel panel-default" style="margin-top: 75px;">
+                  <div class="panel-heading"  style="font-size: 50px;
+                font-family: -webkit-body;">
+                    Requirements
+                  </div>
+
+                  <nav *ngIf="StepNo === '4'" class="navbar navbar-default navbar-fixed-top" id="affix4"  style="width: 72%;margin-left: 15%;border-radius: 5px;">
+                    <div class="container">
+                    <ul class="nav navbar-nav">
+                          <li ><a ><img
+                            src="../../assets/icons/tick_48.png" height="30" width="30"/> &nbsp;&nbsp;Add Pics</a></li>
+
+                          <li ><a ><img
+                            src="../../assets/icons/tick_48.png" height="30" width="30"/>&nbsp;&nbsp;Overview</a></li>
+
+                          <li ><a ><img
+                            src="../../assets/icons/tick_48.png" height="30" width="30"/> &nbsp;&nbsp;Description</a></li>
+
+                          <li style="background-color: #a3ff9e"><a ><img
+                            src="../../assets/icons/palce1_128.png" height="30" width="30"/>&nbsp;&nbsp; Requirements</a></li>
+
+                          <li ><a ><img
+                            src="../../assets/icons/five_128.png" height="30" width="30"/>&nbsp;&nbsp; Finalize</a></li>
+                        </ul>
+                      </div>
+                    </nav>
+
+
+                  <!--</div>-->
+                  <div class="panel-body">
+
+                    <div class="row form-group additional-information">
+                      <label class="col-sm-8 col-sm-offset-3 label-title" style="height: 100px;">Tell your buyer that you need these things to get done their work</label>
+                      <div class="col-sm-8 col-sm-offset-3">
+                      </div>
+                    </div>
+
+
+                    <div *ngIf="requirementsList.length > 0" class="row form-group">
+                      <div class="col-sm-12">
+                        <div class="panel-group">
+                          <div class="panel panel-default">
+                            <div class="panel-heading"></div>
+                    <div class="panel-body" *ngFor="let i of requirementsList;let ind=index">
+                      Requirement :&nbsp;&nbsp;{{i}}<br>Mandatory : &nbsp;&nbsp;{{mandatoryList[ind]}}
+                      <img (click)="removeRequirement(ind)" style="cursor:pointer;float: right;"
+                           src="../../assets/icons/basket_64.png" height="30" width="30"/>
+                      <img (click)="editRequirement(ind, requirement1)" style="cursor:pointer;float: right;"
+                           src="../../assets/icons/pencil_128.png" height="30" width="30"/>
+                    </div>
+                            </div></div></div></div>
+
+                    <div class="row form-group">
+                      <div class="col-sm-12">
+                        <div class="panel-group">
+                          <div class="panel panel-default">
+                            <div class="panel-heading">
+
+                              <div class="form-group">
+                                <h4 class="panel-title">
+
+                                  <a style="color: #00B22D;text-decoration: underline;font-size: 15px;" data-toggle="collapse" href="#collapse3">
+                                    Click to Add a Requirement</a>
+                                </h4>
+
+                              </div>
+                            </div>
+                            <div id="collapse3" class="panel-collapse collapse">
+
+
+                              <div class="row form-group" style="margin-top: 37px;">
+                                <label class="col-sm-2 col-sm-offset-1 label-title">Requirement<span class="required"></span></label>
+                                <div class="col-sm-8">
+                                  <div style="position: relative">
+                                    <input type="text" name="requirementname" class="form-control" placeholder="i.e. You have to be verbal"
+                                           [(ngModel)]="model.requirement" #requirement="ngModel" #requirement1 >
+
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="row form-group">
+                                <label class="col-sm-2 col-sm-offset-1 label-title">Answer is mandatory<span class="required"></span></label>
+                                <div class="col-sm-8">
+                                    <input type="checkbox" name="mandatoryname" placeholder="Buyer must have to answer it"
+                                           [(ngModel)]="model.mandatory" #mandatory="ngModel" #mandatory1 >
+                                </div>
+                              </div>
+
+                              <div class="row form-group">
+                                <label class="col-sm-2 col-sm-offset-1 label-title"><span class="required"></span></label>
+                                <div class="col-sm-8">
+                                  <div class="buttons pull-right">
+                                    <a><button (click)="pushReuirements(requirement1.value, mandatory.value)" class="btn-green">Add</button></a>
+                                    &nbsp;&nbsp;<a><button (click)="clearRequirements(requirement1)" class="btn-blue">Cancel</button></a>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+
+                            <!--<div class="panel-body">-->
+
+                            <!--</div>-->
+
+                            <div class="panel-footer"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="buttons pull-right">
+                      <a><button  (click)="Step4Click()" onclick="topFunction()" type="submit"  name="submit" class="btn-green">Save and Continue</button></a>
+                      &nbsp;&nbsp;<a><button (click)="Step3BackClick()" onclick="topFunction()" name="submit" class="btn-blue">Back</button></a>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            <!--</form>-->
+
+
+
+
+            <!----------                 Step 5                ---------------->
+
+
+
+
+
+            <!--<form  name="form" role="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>-->
+            <form  name="form" role="form" (ngSubmit)="f5.form.valid && Step5Click(minprize1.value,maxprize1.value,days1.value)" #f5="ngForm" novalidate>
+            <div *ngIf="StepNo === '5'" class="container">
+                <div class="panel panel-default" style="margin-top: 75px;">
+                  <div class="panel-heading"  style="font-size: 50px;
+                font-family: -webkit-body;">
+                    Finalize
+                  </div>
+                  <nav *ngIf="StepNo === '5'" class="navbar navbar-default navbar-fixed-top" id="affix5" style="width: 72%;margin-left: 15%;border-radius: 5px;">
+                    <div class="container">
+                    <ul class="nav navbar-nav">
+                          <li ><a href="#"><img
+                            src="../../assets/icons/tick_48.png" height="30" width="30"/> &nbsp;&nbsp;Add Pics</a></li>
+
+                          <li ><a ><img
+                            src="../../assets/icons/tick_48.png" height="30" width="30"/>&nbsp;&nbsp;Overview</a></li>
+
+                          <li ><a ><img
+                            src="../../assets/icons/tick_48.png" height="30" width="30"/> &nbsp;&nbsp;Description</a></li>
+
+                          <li ><a ><img
+                            src="../../assets/icons/tick_48.png" height="30" width="30"/>&nbsp;&nbsp; Requirements</a></li>
+
+                          <li style="background-color: #a3ff9e"><a ><img
+                            src="../../assets/icons/palce1_128.png" height="30" width="30"/>&nbsp;&nbsp; Finalize</a></li>
+                        </ul>
+                      </div>
+                    </nav>
+                  <!--</div>-->
+
+
+                  <div class="panel-body">
+
+                    <div class="row form-group">
+                      <label class="col-sm-2 label-title">Price Range<span class="required"></span></label>
+
+                      <div class="col-sm-5">
+                        <div style="position: relative"><!--(ngModelChange)="MinPrizeChange(minprize1.value)"-->
+                          <input type="text" onkeydown="if (event.keyCode == 13) return false;" style="padding-left: 35px;" name="minprize" class="form-control" placeholder="Min Prize"
+                                 [(ngModel)]="model.minprize" #minprize="ngModel" #minprize1 required >
+                          <div style="position: absolute;top: 10px;left: 10px;">
+                            <i class="fa fa-usd  fa-lg" aria-hidden="true"></i>
+                          </div>
+
+                          <div *ngIf="f5.submitted && !minprize.valid" style="position: absolute;top: 10px;right: 10px;">
+                            <span style="color: red;margin-right: 10px;">Required</span><img src="../../assets/icons/cancel_16.png" height="16" width="16">
+                          </div>
+                          <div *ngIf="f5.submitted &&  minprize.valid"  style="position: absolute;top: 10px;right: 10px;">
+                            <img src="../../assets/icons/tick_48.png" height="16" width="16"/>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-sm-5">
+                        <div style="position: relative"><!--(ngModelChange)="MaxPrizeChange(maxprize1.value)"-->
+                          <input type="text" onkeydown="if (event.keyCode == 13) return false;" style="padding-left: 35px;" name="maxprize" class="form-control" placeholder="Max Prize"
+                                  [(ngModel)]="model.maxprize" #maxprize="ngModel" #maxprize1 required >
+                          <div style="position: absolute;top: 10px;left: 10px;">
+                            <i class="fa fa-usd  fa-lg" aria-hidden="true"></i>
+                          </div>
+
+                          <div *ngIf="f5.submitted && !maxprize.valid" style="position: absolute;top: 10px;right: 10px;">
+                            <span style="color: red;margin-right: 10px;">Required</span><img src="../../assets/icons/cancel_16.png" height="16" width="16">
+                          </div>
+                          <div *ngIf="f5.submitted &&  maxprize.valid"  style="position: absolute;top: 10px;right: 10px;">
+                            <img src="../../assets/icons/tick_48.png" height="16" width="16"/>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+
+                    <div class="row form-group">
+                      <label class="col-sm-2 label-title">Delivery Days<span class="required"></span></label>
+                      <div class="col-sm-10">
+                        <div style="position: relative"><!--(ngModelChange)="DaysChange(days1.value)"-->
+                          <input type="text" onkeydown="if (event.keyCode == 13) return false;" name="days" style="padding-left: 35px;" class="form-control" placeholder="Days"
+                                 [(ngModel)]="model.days" #days="ngModel" #days1 required >
+                          <div style="position: absolute;top: 10px;left: 10px;">
+                            <i class="fa fa-calendar-plus-o fa-lg" aria-hidden="true"></i>
+                          </div>
+
+                          <div *ngIf="f5.submitted && !days.valid" style="position: absolute;top: 10px;right: 10px;">
+                            <span style="color: red;margin-right: 10px;">Days Required</span><img src="../../assets/icons/cancel_16.png" height="16" width="16">
+                          </div>
+                          <div *ngIf="f5.submitted &&  days.valid"  style="position: absolute;top: 10px;right: 10px;">
+                            <img src="../../assets/icons/tick_48.png" height="16" width="16"/>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!--(click)="Step5Click()"-->
+                    <div class="buttons pull-right">
+                      <a><button onclick="topFunction()" type="submit"  name="submit" class="btn-green">Save and Publish</button></a>
+                      &nbsp;&nbsp;<a><button (click)="Step4BackClick()" onclick="topFunction()"  type="submit"  name="submit" class="btn-blue">Back</button></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+
+
+
+
+
+
+
+
+          </fieldset>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--Second Overlay Class-->
+
+<!--<img (click)="myImgClick(modal, modalImg, captionText)" #myImg src="img_fjords.jpg" alt="Trolltunga, Norway" width="300" height="200">-->
+
+<!--&lt;!&ndash; The Modal &ndash;&gt;-->
+<!--<div id="myModal" #modal class="modal">-->
+
+<!--&lt;!&ndash; The Close Button &ndash;&gt;-->
+<!--<span class="close" onclick="document.getElementById('myModal').style.display='none'">&times;</span>-->
+
+<!--&lt;!&ndash; Modal Content (The Image) &ndash;&gt;-->
+<!--<img class="modal-content" #modalImg id="img01">-->
+
+<!--&lt;!&ndash; Modal Caption (Image Text) &ndash;&gt;-->
+<!--<div id="caption" #captionText></div>-->
+<!--</div>-->
+<!--ENd Second Overlay Class->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<div class="row form-group" style="margin-top: 50px;">-->
+<!--<div class="col-lg-12">-->
+<!--<div class="container-fluid">-->
+<!--<div style=" float: left;border: 1px solid;" class="col-md-2" *ngFor="let img of ImgSrc;let ind=index">-->
+<!--<div class="new" (click)="OverLay(ind, myNav)">-->
+<!--<img accept=".jpg, .jpeg, .png" src="{{img}}" alt="your image" allowmultiple="true"/>-->
+<!--</div>-->
+<!--<span (click)="removeItem(ind)" style="cursor:pointer;position:relative;float:right;margin: 2px;">-->
+
+
+<!--<img src="../../assets/icons/cancel_16.png" height="20" width="20"/>-->
+<!--</span>-->
+<!--<span (click)="OverLay(ind, myNav)" style="cursor:pointer;position:relative;float:left;margin: 2px;">-->
+<!--<img src="../../assets/icons/gallery2_512.png" height="25" width="25"/></span>-->
+
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->

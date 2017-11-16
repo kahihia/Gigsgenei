@@ -1,0 +1,9 @@
+<h1 md-dialog-title>Alert!</h1>
+<div md-dialog-content>
+  <p>Are You Sure You want To delete this Book Mark?</p>
+</div>
+<div md-dialog-actions>
+  <button md-button [md-dialog-close]="true" tabindex="2">Ok</button>
+  <button md-button (click)="onNoClick()" tabindex="-1">Cancel</button>
+</div>
+

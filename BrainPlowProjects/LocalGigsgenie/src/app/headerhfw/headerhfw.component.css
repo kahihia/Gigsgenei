@@ -1,0 +1,12 @@
+#header1{
+  /*background-color: #ffffff;*/
+  /*width: 500px;*/
+  /*height: 500px;*/
+  /*margin: 0 20px 20px 0;*/
+  /*padding: 0;*/
+  /*float: left;*/
+  /*position: relative;*/
+  /*border: 1px #e5e5e5 solid;*/
+  box-shadow: 5px 5px 5px #888888;
+  box-sizing: border-box;
+}

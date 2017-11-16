@@ -1,0 +1,15 @@
+.footer-bottom{
+    color: white;
+    background-color:#1b2c39;
+    font-size: 22px;
+}
+
+.footer-widget .btn.btn-primary{
+
+    font-size: 23px;
+}
+.footer-widget ul li a:hover{
+
+
+    color: #f80000;
+}

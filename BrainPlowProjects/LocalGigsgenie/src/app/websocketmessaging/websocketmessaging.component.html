@@ -1,0 +1,311 @@
+<!--<div class="form-group" style="margin-top: 300px;">-->
+<!--<div style="position: relative">-->
+<!--<ul>-->
+  <!--<li *ngFor="let data of messages1;">{{data}}</li>-->
+<!--</ul>>-->
+<!--</div>-->
+<!--</div>-->
+<!--<br>-->
+<!--<br>-->
+
+<!--<div class="form-group" style="margin-top: 100px;">-->
+  <!--<div style="position: relative">-->
+    <!--<input type="text" name="comment1" (keyup)="review1($event)" class="form-control" placeholder="Review">-->
+  <!--</div>-->
+<!--</div>-->
+<app-loader></app-loader>
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+
+<div class="container-fluid" id="maindiv">
+   <div class="row" style="background-color: #1b2c39">
+    <div class="col-lg-12">
+      <div>
+      <input type="text" name="search" placeholder="Search Here" class="btn-panel" style="padding-left: 50%;">
+        <!-- <a href="" class="btn  col-lg-6  send-message-btn pull-right" role="button"><i class="fa fa-plus"></i> New Message</a> -->
+      </div>
+    </div>
+<!--
+    <div class="col-lg-offset-1 col-lg-7">
+      <div class="btn-panel btn-panel-msg">
+
+        <a href="" class="btn  col-lg-3  send-message-btn pull-right" role="button"><i class="fa fa-gears"></i> Settings</a>
+      </div>
+    </div> -->
+  </div>
+  <div class="row">
+
+    <div class="conversation-wrap col-lg-2">
+
+
+      <div class="media conversation">
+        <a class="pull-left"> <!--(click)="AddConnection(OtherChatUser.id)"-->
+          <img class="media-object" data-src="holder.js/64x64" alt="64x64" style="width: 50px; height: 50px;" src="{{OtherChatUser.UserImage}}">
+        </a>
+        <div class="media-body">
+          <h5 class="media-heading">{{OtherChatUser.username}}</h5>
+          <small>online</small>
+        </div>
+      </div>
+      <!--<div class="media conversation">-->
+        <!--<a class="pull-left" href="#">-->
+          <!--<img class="media-object" data-src="holder.js/64x64" alt="64x64" style="width: 50px; height: 50px;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAACqUlEQVR4Xu2Y60tiURTFl48STFJMwkQjUTDtixq+Av93P6iBJFTgg1JL8QWBGT4QfDX7gDIyNE3nEBO6D0Rh9+5z9rprr19dTa/XW2KHl4YFYAfwCHAG7HAGgkOQKcAUYAowBZgCO6wAY5AxyBhkDDIGdxgC/M8QY5AxyBhkDDIGGYM7rIAyBgeDAYrFIkajEYxGIwKBAA4PDzckpd+322243W54PJ5P5f6Omh9tqiTAfD5HNpuFVqvFyckJms0m9vf3EY/H1/u9vb0hn89jsVj8kwDfUfNviisJ8PLygru7O4TDYVgsFtDh9Xo9NBrNes9cLgeTybThgKenJ1SrVXGf1WoVDup2u4jFYhiPx1I1P7XVBxcoCVCr1UBfTqcTrVYLe3t7OD8/x/HxsdiOPqNGo9Eo0un02gHkBhJmuVzC7/fj5uYGXq8XZ2dnop5Mzf8iwMPDAxqNBmw2GxwOBx4fHzGdTpFMJkVzNB7UGAmSSqU2RoDmnETQ6XQiOyKRiHCOSk0ZEZQcUKlU8Pz8LA5vNptRr9eFCJQBFHq//szG5eWlGA1ywOnpqQhBapoWPfl+vw+fzweXyyU+U635VRGUBOh0OigUCggGg8IFK/teXV3h/v4ew+Hwj/OQU4gUq/w4ODgQrkkkEmKEVGp+tXm6XkkAOngmk4HBYBAjQA6gEKRmyOL05GnR99vbW9jtdjEGdP319bUIR8oA+pnG5OLiQoghU5OElFlKAtCGr6+vKJfLmEwm64aosd/XbDbbyIBSqSSeNKU+HXzlnFAohKOjI6maMs0rO0B20590n7IDflIzMmdhAfiNEL8R4jdC/EZIJj235R6mAFOAKcAUYApsS6LL9MEUYAowBZgCTAGZ9NyWe5gCTAGmAFOAKbAtiS7TB1Ng1ynwDkxRe58vH3FfAAAAAElFTkSuQmCC">-->
+        <!--</a>-->
+        <!--<div class="media-body">-->
+          <!--<h5 class="media-heading">Naimish Sakhpara</h5>-->
+          <!--<small>Hello</small>-->
+        <!--</div>-->
+      <!--</div>-->
+      <!--<div class="media conversation">-->
+        <!--<a class="pull-left" href="#">-->
+          <!--<img class="media-object" data-src="holder.js/64x64" alt="64x64" style="width: 50px; height: 50px;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAACqUlEQVR4Xu2Y60tiURTFl48STFJMwkQjUTDtixq+Av93P6iBJFTgg1JL8QWBGT4QfDX7gDIyNE3nEBO6D0Rh9+5z9rprr19dTa/XW2KHl4YFYAfwCHAG7HAGgkOQKcAUYAowBZgCO6wAY5AxyBhkDDIGdxgC/M8QY5AxyBhkDDIGGYM7rIAyBgeDAYrFIkajEYxGIwKBAA4PDzckpd+322243W54PJ5P5f6Omh9tqiTAfD5HNpuFVqvFyckJms0m9vf3EY/H1/u9vb0hn89jsVj8kwDfUfNviisJ8PLygru7O4TDYVgsFtDh9Xo9NBrNes9cLgeTybThgKenJ1SrVXGf1WoVDup2u4jFYhiPx1I1P7XVBxcoCVCr1UBfTqcTrVYLe3t7OD8/x/HxsdiOPqNGo9Eo0un02gHkBhJmuVzC7/fj5uYGXq8XZ2dnop5Mzf8iwMPDAxqNBmw2GxwOBx4fHzGdTpFMJkVzNB7UGAmSSqU2RoDmnETQ6XQiOyKRiHCOSk0ZEZQcUKlU8Pz8LA5vNptRr9eFCJQBFHq//szG5eWlGA1ywOnpqQhBapoWPfl+vw+fzweXyyU+U635VRGUBOh0OigUCggGg8IFK/teXV3h/v4ew+Hwj/OQU4gUq/w4ODgQrkkkEmKEVGp+tXm6XkkAOngmk4HBYBAjQA6gEKRmyOL05GnR99vbW9jtdjEGdP319bUIR8oA+pnG5OLiQoghU5OElFlKAtCGr6+vKJfLmEwm64aosd/XbDbbyIBSqSSeNKU+HXzlnFAohKOjI6maMs0rO0B20590n7IDflIzMmdhAfiNEL8R4jdC/EZIJj235R6mAFOAKcAUYApsS6LL9MEUYAowBZgCTAGZ9NyWe5gCTAGmAFOAKbAtiS7TB1Ng1ynwDkxRe58vH3FfAAAAAElFTkSuQmCC">-->
+        <!--</a>-->
+        <!--<div class="media-body">-->
+          <!--<h5 class="media-heading">Naimish Sakhpara</h5>-->
+          <!--<small>Hello</small>-->
+        <!--</div>-->
+      <!--</div>-->
+      <!--<div class="media conversation">-->
+        <!--<a class="pull-left" href="#">-->
+          <!--<img class="media-object" data-src="holder.js/64x64" alt="64x64" style="width: 50px; height: 50px;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAACqUlEQVR4Xu2Y60tiURTFl48STFJMwkQjUTDtixq+Av93P6iBJFTgg1JL8QWBGT4QfDX7gDIyNE3nEBO6D0Rh9+5z9rprr19dTa/XW2KHl4YFYAfwCHAG7HAGgkOQKcAUYAowBZgCO6wAY5AxyBhkDDIGdxgC/M8QY5AxyBhkDDIGGYM7rIAyBgeDAYrFIkajEYxGIwKBAA4PDzckpd+322243W54PJ5P5f6Omh9tqiTAfD5HNpuFVqvFyckJms0m9vf3EY/H1/u9vb0hn89jsVj8kwDfUfNviisJ8PLygru7O4TDYVgsFtDh9Xo9NBrNes9cLgeTybThgKenJ1SrVXGf1WoVDup2u4jFYhiPx1I1P7XVBxcoCVCr1UBfTqcTrVYLe3t7OD8/x/HxsdiOPqNGo9Eo0un02gHkBhJmuVzC7/fj5uYGXq8XZ2dnop5Mzf8iwMPDAxqNBmw2GxwOBx4fHzGdTpFMJkVzNB7UGAmSSqU2RoDmnETQ6XQiOyKRiHCOSk0ZEZQcUKlU8Pz8LA5vNptRr9eFCJQBFHq//szG5eWlGA1ywOnpqQhBapoWPfl+vw+fzweXyyU+U635VRGUBOh0OigUCggGg8IFK/teXV3h/v4ew+Hwj/OQU4gUq/w4ODgQrkkkEmKEVGp+tXm6XkkAOngmk4HBYBAjQA6gEKRmyOL05GnR99vbW9jtdjEGdP319bUIR8oA+pnG5OLiQoghU5OElFlKAtCGr6+vKJfLmEwm64aosd/XbDbbyIBSqSSeNKU+HXzlnFAohKOjI6maMs0rO0B20590n7IDflIzMmdhAfiNEL8R4jdC/EZIJj235R6mAFOAKcAUYApsS6LL9MEUYAowBZgCTAGZ9NyWe5gCTAGmAFOAKbAtiS7TB1Ng1ynwDkxRe58vH3FfAAAAAElFTkSuQmCC">-->
+        <!--</a>-->
+        <!--<div class="media-body">-->
+          <!--<h5 class="media-heading">Naimish Sakhpara</h5>-->
+          <!--<small>Hello</small>-->
+        <!--</div>-->
+      <!--</div>-->
+      <!--<div class="media conversation">-->
+        <!--<a class="pull-left" href="#">-->
+          <!--<img class="media-object" data-src="holder.js/64x64" alt="64x64" style="width: 50px; height: 50px;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAACqUlEQVR4Xu2Y60tiURTFl48STFJMwkQjUTDtixq+Av93P6iBJFTgg1JL8QWBGT4QfDX7gDIyNE3nEBO6D0Rh9+5z9rprr19dTa/XW2KHl4YFYAfwCHAG7HAGgkOQKcAUYAowBZgCO6wAY5AxyBhkDDIGdxgC/M8QY5AxyBhkDDIGGYM7rIAyBgeDAYrFIkajEYxGIwKBAA4PDzckpd+322243W54PJ5P5f6Omh9tqiTAfD5HNpuFVqvFyckJms0m9vf3EY/H1/u9vb0hn89jsVj8kwDfUfNviisJ8PLygru7O4TDYVgsFtDh9Xo9NBrNes9cLgeTybThgKenJ1SrVXGf1WoVDup2u4jFYhiPx1I1P7XVBxcoCVCr1UBfTqcTrVYLe3t7OD8/x/HxsdiOPqNGo9Eo0un02gHkBhJmuVzC7/fj5uYGXq8XZ2dnop5Mzf8iwMPDAxqNBmw2GxwOBx4fHzGdTpFMJkVzNB7UGAmSSqU2RoDmnETQ6XQiOyKRiHCOSk0ZEZQcUKlU8Pz8LA5vNptRr9eFCJQBFHq//szG5eWlGA1ywOnpqQhBapoWPfl+vw+fzweXyyU+U635VRGUBOh0OigUCggGg8IFK/teXV3h/v4ew+Hwj/OQU4gUq/w4ODgQrkkkEmKEVGp+tXm6XkkAOngmk4HBYBAjQA6gEKRmyOL05GnR99vbW9jtdjEGdP319bUIR8oA+pnG5OLiQoghU5OElFlKAtCGr6+vKJfLmEwm64aosd/XbDbbyIBSqSSeNKU+HXzlnFAohKOjI6maMs0rO0B20590n7IDflIzMmdhAfiNEL8R4jdC/EZIJj235R6mAFOAKcAUYApsS6LL9MEUYAowBZgCTAGZ9NyWe5gCTAGmAFOAKbAtiS7TB1Ng1ynwDkxRe58vH3FfAAAAAElFTkSuQmCC">-->
+        <!--</a>-->
+        <!--<div class="media-body">-->
+          <!--<h5 class="media-heading">Naimish Sakhpara</h5>-->
+          <!--<small>Hello</small>-->
+        <!--</div>-->
+      <!--</div>-->
+
+      <!--<div class="media conversation">-->
+        <!--<a class="pull-left" href="#">-->
+          <!--<img class="media-object" data-src="holder.js/64x64" alt="64x64" style="width: 50px; height: 50px;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAACqUlEQVR4Xu2Y60tiURTFl48STFJMwkQjUTDtixq+Av93P6iBJFTgg1JL8QWBGT4QfDX7gDIyNE3nEBO6D0Rh9+5z9rprr19dTa/XW2KHl4YFYAfwCHAG7HAGgkOQKcAUYAowBZgCO6wAY5AxyBhkDDIGdxgC/M8QY5AxyBhkDDIGGYM7rIAyBgeDAYrFIkajEYxGIwKBAA4PDzckpd+322243W54PJ5P5f6Omh9tqiTAfD5HNpuFVqvFyckJms0m9vf3EY/H1/u9vb0hn89jsVj8kwDfUfNviisJ8PLygru7O4TDYVgsFtDh9Xo9NBrNes9cLgeTybThgKenJ1SrVXGf1WoVDup2u4jFYhiPx1I1P7XVBxcoCVCr1UBfTqcTrVYLe3t7OD8/x/HxsdiOPqNGo9Eo0un02gHkBhJmuVzC7/fj5uYGXq8XZ2dnop5Mzf8iwMPDAxqNBmw2GxwOBx4fHzGdTpFMJkVzNB7UGAmSSqU2RoDmnETQ6XQiOyKRiHCOSk0ZEZQcUKlU8Pz8LA5vNptRr9eFCJQBFHq//szG5eWlGA1ywOnpqQhBapoWPfl+vw+fzweXyyU+U635VRGUBOh0OigUCggGg8IFK/teXV3h/v4ew+Hwj/OQU4gUq/w4ODgQrkkkEmKEVGp+tXm6XkkAOngmk4HBYBAjQA6gEKRmyOL05GnR99vbW9jtdjEGdP319bUIR8oA+pnG5OLiQoghU5OElFlKAtCGr6+vKJfLmEwm64aosd/XbDbbyIBSqSSeNKU+HXzlnFAohKOjI6maMs0rO0B20590n7IDflIzMmdhAfiNEL8R4jdC/EZIJj235R6mAFOAKcAUYApsS6LL9MEUYAowBZgCTAGZ9NyWe5gCTAGmAFOAKbAtiS7TB1Ng1ynwDkxRe58vH3FfAAAAAElFTkSuQmCC">-->
+        <!--</a>-->
+        <!--<div class="media-body">-->
+          <!--<h5 class="media-heading">Naimish Sakhpara</h5>-->
+          <!--<small>Hello</small>-->
+        <!--</div>-->
+      <!--</div>-->
+
+      <!--<div class="media conversation">-->
+        <!--<a class="pull-left" href="#">-->
+          <!--<img class="media-object" data-src="holder.js/64x64" alt="64x64" style="width: 50px; height: 50px;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAACqUlEQVR4Xu2Y60tiURTFl48STFJMwkQjUTDtixq+Av93P6iBJFTgg1JL8QWBGT4QfDX7gDIyNE3nEBO6D0Rh9+5z9rprr19dTa/XW2KHl4YFYAfwCHAG7HAGgkOQKcAUYAowBZgCO6wAY5AxyBhkDDIGdxgC/M8QY5AxyBhkDDIGGYM7rIAyBgeDAYrFIkajEYxGIwKBAA4PDzckpd+322243W54PJ5P5f6Omh9tqiTAfD5HNpuFVqvFyckJms0m9vf3EY/H1/u9vb0hn89jsVj8kwDfUfNviisJ8PLygru7O4TDYVgsFtDh9Xo9NBrNes9cLgeTybThgKenJ1SrVXGf1WoVDup2u4jFYhiPx1I1P7XVBxcoCVCr1UBfTqcTrVYLe3t7OD8/x/HxsdiOPqNGo9Eo0un02gHkBhJmuVzC7/fj5uYGXq8XZ2dnop5Mzf8iwMPDAxqNBmw2GxwOBx4fHzGdTpFMJkVzNB7UGAmSSqU2RoDmnETQ6XQiOyKRiHCOSk0ZEZQcUKlU8Pz8LA5vNptRr9eFCJQBFHq//szG5eWlGA1ywOnpqQhBapoWPfl+vw+fzweXyyU+U635VRGUBOh0OigUCggGg8IFK/teXV3h/v4ew+Hwj/OQU4gUq/w4ODgQrkkkEmKEVGp+tXm6XkkAOngmk4HBYBAjQA6gEKRmyOL05GnR99vbW9jtdjEGdP319bUIR8oA+pnG5OLiQoghU5OElFlKAtCGr6+vKJfLmEwm64aosd/XbDbbyIBSqSSeNKU+HXzlnFAohKOjI6maMs0rO0B20590n7IDflIzMmdhAfiNEL8R4jdC/EZIJj235R6mAFOAKcAUYApsS6LL9MEUYAowBZgCTAGZ9NyWe5gCTAGmAFOAKbAtiS7TB1Ng1ynwDkxRe58vH3FfAAAAAElFTkSuQmCC">-->
+        <!--</a>-->
+        <!--<div class="media-body">-->
+          <!--<h5 class="media-heading">Naimish Sakhpara</h5>-->
+          <!--<small>Hello</small>-->
+        <!--</div>-->
+      <!--</div>-->
+    </div>
+
+
+
+    <div class="message-wrap col-lg-10">
+      <div class="msg-wrap" id="msgwrap">
+
+
+        <div class="media msg " *ngFor="let data of DatabaseMessages;let ind=index;">
+          <a *ngIf="data.Sender===otherUserId" class="pull-left">
+            <img class="media-object" data-src="holder.js/64x64" alt="64x64" style="width: 32px; height: 32px;" src="{{OtherChatUser.UserImage}}">
+          </a>
+          <div class="media-body">
+            <small class="pull-right time"><i class="fa fa-clock-o"></i> {{data.CreatedAt}}</small>
+            <h5 *ngIf="data.Sender===otherUserId" class="media-heading">{{OtherChatUser.username}}</h5>
+            <small class="col-lg-10">
+
+              <ul>
+                <li *ngIf="data.Sender!==otherUserId" class="me" [innerHTML]="data.MessageText|emoji"></li>
+                <li *ngIf="data.Sender===otherUserId" class="him" [innerHTML]="data.MessageText|emoji"></li>
+              </ul>
+            </small>
+          </div>
+          <hr>
+          <!--<div class="alert alert-info msg-date">-->
+          <!--<strong>{{date[ind]}}</strong>-->
+          <!--</div>-->
+        </div>
+
+
+        <div class="media msg " *ngFor="let data of messages1;let ind=index;">
+          <a *ngIf="username!==data.username" class="pull-left">
+            <img class="media-object" data-src="holder.js/64x64" alt="64x64" style="width: 32px; height: 32px;" src="{{OtherChatUser.UserImage}}">
+          </a>
+          <div class="media-body">
+            <small class="pull-right time"><i class="fa fa-clock-o"></i> {{time[ind]}}:{{date[ind]}}</small>
+            <h5 *ngIf="username!==data.username" class="media-heading">{{data.username}}</h5>
+            <small class="col-lg-10">
+
+              <ul>
+              <li *ngIf="username===data.username" class="me" [innerHTML]="data.text|emoji"></li>
+                <li *ngIf="username!==data.username" class="him" [innerHTML]="data.text|emoji"></li>
+              </ul>
+            </small>
+          </div>
+          <hr>
+          <!--<div class="alert alert-info msg-date">-->
+            <!--<strong>{{date[ind]}}</strong>-->
+          <!--</div>-->
+        </div>
+
+        <div class="typingclass">
+          <span id="typing"></span>
+        </div>
+
+        <!--<div class="media msg">-->
+          <!--<a class="pull-left" href="#">-->
+            <!--<img class="media-object" data-src="holder.js/64x64" alt="64x64" style="width: 32px; height: 32px;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAACqUlEQVR4Xu2Y60tiURTFl48STFJMwkQjUTDtixq+Av93P6iBJFTgg1JL8QWBGT4QfDX7gDIyNE3nEBO6D0Rh9+5z9rprr19dTa/XW2KHl4YFYAfwCHAG7HAGgkOQKcAUYAowBZgCO6wAY5AxyBhkDDIGdxgC/M8QY5AxyBhkDDIGGYM7rIAyBgeDAYrFIkajEYxGIwKBAA4PDzckpd+322243W54PJ5P5f6Omh9tqiTAfD5HNpuFVqvFyckJms0m9vf3EY/H1/u9vb0hn89jsVj8kwDfUfNviisJ8PLygru7O4TDYVgsFtDh9Xo9NBrNes9cLgeTybThgKenJ1SrVXGf1WoVDup2u4jFYhiPx1I1P7XVBxcoCVCr1UBfTqcTrVYLe3t7OD8/x/HxsdiOPqNGo9Eo0un02gHkBhJmuVzC7/fj5uYGXq8XZ2dnop5Mzf8iwMPDAxqNBmw2GxwOBx4fHzGdTpFMJkVzNB7UGAmSSqU2RoDmnETQ6XQiOyKRiHCOSk0ZEZQcUKlU8Pz8LA5vNptRr9eFCJQBFHq//szG5eWlGA1ywOnpqQhBapoWPfl+vw+fzweXyyU+U635VRGUBOh0OigUCggGg8IFK/teXV3h/v4ew+Hwj/OQU4gUq/w4ODgQrkkkEmKEVGp+tXm6XkkAOngmk4HBYBAjQA6gEKRmyOL05GnR99vbW9jtdjEGdP319bUIR8oA+pnG5OLiQoghU5OElFlKAtCGr6+vKJfLmEwm64aosd/XbDbbyIBSqSSeNKU+HXzlnFAohKOjI6maMs0rO0B20590n7IDflIzMmdhAfiNEL8R4jdC/EZIJj235R6mAFOAKcAUYApsS6LL9MEUYAowBZgCTAGZ9NyWe5gCTAGmAFOAKbAtiS7TB1Ng1ynwDkxRe58vH3FfAAAAAElFTkSuQmCC">-->
+          <!--</a>-->
+          <!--<div class="media-body">-->
+            <!--<small class="pull-right time"><i class="fa fa-clock-o"></i> 12:10am</small>-->
+
+            <!--<h5 class="media-heading">Naimish Sakhpara</h5>-->
+            <!--<small class="col-lg-10">Arnab Goswami: "Some people close to Congress Party and close to the government had a #secret #meeting in a farmhouse in Maharashtra in which Anna Hazare send some representatives and they had a meeting in the discussed how to go about this all fast and how eventually this will end."</small>-->
+          <!--</div>-->
+        <!--</div>-->
+        <!--<div class="media msg">-->
+          <!--<a class="pull-left" href="#">-->
+            <!--<img class="media-object" data-src="holder.js/64x64" alt="64x64" style="width: 32px; height: 32px;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAACqUlEQVR4Xu2Y60tiURTFl48STFJMwkQjUTDtixq+Av93P6iBJFTgg1JL8QWBGT4QfDX7gDIyNE3nEBO6D0Rh9+5z9rprr19dTa/XW2KHl4YFYAfwCHAG7HAGgkOQKcAUYAowBZgCO6wAY5AxyBhkDDIGdxgC/M8QY5AxyBhkDDIGGYM7rIAyBgeDAYrFIkajEYxGIwKBAA4PDzckpd+322243W54PJ5P5f6Omh9tqiTAfD5HNpuFVqvFyckJms0m9vf3EY/H1/u9vb0hn89jsVj8kwDfUfNviisJ8PLygru7O4TDYVgsFtDh9Xo9NBrNes9cLgeTybThgKenJ1SrVXGf1WoVDup2u4jFYhiPx1I1P7XVBxcoCVCr1UBfTqcTrVYLe3t7OD8/x/HxsdiOPqNGo9Eo0un02gHkBhJmuVzC7/fj5uYGXq8XZ2dnop5Mzf8iwMPDAxqNBmw2GxwOBx4fHzGdTpFMJkVzNB7UGAmSSqU2RoDmnETQ6XQiOyKRiHCOSk0ZEZQcUKlU8Pz8LA5vNptRr9eFCJQBFHq//szG5eWlGA1ywOnpqQhBapoWPfl+vw+fzweXyyU+U635VRGUBOh0OigUCggGg8IFK/teXV3h/v4ew+Hwj/OQU4gUq/w4ODgQrkkkEmKEVGp+tXm6XkkAOngmk4HBYBAjQA6gEKRmyOL05GnR99vbW9jtdjEGdP319bUIR8oA+pnG5OLiQoghU5OElFlKAtCGr6+vKJfLmEwm64aosd/XbDbbyIBSqSSeNKU+HXzlnFAohKOjI6maMs0rO0B20590n7IDflIzMmdhAfiNEL8R4jdC/EZIJj235R6mAFOAKcAUYApsS6LL9MEUYAowBZgCTAGZ9NyWe5gCTAGmAFOAKbAtiS7TB1Ng1ynwDkxRe58vH3FfAAAAAElFTkSuQmCC">-->
+          <!--</a>-->
+          <!--<div class="media-body">-->
+            <!--<small class="pull-right time"><i class="fa fa-clock-o"></i> 12:10am</small>-->
+
+            <!--<h5 class="media-heading">Naimish Sakhpara</h5>-->
+            <!--<small class="col-lg-10">Arnab Goswami: "Some people close to Congress Party and close to the government had a #secret #meeting in a farmhouse in Maharashtra in which Anna Hazare send some representatives and they had a meeting in the discussed how to go about this all fast and how eventually this will end."</small>-->
+          <!--</div>-->
+        <!--</div>-->
+
+        <!--<div class="media msg">-->
+          <!--<a class="pull-left" href="#">-->
+            <!--<img class="media-object" data-src="holder.js/64x64" alt="64x64" style="width: 32px; height: 32px;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAACqUlEQVR4Xu2Y60tiURTFl48STFJMwkQjUTDtixq+Av93P6iBJFTgg1JL8QWBGT4QfDX7gDIyNE3nEBO6D0Rh9+5z9rprr19dTa/XW2KHl4YFYAfwCHAG7HAGgkOQKcAUYAowBZgCO6wAY5AxyBhkDDIGdxgC/M8QY5AxyBhkDDIGGYM7rIAyBgeDAYrFIkajEYxGIwKBAA4PDzckpd+322243W54PJ5P5f6Omh9tqiTAfD5HNpuFVqvFyckJms0m9vf3EY/H1/u9vb0hn89jsVj8kwDfUfNviisJ8PLygru7O4TDYVgsFtDh9Xo9NBrNes9cLgeTybThgKenJ1SrVXGf1WoVDup2u4jFYhiPx1I1P7XVBxcoCVCr1UBfTqcTrVYLe3t7OD8/x/HxsdiOPqNGo9Eo0un02gHkBhJmuVzC7/fj5uYGXq8XZ2dnop5Mzf8iwMPDAxqNBmw2GxwOBx4fHzGdTpFMJkVzNB7UGAmSSqU2RoDmnETQ6XQiOyKRiHCOSk0ZEZQcUKlU8Pz8LA5vNptRr9eFCJQBFHq//szG5eWlGA1ywOnpqQhBapoWPfl+vw+fzweXyyU+U635VRGUBOh0OigUCggGg8IFK/teXV3h/v4ew+Hwj/OQU4gUq/w4ODgQrkkkEmKEVGp+tXm6XkkAOngmk4HBYBAjQA6gEKRmyOL05GnR99vbW9jtdjEGdP319bUIR8oA+pnG5OLiQoghU5OElFlKAtCGr6+vKJfLmEwm64aosd/XbDbbyIBSqSSeNKU+HXzlnFAohKOjI6maMs0rO0B20590n7IDflIzMmdhAfiNEL8R4jdC/EZIJj235R6mAFOAKcAUYApsS6LL9MEUYAowBZgCTAGZ9NyWe5gCTAGmAFOAKbAtiS7TB1Ng1ynwDkxRe58vH3FfAAAAAElFTkSuQmCC">-->
+          <!--</a>-->
+          <!--<div class="media-body">-->
+            <!--<small class="pull-right time"><i class="fa fa-clock-o"></i> 12:10am</small>-->
+            <!--<h5 class="media-heading">Naimish Sakhpara</h5>-->
+
+            <!--<small class="col-lg-10">Arnab Goswami: "Some people close to Congress Party and close to the government had a #secret #meeting in a farmhouse in Maharashtra in which Anna Hazare send some representatives and they had a meeting in the discussed how to go about this all fast and how eventually this will end."</small>-->
+          <!--</div>-->
+        <!--</div>-->
+
+      </div>
+
+      <div class="send-wrap ">
+
+        <textarea class="form-control send-message" (ngModelChange)="TypingFunc(message1.value)"
+                  [(ngModel)]="model.message" #message="ngModel" #message1
+                  (keyup)="SendMessage($event,message1)" rows="3" placeholder="Write a reply..."></textarea>
+
+
+      </div>
+      <div>
+        <a class=" col-lg-3 btn   send-message-btn" role="button" style="color:#f80000"><i class="fa fa-cloud-upload"></i> Send Files</a>
+        <a class=" col-lg-3 btn   send-message-btn" data-toggle="modal" data-target="#SendOfferModal" role="button" style="color:#f80000"><i class="fa fa-cloud-upload"></i> Send Offer</a>
+
+
+         <!--<a  class=" col-lg-4 text-right btn   send-message-btn pull-right" role="button"><i class="fa fa-plus"></i>-->
+           <div class="dropdown  col-lg-3 send-message-btn  pull-right">
+             <button class="dropbtn"><i class="fa fa-smile-o  fa-2x" aria-hidden="true"></i></button>
+             <div class="dropdown-content" style="padding: 16px; cursor:pointer;">
+               <img *ngFor="let src of emoji;let ind=index;" (click)="emojiclick(ind, message1)" style="height: 20px;width: 20px;" class="emoji" src="{{GlobalImageAdress.emojiSrc}}{{src}}"/>
+             </div>
+           </div>
+         <!--</a>-->
+      </div>
+      <div class="emojidiv">
+
+        </div>
+      </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+<div class="modal fade" id="SendOfferModal" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content" style="margin-top:25%; width:119%;">
+
+      <form name="form" role="form" #f1 (ngSubmit)="f.form.valid &&
+        SubmitOrder(title1.value,budget1.value,time1.value)" #f="ngForm" novalidate>
+
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title"  style="text-align: center;
+    color: green;
+    font-size: 30px;">Send Offer</h4>
+      </div>
+      <div class="modal-body" style="font-size: 18px; text-align: center;">
+        <p  *ngIf="!OrderDiv">Please Choose a Gig</p> <br>
+        <p  *ngIf="OrderDiv"><button (click)="Back()" class="btn-blue">Back</button>Fill the Form</p><br>
+
+          <div class="messagescrollbar" *ngIf="gigsList.length>0 && !OrderDiv">
+          <div class="messagegig" *ngFor="let objgigsList of gigsList;let ind=index;" (click)="GigSelected(ind)">
+            <img src="{{GlobalImageAdress.mediaUrl}}{{objgigsList.Image}}" alt="Avatar" style="width:100%;">
+              <p>{{objgigsList.Title}}</p>
+          </div>
+          </div>
+
+    <div *ngIf="OrderDiv" >
+      <h3 style="margin-left:2%; color:black"> Description:</h3>
+    <div style="position: relative">
+      <input onkeydown="if (event.keyCode == 13) return false;" type="text" name="title" class="form-control" placeholder="Description" style="border:1px solid #f80000; height: 67px; font-size:20px;"
+             [(ngModel)]="model.title" #title="ngModel" #title1 required >
+      <div *ngIf="f.submitted && !title.valid"  style="position: absolute;top: 10px;right: 10px;">
+        <span style="color: red;margin-right: 10px;">Description Required</span><img src="../../assets/icons/cancel_16.png" height="16" width="16">
+      </div>
+    </div>
+    <br> <br>
+
+    <h3 style="margin-left:2%; color:black">Your Budget:</h3>
+    <div style="position: relative">
+      <input onkeydown="if (event.keyCode == 13) return false;" type="text" name="budget" class="form-control" placeholder="Budget" style="border:1px solid #f80000; height: 67px; font-size:20px;"
+             [(ngModel)]="model.budget" #budget="ngModel" #budget1 required >
+      <div *ngIf="f.submitted && !budget.valid"  style="position: absolute;top: 10px;right: 10px;">
+        <span style="color: red;margin-right: 10px;">Budget Required</span><img src="../../assets/icons/cancel_16.png" height="16" width="16">
+      </div>
+    </div>
+    <br> <br>
+
+    <h3 style="margin-left:2%; color:black">Estimated Time:</h3>
+    <div style="position: relative">
+      <input onkeydown="if (event.keyCode == 13) return false;" type="text" name="time" class="form-control" placeholder="Time" style="border:1px solid #f80000; height: 67px; font-size:20px;"
+             [(ngModel)]="model.time" #time="ngModel" #time1 required >
+      <div *ngIf="f.submitted && !time.valid"  style="position: absolute;top: 10px;right: 10px;">
+        <span style="color: red;margin-right: 10px;">Time Required</span><img src="../../assets/icons/cancel_16.png" height="16" width="16">
+      </div>
+    </div>
+
+    <hr>
+  </div>
+
+    </div>
+
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-default" style="background: green;color: white;
+    border: green;width: 20%;height: 45px;font-size: 18px;">Update</button>
+
+        <button type="button" class="btn btn-default" data-dismiss="modal" style="background: gray;
+    color: white;border: gray;width: 20%;height: 45px;font-size: 18px;">Cancel</button>
+      </div>
+  </form>
+
+    </div>
+
+  </div>
+</div> <!-- Update Work History PopUp End-->
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>

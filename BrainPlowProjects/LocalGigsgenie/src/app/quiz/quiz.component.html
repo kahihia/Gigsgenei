@@ -1,0 +1,146 @@
+<app-loader></app-loader>
+<section *ngIf="loaded===true" class="clearfix job-bg user-page">
+  <!--<div class="breadcrumb-section">-->
+    <!--<ol class="breadcrumb">-->
+      <!--<li *ngFor="let i of ListTrack"><a routerLink="{{i.Url}}">{{i.Name}}</a></li>-->
+    <!--</ol>-->
+  <!--</div>&lt;!&ndash; banner &ndash;&gt;-->
+
+  <div class="container-fluid">
+    <div class="modal-dialog">
+    <div class="modal-content">
+    <div class="modal-header">
+    <div class="progress">
+      <span style="height: 20px;font-size: 15px;font-weight: bold;color: black;position: absolute;margin-left: 32%;">Test Completion = {{TestCompletion}}%</span>
+      <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" [style.width.%]="TestCompletion"></div>
+    </div>
+    <h3 class="time" style="color: #f80000;margin-top: 5%;">Remaining Time : {{timer() | secondsToTime}}
+      <a *ngIf="TestCompletion>=100"><button (click)="CalculateResult()" onclick="topFunction()" type="button" style="float: right;" name="submit" class="btn-green">Submit</button></a></h3>
+    <h3><span *ngIf="Questions !== undefined" class="label label-warning" id="qid">{{index+1}}/{{Questions.length}}</span> <br><br>{{Questions[index].Question}}</h3>
+    </div>
+
+    <div class="modal-body">
+    <div class="col-xs-3 col-xs-offset-5">
+      <div id="loadbar" style="display: none;">
+        <div class="blockG" id="rotateG_01"></div>
+        <div class="blockG" id="r
+              otateG_02"></div>
+        <div class="blockG" id="rotateG_03"></div>
+        <div class="blockG" id="rotateG_04"></div>
+        <div class="blockG" id="rotateG_05"></div>
+        <div class="blockG" id="rotateG_06"></div>
+        <div class="blockG" id="rotateG_07"></div>
+        <div class="blockG" id="rotateG_08"></div>
+      </div>
+    </div>
+
+    <div class="quiz" id="quiz" data-toggle="buttons">
+      <label onclick="topFunction()" [style.background]="Questions[index].color.color[0]" (click)="Attempt(1)" class="element-animation1 btn btn-lg btn-primary btn-block"><span class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span> <input type="radio" name="q_answer" value="1">
+        {{Questions[index].A}}</label>
+      <label onclick="topFunction()" [style.background]="Questions[index].color.color[1]" (click)="Attempt(2)" class="element-animation2 btn btn-lg btn-primary btn-block"><span class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span> <input type="radio" name="q_answer" value="2">
+        {{Questions[index].B}}</label>
+      <label onclick="topFunction()" [style.background]="Questions[index].color.color[2]" (click)="Attempt(3)" class="element-animation3 btn btn-lg btn-primary btn-block"><span class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span> <input type="radio" name="q_answer" value="3">
+        {{Questions[index].C}}</label>
+      <label onclick="topFunction()" [style.background]="Questions[index].color.color[3]" (click)="Attempt(4)" class="element-animation4 btn btn-lg btn-primary btn-block"><span class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span> <input type="radio" name="q_answer" value="4">
+        {{Questions[index].D}}</label>
+
+      <label style="margin-top: 6%;margin-left: 66%;">
+        <a><button (click)="prev()" onclick="topFunction()" type="submit"  name="submit" class="prev">Prev</button></a>
+        &nbsp;&nbsp;<a><button (click)="next()" onclick="topFunction()" type="submit"  name="submit" class="next">Next</button></a>
+      </label>
+    </div>
+
+
+  </div>
+
+  <div class="modal-footer text-muted">
+    <span id="answer"></span>
+    <ul class="pagination" style="margin-right: 145px;">
+      <li><a (click)="left()"><i class="fa fa-chevron-left" aria-hidden="true"></i></a></li>
+
+      <li *ngIf="page+1<=Questions.length" onclick="topFunction()" (click)="ChangeQuestion(page+1)"><a >
+        <i *ngIf="Questions[page].attempt>0" style="margin-right: 2px;color: #f80000;" class="fa fa-check" aria-hidden="true"></i>{{page+1}}</a></li>
+
+      <li *ngIf="page+2<=Questions.length" onclick="topFunction()" (click)="ChangeQuestion(page+2)"><a >
+        <i *ngIf="Questions[page+1].attempt>0" style="margin-right: 2px;color: #f80000;" class="fa fa-check" aria-hidden="true"></i>{{page+2}}</a></li>
+
+      <li *ngIf="page+3<=Questions.length" onclick="topFunction()" (click)="ChangeQuestion(page+3)"><a >
+        <i *ngIf="Questions[page+2].attempt>0" style="margin-right: 2px;color: #f80000;"  class="fa fa-check" aria-hidden="true"></i>{{page+3}}</a></li>
+
+      <li *ngIf="page+4<=Questions.length" onclick="topFunction()" (click)="ChangeQuestion(page+4)"><a >
+        <i *ngIf="Questions[page+3].attempt>0" style="margin-right: 2px;color: #f80000;"  class="fa fa-check" aria-hidden="true"></i>{{page+4}}</a></li>
+
+      <li *ngIf="page+5<=Questions.length" onclick="topFunction()" (click)="ChangeQuestion(page+5)"><a >
+        <i *ngIf="Questions[page+4].attempt>0" style="margin-right: 2px;color: #f80000;"  class="fa fa-check" aria-hidden="true"></i>{{page+5}}</a></li>
+
+      <li></li>
+      <li><a (click)="right()"><i class="fa fa-chevron-right" aria-hidden="true"></i></a></li>
+    </ul>
+  </div>
+  </div>
+  </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+            <!--<form name="form" role="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>-->
+            <!--<div class="page">-->
+            <!--<div class="container">-->
+              <!--<div class="panel panel-default">-->
+                <!--<div class="panel-heading"  style="font-size: 50px;-->
+                <!--font-family: -webkit-body;">-->
+                  <!--Quiz-->
+                <!--</div>-->
+
+                <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                <!--<div class="panel-body">-->
+
+                  <!--<div class="row form-group" *ngFor="let data of Questions;let ind=index;">-->
+
+
+                    <!--{{Questions[ind].Question}}-->
+
+                    <!--<ul class="premium-options">-->
+                      <!--<li class="premium">-->
+                        <!--<input type="radio" name="{{ind}}" value="1" id="day-one" (click)="chkPostTypeClick(chk1.value, ind)" #chk1 required>-->
+                        <!--<label for="day-one">{{Questions[ind].A}}</label>-->
+                      <!--</li>-->
+                      <!--<li class="premium">-->
+                        <!--<input type="radio" name="{{ind}}" value="2" id="day-two" (click)="chkPostTypeClick(chk2.value, ind)" #chk2 required>-->
+                        <!--<label for="day-two">{{Questions[ind].B}}</label>-->
+                      <!--</li>-->
+                      <!--<li class="premium">-->
+                        <!--<input type="radio" name="{{ind}}" value="3" id="day-three" (click)="chkPostTypeClick(chk3.value, ind)" #chk3 required>-->
+                        <!--<label for="day-three">{{Questions[ind].C}}</label>-->
+                      <!--</li>-->
+                      <!--<li class="premium">-->
+                        <!--<input type="radio" name="{{ind}}" value="4" id="day-four" (click)="chkPostTypeClick(chk4.value, ind)" #chk4 required>-->
+                        <!--<label for="day-four">{{Questions[ind].D}}</label>-->
+                      <!--</li>-->
+                    <!--</ul>-->
+
+
+
+                    <!--&lt;!&ndash;<div class="col-sm-12">&ndash;&gt;-->
+                      <!--&lt;!&ndash;<p>{{Questions[ind].Question}}<BR>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<input type="radio" name="2. The word which means fish is" value="maison">{{Questions[ind].A}}<BR>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<input type="radio" name="1. The word which means fish is" value="valise">{{Questions[ind].B}}<BR>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<input type="radio" name="4. The word which means fish is" value="soleil">{{Questions[ind].C}}<BR>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<input type="radio" name="3. The word which means fish is" value="poisson">{{Questions[ind].D}}<BR>&ndash;&gt;-->
+                      <!--&lt;!&ndash;</p>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+
+
+
+                  <!--</div>-->
+
+                <!--</div>-->
+              <!--</div>-->
+            <!--</div>-->
